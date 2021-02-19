@@ -15,9 +15,9 @@ const RestaurantSchema = new mongoose.Schema({
   address: { type: [] },
   phone: { type: String },
   upVotes: { type: Number },
-  //postedBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: false },
-  comments: [ Comment ]
-  //events: { type: mongoose.Schema.ObjectId, ref: 'MeetUp' }
+  postedBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  comments: [ Comment ],
+  meetUps: { type: mongoose.Schema.ObjectId, ref: 'MeetUp' }
 })
 
 export default mongoose.model('Restaurant', RestaurantSchema)
