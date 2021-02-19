@@ -11,7 +11,7 @@ export default function getMeetUpData(users) {
       tags: ["food & drink"],
       // restaurantSuggestions: TODO,
       isActive: true,
-      // creator: TODO,
+      creator: users[0],
     },
     {
       name: "Share a walk along the river?",
@@ -20,9 +20,9 @@ export default function getMeetUpData(users) {
       time: "14:00",
       description: "I have a couple of hours to kill next Sunday after an appointment in London, who's up for a chat whilst walking along the river? Definitely get in touch if you can talk to me about MERN stacks all day!",
       tags: ["outdoor"],
-      // restaurantSuggestions: TODO,
+      // poiSuggestions: TODO,
       isActive: true,
-      // creator: TODO,
+      creator: users[1],
     },
     {
       name: "Looking for a foodie to try out Dishoom with next weekend",
@@ -33,7 +33,7 @@ export default function getMeetUpData(users) {
       tags: ["food & drink"],
       // restaurantSuggestions: TODO,
       isActive: true,
-      // creator: TODO,
+      creator: users[2],
     },
     {
       name: "Is anyone else dying to see the new exhibition at the V&A???",
@@ -44,7 +44,7 @@ export default function getMeetUpData(users) {
       tags: ["museums"],
       // restaurantSuggestions: TODO,
       isActive: true,
-      // creator: TODO,
+      creator: users[3],
     },
     {
       name: "At a loose end for a few hours next week, up for suggestions",
@@ -55,7 +55,7 @@ export default function getMeetUpData(users) {
       tags: ["food & drink", "outdoor", "museums", "theatre"],
       // restaurantSuggestions: TODO,
       isActive: true,
-      // creator: TODO,
+      creator: users[0],
     }
   ]
 }

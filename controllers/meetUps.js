@@ -1,25 +1,4 @@
 import MeetUps from '../models/meetUps.js'
-import router from '../views/router.js'
-
-router.route('/meetUps')
-  .post(secureRoute, meetUps.postMeetUp)
-
-router.route('/meetUps/:location')  
-  .get(meetUps.getMeetUpsByL)
-
-router.route('/meetUps/:location/:category')
-  .get(meetUps.getMeetUpByLC)
-
-router.route('/meetUps/:location/:date')
-  .get(meetUps.getMeetUpByLD)
-
-router.route('/meetUps/:location/:category/:date')
-  .get(meetUps.getMeetUpByLCD)
-
-router.route('/meetUps/:meetUpId')  
-  .get()
-  .put(secureRoute)
-  .delete(secureRoute)
 
 async function getMeetUpsByL(req, res, next) {
   const location = req.params.location

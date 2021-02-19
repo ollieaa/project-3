@@ -2,21 +2,32 @@ import express from 'express'
 //import restaurants from '../controllers/restaurants.js'
 import poi from '../controllers/poi.js'
 import user from '../controllers/user.js'
-//import meetUps from '../controllers/meetUps.js'
+import meetUps from '../controllers/meetUps.js'
 //import comment from '../controllers/comment.js'
 //import groups from '../controllers/groups.js'
 import secureRoute from '../middleware/secureRoute.js'
 
 const router = express.Router()
 
-router.route('/meetups')
+router.route('/meetUps')
+  .post(secureRoute, meetUps.postMeetUp)
+
+router.route('/meetUps/:location')  
+  .get(meetUps.getMeetUpsByL)
+
+router.route('/meetUps/:location/:category')
+  .get(meetUps.getMeetUpByLC)
+
+router.route('/meetUps/:location/:date')
+  .get(meetUps.getMeetUpByLD)
+
+router.route('/meetUps/:location/:category/:date')
+  .get(meetUps.getMeetUpByLCD)
+
+router.route('/meetUps/:meetUpId')  
   .get()
-  .post(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
-
-router.route('/meetups/:category/:date')
-  .get()
 
 // POINTS OF INTEREST
 router.route('/pointsofinterest')
@@ -44,10 +55,10 @@ router.route('/pointsofinterest/:poiId/comment/:commentId')
 // END OF POINTS OF INTEREST
 
 
-router.route('/meetup/:meetUpId/comment')
+router.route('/meetUp/:meetUpId/comment')
   .post(secureRoute)
 
-router.route('/meetup/:meetUpId/comment/:commentId')
+router.route('/meetUp/:meetUpId/comment/:commentId')
   .post(secureRoute)
   .put(secureRoute)
 
