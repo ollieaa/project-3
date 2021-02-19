@@ -1,4 +1,4 @@
-export default function getHardRestData() {
+export default function getHardRestData(users) {
   return [
 
     {
@@ -21,8 +21,9 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442075914410",
       "comments" : [ ],
-
+      "postedBy": users[0]
     },
+  
     {
 
       "category" : [
@@ -41,6 +42,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442073376767",
       "comments" : [ ],
+      "postedBy": users[1]
 
     },
     {
@@ -62,7 +64,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442078281543",
       "comments" : [ ],
-
+      "postedBy": users[2]
     },
     {
 
@@ -84,7 +86,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442078347119",
       "comments" : [ ],
-  
+      "postedBy": users[3]
     },
     {
 
@@ -105,6 +107,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442078379421",
       "comments" : [ ],
+      "postedBy": users[3]
 
     },
     {
@@ -128,7 +131,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442031741156",
       "comments" : [ ],
-
+      "postedBy": users[3]
     },
     {
 
@@ -150,7 +153,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442079206479",
       "comments" : [ ],
-
+      "postedBy": users[3]
     },
     {
 
@@ -171,6 +174,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "",
       "comments" : [ ],
+      "postedBy": users[3]
 
     },
     {
@@ -193,6 +197,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442076080858",
       "comments" : [ ],
+      "postedBy": users[3]
  
     },
     {
@@ -214,6 +219,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442077694485",
       "comments" : [ ],
+      "postedBy": users[3]
 
     },
     {
@@ -236,6 +242,7 @@ export default function getHardRestData() {
       "location" : "London",
       "phone" : "+442036895050",
       "comments" : [ ],
+      "postedBy": users[3]
  
     }
     
