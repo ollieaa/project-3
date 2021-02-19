@@ -15,6 +15,7 @@ async function register(req, res, next) {
 
 async function login(req, res, next) {
   const password = req.body.password
+
   try {
     const user = await User.findOne({ email: req.body.email })
     if (!user || !user.validatePassword(password)) {
@@ -45,6 +46,7 @@ async function getUser(_req, res, next) {
 async function removeUser(req, res, next) {
   const id = req.params.id
   const currentUser = req.currentUser
+
   try {
     const userToRemove = await User.findById(id)
 
@@ -83,6 +85,17 @@ async function updateUser(req, res, next) {
   }
 }
 
+async function getSingleUser(req, res, next) {
+  const id = req.params.id
+  
+  try {
+    const singleUser = await User.findById(id)
+    res.status(200).send(singleUser)
+  } catch (err) {
+    next(err)
+  }
+}
+
 async function getUserInbox(req, res, next) {
   const id = req.params.id
 
@@ -100,5 +113,6 @@ export default {
   getUser,
   removeUser,
   updateUser,
-  getUserInbox
+  getUserInbox,
+  getSingleUser
 }
