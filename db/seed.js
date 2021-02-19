@@ -4,14 +4,14 @@ import connectToDb from '../lib/connectToDb.js'
 // * Models
 import User from '../models/user.js'
 import MeetUp from '../models/meetUps.js'
-import Restaurant from '../models/restaurants.js'
+// import Restaurant from '../models/restaurants.js'
 import Poi from '../models/poi.js'
 
 
 // * Data Files
 import getUserData from './data/userData.js'
 import getMeetUpData from './data/meetUpData.js'
-import getRestaurantData from './data/restaurantData.js'
+// import getRestaurantData from './data/restaurantsData.js'
 import getPoiData from './data/poiData.js'
 
 
@@ -39,13 +39,13 @@ async function seedDatabase() {
 
     // * Restaurant Data
 
-    const restaurants = await Restaurant.create(getRestaurantData())
+    // const restaurants = await Restaurant.create(getRestaurantData())
 
-    console.log(`🍽 ${restaurants.length} restaurants created!`)
+    // console.log(`🍽 ${restaurants.length} restaurants created!`)
 
     // * POI Data
 
-    const poi = await Poi.create(getPoiData())
+    const poi = await Poi.create(getPoiData(users))
 
     console.log(`🏰 ${poi.length} points of interest created!`)
 
@@ -61,3 +61,5 @@ async function seedDatabase() {
   }
 
 }
+
+seedDatabase()

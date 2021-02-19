@@ -132,9 +132,6 @@ async function updateComment(req, res, next) {
   }
 }
 
-
-
-
 export default {
   getPoi,
   makePoi,

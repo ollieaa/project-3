@@ -26,7 +26,6 @@ const poiSchema = new mongoose.Schema({
   image: { type: String },
   link: { type: String },
   upVotes: { type: Number },
-  postedBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   comments: [ Comment ],
   events: { type: [mongoose.Schema.ObjectId], ref: 'MeetUp' }
 })
