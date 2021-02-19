@@ -62,7 +62,3 @@ async function seedDatabase() {
 
 }
 
-<<<<<<< HEAD
-=======
-seedDatabase()
->>>>>>> development
