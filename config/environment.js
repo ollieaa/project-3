@@ -7,4 +7,4 @@ export const dbURI = environment === 'production'
   ? process.env.MONGODB_URI
   : `mongodb://localhost/looseend-${environment}`
 export const port = 8000
-export const secret = process.env.SECRET
+export const secret = '3482349839482305737hfhh'
