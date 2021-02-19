@@ -36,11 +36,12 @@ router.route('/meetups/:category/:date')
 
 router.route('/restaurants')
   .get(restaurants.getRestaurant)
+  .post(restaurants.postRestaurant)
 
 router.route('/restaurants/:restaurantId')
   .get(restaurants.getSingleRestaurant)
-  .put()
-  .delete()
+  .put(secureRoute, restaurants.updateRestaurant)
+  .delete(secureRoute, restaurants.deleteRestaurant)
   
 // POINTS OF INTEREST
 router.route('/pointsofinterest')
@@ -84,6 +85,7 @@ router.route('/user')
   .get(user.getUser)
 
 router.route('/user/:id')
+  .get(user.getSingleUser)
   .put(secureRoute, user.updateUser)
   .delete(secureRoute, user.removeUser)
 

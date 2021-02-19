@@ -9,7 +9,7 @@ export default function getRestaurantData() {
     promises.push(new Promise((resolve) => {
       setTimeout(() => {
         axios.get(`https://api.yelp.com/v3/businesses/search?term=bars,restaurants&location=london&locale=en_GB&sort_by=rating&limit=50&offset=${offset}`,
-          { headers: { Authorization: 'Bearer jjmgheeA0kbSo6ADt5v2s0_43YLzZb936QuyA5LJtqE2ZMitMxiolDXXkaYTnkML3PckSjALnzco6lBTKY1CdsFDIFEFl4KINgcE_Bo8Gh2kXyi4fCpYxY2umqEvYHYx' } })
+          { headers: { Authorization: `Bearer ${process.env.APIKEY}` } })
           .then(({ data }) => {
             const restaurant = {
               name: data.businesses[0].name,
