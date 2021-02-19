@@ -11,7 +11,7 @@ import Poi from '../models/poi.js'
 // * Data Files
 import getUserData from './data/userData.js'
 import getMeetUpData from './data/meetUpData.js'
-import getRestaurantData from './data/restaurantsData.js'
+// import getRestaurantData from './data/restaurantsData.js'
 import getPoiData from './data/poiData.js'
 
 
@@ -33,7 +33,7 @@ async function seedDatabase() {
 
     // * Meet-up Data
 
-    const meetUps = await MeetUp.create(getMeetUpData())
+    const meetUps = await MeetUp.create(getMeetUpData(users))
 
     console.log(`🤝 ${meetUps.length} meet-ups created!`)
 
@@ -61,4 +61,5 @@ async function seedDatabase() {
   }
 
 }
+seedDatabase()
 
