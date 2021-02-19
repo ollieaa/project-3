@@ -113,12 +113,109 @@ export default function getPoiData(users) {
       upVotes: 0,
       comments: [],
       events: []
+    },
+    {
+      category: 'indoor',
+      name: 'St. Paul\'s Cathedral',
+      tube: 'St. Paul\'s',
+      description: 'For more than 1,400 years, a Cathedral dedicated to St Paul has stood at the highest point in the City. The present Cathedral, the masterpiece of Britain\'s most famous architect Sir Christopher Wren, is at least the fourth to have stood on the site. It was built between 1675 and 1710, after its predecessor was destroyed in the Great Fire of London, and services began in 1697. This was the first Cathedral to be built after the English Reformation in the sixteenth-century, when Henry VIII removed the Church of England from the jurisdiction of the Pope and the Crown took control of the life of the church.',
+      types: ['museum', 'religious building', 'historic building', 'landmark'],
+      user: users[3],
+      lat: 51.5138,
+      long: 0.0984,
+      price: '£17 for adults, £7.20 for children',
+      time: '10am - 4:30pm',
+      phone: '+44 0207 246 8350',
+      funfact: 'Due to the specific design of the cathedral’s dome, sound carries incredibly well across the Whispering Gallery – a walkway thirty metres up. Try it for yourself with a friend and see how quietly you can whisper to one another from the opposite sides.',
+      image: '',
+      link: 'https://www.stpauls.co.uk',
+      upVotes: 0,
+      comments: [],
+      events: []
+    },
+    {
+      category: 'indoor',
+      name: 'Natural History Museum',
+      tube: 'South Kensington',
+      description: 'The museum is home to life and earth science specimens comprising some 80 million items within five main collections: botany, entomology, mineralogy, palaeontology and zoology. The museum is a centre of research specialising in taxonomy, identification and conservation. Given the age of the institution, many of the collections have great historical as well as scientific value, such as specimens collected by Charles Darwin. The museum is particularly famous for its exhibition of dinosaur skeletons and ornate architecture—sometimes dubbed a cathedral of nature—both exemplified by the large Diplodocus cast that dominated the vaulted central hall before it was replaced in 2017 with the skeleton of a blue whale hanging from the ceiling.',
+      types: ['museum'],
+      user: users[3],
+      lat: 51.4967,
+      long: 0.1764,
+      price: 'Free',
+      time: '10am - 5:50pm',
+      phone: '',
+      funfact: 'Unlike most gargoyles, which tend to be grotesques with predominantly human or mythological form, the gargoyles around the outside of the Natural History Museum are all intricately carved animals. If you look closely at the ornate details both inside and outside this beautiful building, you’ll find a variety of other animal carvings too.',
+      image: '',
+      link: 'https://www.nhm.ac.uk',
+      upVotes: ,
+      comments: [],
+      events: []
+    },
+    {
+      category: 'indoor',
+      name: 'Tate Modern',
+      tube: 'Blackfriars',
+      description: '',
+      types: [],
+      user: users[3],
+      lat: 51.5076,
+      long: 0.0994,
+      price: 'Free',
+      time: '',
+      phone: '+44 (0)20 7887 8888',
+      funfact: 'Tate Modern is housed in the former Bankside Power Station. The building is almost the same size as Westminster Abbey with the signature central chimney standing at 99m tall. The building was converted and opened to the public in 2000.',
+      image: '',
+      link: 'https://www.tate.org.uk/visit/tate-modern',
+      upVotes: 0,
+      comments: [],
+      events: []
+    },
+    {
+      category: 'indoor',
+      name: 'British Museum',
+      tube: 'Tottenham Court Road',
+      description: 'The British Museum was founded in 1753 and opened its doors in 1759. It was the first national museum to cover all fields of human knowledge, open to visitors from across the world.',
+      types: [],
+      user: users[3],
+      lat: 51.5194,
+      long: 0.1270,
+      price: 'Free',
+      time: '10am - 6pm',
+      phone: '',
+      funfact: 'The museum holds the remains of Sutton Hoo,  the site of two early medieval cemeteries dating from the 6th to 7th centuries near Woodbridge, in Suffolk, England. Archaeologists have been excavating the area since 1938. One cemetery had an undisturbed ship burial with a wealth of Anglo-Saxon artefacts.',
+      image: '',
+      link: 'https://www.britishmuseum.org',
+      upVotes: 0,
+      comments: [],
+      events: []
     }
   ].map(poi => {
     poi.user = users[0]
     return poi
   })
 }
+
+// TEMPLATE
+// {
+//   category: '',
+//   name: '',
+//   tube: '',
+//   description: '',
+//   types: [],
+//   user: users[3],
+//   lat: ,
+//   long: ,
+//   price: '',
+//   time: '',
+//   phone: '',
+//   funfact: '',
+//   image: '',
+//   link: '',
+//   upVotes: 0,
+//   comments: [],
+//   events: []
+// },
 
 
 // CATEGORIES
@@ -145,24 +242,3 @@ export default function getPoiData(users) {
 //   Monument
 //   Landmark
 
-// TEMPLATE
-// {
-//   category: '',
-//   name: '',
-//   tube: '',
-//   description: '',
-//   types: [],
-//   user: ,
-//   lat: ,
-//   long: ,
-//   price: '',
-//   time: '',
-//   phone: '',
-//   funfact: '',
-//   image: '',
-//   link: '',
-//   upVotes: ,
-//   postedBy: [],
-//   comments: [],
-//   events: []
-// },

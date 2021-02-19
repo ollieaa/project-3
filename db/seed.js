@@ -33,7 +33,7 @@ async function seedDatabase() {
 
     // * Meet-up Data
 
-    const meetUps = await MeetUp.create(getMeetUpData())
+    const meetUps = await MeetUp.create(getMeetUpData(users))
 
     console.log(`🤝 ${meetUps.length} meet-ups created!`)
 
