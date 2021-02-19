@@ -53,7 +53,7 @@ router.route('/pointsofinterest/:category’')
   .put(secureRoute)
   .delete(secureRoute)
 
-router.route('/pointsofinterest/:id')
+router.route('/pointsofinterest/:poiId')
   .get(poi.getSinglePoi)
   .delete(secureRoute, poi.removePoi)
   .put(secureRoute, poi.updatePoi)
