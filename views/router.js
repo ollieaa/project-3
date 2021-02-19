@@ -84,6 +84,7 @@ router.route('/user')
   .get(user.getUser)
 
 router.route('/user/:id')
+  .get(user.getSingleUser)
   .put(secureRoute, user.updateUser)
   .delete(secureRoute, user.removeUser)
 
