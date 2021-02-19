@@ -85,16 +85,10 @@ async function updateUser(req, res, next) {
 
 async function getUserInbox(req, res, next) {
   const id = req.params.id
-  const currentUser = req.currentUser
-  //const inbox = req.currentUser.inbox
-  console.log(currentUser)
-  //console.log(inbox)
 
   try {
     const userInbox = await User.findById(id)
-    console.log(userInbox)
-    const userList = await User.find()
-    res.status(200).send(userList)
+    res.status(200).send(userInbox.inbox)
   } catch (err) {
     next(err)
   }

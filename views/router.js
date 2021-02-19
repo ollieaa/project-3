@@ -54,7 +54,7 @@ router.route('/user/:id')
   .put(secureRoute, user.updateUser)
   .delete(secureRoute, user.removeUser)
 
-router.route('/user/inbox')
+router.route('/user/:id/inbox')
   .get(user.getUserInbox)
 
 router.route('/user/inbox/:commentId')
