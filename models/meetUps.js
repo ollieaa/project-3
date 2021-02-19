@@ -9,15 +9,17 @@ const MeetUpSchema = new mongoose.Schema({
   time: { type: String, required: true },
   description: { type: String, required: true },
   tags: { type: [String], required: true },
-  comments: [ Comment ],
-  poiSuggestions: { type: [mongoose.Schema.ObjectId], ref: 'Poi'},
-  restaurantSuggestions: { type: [mongoose.Schema.ObjectId], ref: 'Restaurant'},
-  attendees: { type: [mongoose.Schema.ObjectId], ref: 'User'},
+  comments: [Comment],
+  poiSuggestions: { type: [mongoose.Schema.ObjectId], ref: 'Poi' },
+  restaurantSuggestions: { type: [mongoose.Schema.ObjectId], ref: 'Restaurant' },
+  attendees: { type: [mongoose.Schema.ObjectId], ref: 'User' },
   isActive: { type: Boolean },
   upVote: { type: Number },
-  creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  // creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  creator: { type: mongoose.Schema.ObjectId, ref: 'User' }
+
 }, {
-  timestamps: true 
+  timestamps: true
 })
 
 export default mongoose.model('MeetUp', MeetUpSchema)
