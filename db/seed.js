@@ -34,13 +34,7 @@ async function seedDatabase() {
 
     console.log(`🙋‍♀️ ${users.length} users created!`)
 
-<<<<<<< HEAD
-    // * Meet-up Data
-
-    const meetUps = await MeetUp.create(getMeetUpData(users))
-=======
     // * Restaurant Data
->>>>>>> development
 
     // const newRestaurantData = await getRestaurantData()
 

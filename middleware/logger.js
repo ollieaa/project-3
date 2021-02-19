@@ -14,5 +14,5 @@ export default function logger(req, _res, next) {
 📦 Request Body: ${buildObjectLog(req.body)}
 ❓ Request Query: ${buildObjectLog(req.query)}
 --------------------------------`)
-next()
+  next()
 }
