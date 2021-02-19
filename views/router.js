@@ -25,7 +25,7 @@ router.route('/meetUps/:location/:category/:date')
   .get(meetUps.getMeetUpsByLCD)
 
 router.route('/meetUps/:meetUpId')  
-  .get()
+  .get(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
 
@@ -35,7 +35,7 @@ router.route('/pointsofinterest')
   .post(secureRoute, poi.makePoi)
 
 router.route('/pointsofinterest/:category’')
-  .get()
+  .get(secureRoute)
   .post(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
