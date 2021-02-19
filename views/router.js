@@ -1,15 +1,8 @@
 import express from 'express'
-<<<<<<< HEAD
 import restaurants from '../controllers/restaurants.js'
-//import poi from '../controllers/poi.js'
-//import user from '../controllers/user.js'
-//import meetUps from '../controllers/meetUps.js'
-=======
-//import restaurants from '../controllers/restaurants.js'
 import poi from '../controllers/poi.js'
 import user from '../controllers/user.js'
 import meetUps from '../controllers/meetUps.js'
->>>>>>> development
 //import comment from '../controllers/comment.js'
 //import groups from '../controllers/groups.js'
 import secureRoute from '../middleware/secureRoute.js'
@@ -35,10 +28,11 @@ router.route('/meetUps/:meetUpId')
   .get(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
-<<<<<<< HEAD
  
 router.route('/meetups/:category/:date')  
   .get()
+
+// RESTAURANTS
 
 router.route('/restaurants')
   .get(restaurants.getRestaurant)
@@ -48,13 +42,6 @@ router.route('/restaurants/:restaurantId')
   .put()
   .delete()
   
-router.route('/activities')
-  .get()
-  
-router.route('/activities/:category’')  
-  .get()
-=======
-
 // POINTS OF INTEREST
 router.route('/pointsofinterest')
   .get(poi.getPoi)
@@ -62,7 +49,6 @@ router.route('/pointsofinterest')
 
 router.route('/pointsofinterest/:category’')
   .get(secureRoute)
->>>>>>> development
   .post(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
@@ -80,7 +66,6 @@ router.route('/pointsofinterest/:poiId/comment/:commentId')
 // .delete(secureRoute, poi.removeComment)
 
 // END OF POINTS OF INTEREST
-
 
 router.route('/meetUp/:meetUpId/comment')
   .post(secureRoute)
