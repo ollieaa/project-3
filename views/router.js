@@ -1,5 +1,5 @@
 import express from 'express'
-//import restaurants from '../controllers/restaurants.js'
+import restaurants from '../controllers/restaurants.js'
 import poi from '../controllers/poi.js'
 import user from '../controllers/user.js'
 import meetUps from '../controllers/meetUps.js'
@@ -28,7 +28,20 @@ router.route('/meetUps/:meetUpId')
   .get(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
+ 
+router.route('/meetups/:category/:date')  
+  .get()
 
+// RESTAURANTS
+
+router.route('/restaurants')
+  .get(restaurants.getRestaurant)
+
+router.route('/restaurants/:restaurantId')
+  .get(restaurants.getSingleRestaurant)
+  .put()
+  .delete()
+  
 // POINTS OF INTEREST
 router.route('/pointsofinterest')
   .get(poi.getPoi)
@@ -53,7 +66,6 @@ router.route('/pointsofinterest/:poiId/comment/:commentId')
 // .delete(secureRoute, poi.removeComment)
 
 // END OF POINTS OF INTEREST
-
 
 router.route('/meetUp/:meetUpId/comment')
   .post(secureRoute)
