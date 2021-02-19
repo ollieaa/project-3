@@ -1,5 +1,5 @@
 import express from 'express'
-//import restaurants from '../controllers/restaurants.js'
+import restaurants from '../controllers/restaurants.js'
 //import poi from '../controllers/poi.js'
 //import user from '../controllers/user.js'
 //import meetUps from '../controllers/meetUps.js'
@@ -18,6 +18,14 @@ router.route('/meetups')
 router.route('/meetups/:category/:date')  
   .get()
 
+router.route('/restaurants')
+  .get(restaurants.getRestaurant)
+
+router.route('/restaurants/:restaurantId')
+  .get(restaurants.getSingleRestaurant)
+  .put()
+  .delete()
+  
 router.route('/activities')
   .get()
   

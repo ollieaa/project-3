@@ -13,6 +13,7 @@ const app = express()
 async function startServer() {
   
   await connectToDb()
+  console.log(process.env.APIKEY)
   app.use(express.json())
   app.use(logger)
   app.use('/api', router)
@@ -23,5 +24,7 @@ async function startServer() {
 console.log(port)
 
 startServer()
+
+export const env = process.env
 
 export default app
