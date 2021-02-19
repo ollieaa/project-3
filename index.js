@@ -20,8 +20,6 @@ async function startServer() {
   app.listen(port, () => console.log(`Up and running on port ${port}`))
 }
 
-console.log(port)
-
 startServer()
 
 export default app

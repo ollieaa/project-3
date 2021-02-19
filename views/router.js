@@ -1,7 +1,7 @@
 import express from 'express'
 //import restaurants from '../controllers/restaurants.js'
 //import poi from '../controllers/poi.js'
-//import user from '../controllers/user.js'
+import user from '../controllers/user.js'
 //import meetUps from '../controllers/meetUps.js'
 //import comment from '../controllers/comment.js'
 //import groups from '../controllers/groups.js'
@@ -14,53 +14,54 @@ router.route('/meetups')
   .post(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
- 
-router.route('/meetups/:category/:date')  
+
+router.route('/meetups/:category/:date')
   .get()
 
 router.route('/activities')
   .get()
-  
-router.route('/activities/:category’')  
+
+router.route('/activities/:category’')
   .get()
   .post(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
 
-router.route('/meetup/:meetUpId/comment')  
+router.route('/meetup/:meetUpId/comment')
   .post(secureRoute)
 
-router.route('/meetup/:meetUpId/comment/:commentId')  
+router.route('/meetup/:meetUpId/comment/:commentId')
   .post(secureRoute)
   .put(secureRoute)
 
 router.route('/activities/:activitiesId/comment')
-	.post(secureRoute)
+  .post(secureRoute)
 
 router.route('/activities/:activitiesId/comment/:commentId')
-	.put(secureRoute)
+  .put(secureRoute)
   .delete(secureRoute)
 
-router.route('/register')	
-	.post(secureRoute)
+router.route('/register')
+  .post(user.register)
 
 router.route('/login')
-	.post(secureRoute)
+  .post(user.login)
 
 router.route('/user')
-	.get(secureRoute)
-	.post(secureRoute)
-	.put(secureRoute)
-	.delete(secureRoute)
+  .get(user.getUser)
+
+router.route('/user/:id')  
+  .put(secureRoute, user.updateUser)
+  .delete(secureRoute, user.removeUser)
 
 router.route('/user/inbox')
-	.get(secureRoute)
+  .get(user.getUserInbox)
 
 router.route('/user/inbox/:commentId')
-	.get(secureRoute)
-	.post(secureRoute)
-	.put(secureRoute)
-	.delete(secureRoute)
+  .get(secureRoute)
+  .post(secureRoute)
+  .put(secureRoute)
+  .delete(secureRoute)
 
 router.route('/groups')
   .get(secureRoute)
