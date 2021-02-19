@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default function getMeetUpData(users) {
+export default function getMeetUpData(users, restaurants, poi) {
   return [
     {
       name: "Evening to spare in London",
@@ -9,7 +9,7 @@ export default function getMeetUpData(users) {
       time: "18:00",
       description: "I will be in London for a conference next Saturday, would be nice to share the rest of the evening with someone over a glass of wine.",
       tags: ["food & drink"],
-      // restaurantSuggestions: TODO,
+      restaurantSuggestions: restaurants[0],
       isActive: true,
       creator: users[0],
     },
@@ -20,7 +20,7 @@ export default function getMeetUpData(users) {
       time: "14:00",
       description: "I have a couple of hours to kill next Sunday after an appointment in London, who's up for a chat whilst walking along the river? Definitely get in touch if you can talk to me about MERN stacks all day!",
       tags: ["outdoor"],
-      // poiSuggestions: TODO,
+      poiSuggestions: poi[0],
       isActive: true,
       creator: users[1],
     },
@@ -31,7 +31,7 @@ export default function getMeetUpData(users) {
       time: "17:00",
       description: "My friend had to cancel on our dinner plans last minute due to a family emergency. I have a table for two booked at Dishoom Kings Cross on Sunday and I feel awkward eating out alone, so some company would be great! I'm told it's the best curry in London...",
       tags: ["food & drink"],
-      // restaurantSuggestions: TODO,
+      restaurantSuggestions: restaurants[1],
       isActive: true,
       creator: users[2],
     },
@@ -42,7 +42,7 @@ export default function getMeetUpData(users) {
       time: "15:00",
       description: "I am planning a trip to the V&A museum next week as part of my short stay in London. Their new exhibition on the Persian Empire looks Amazing! would love to go see it with a fellow persophile.",
       tags: ["museums"],
-      // restaurantSuggestions: TODO,
+      poiSuggestions: poi[1],
       isActive: true,
       creator: users[3],
     },
