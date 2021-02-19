@@ -16,16 +16,16 @@ router.route('/meetUps/:location')
   .get(meetUps.getMeetUpsByL)
 
 router.route('/meetUps/:location/:category')
-  .get(meetUps.getMeetUpByLC)
+  .get(meetUps.getMeetUpsByLC)
 
 router.route('/meetUps/:location/:date')
-  .get(meetUps.getMeetUpByLD)
+  .get(meetUps.getMeetUpsByLD)
 
 router.route('/meetUps/:location/:category/:date')
-  .get(meetUps.getMeetUpByLCD)
+  .get(meetUps.getMeetUpsByLCD)
 
 router.route('/meetUps/:meetUpId')  
-  .get()
+  .get(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
 
@@ -35,7 +35,7 @@ router.route('/pointsofinterest')
   .post(secureRoute, poi.makePoi)
 
 router.route('/pointsofinterest/:category’')
-  .get()
+  .get(secureRoute)
   .post(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
