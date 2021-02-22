@@ -19,6 +19,10 @@ import Restaurants from './components/Restaurants.js'
 import SingleRestaurant from './components/SingleRestaurant.js'
 import UpdateRestaurant from './components/UpdateRestaurant.js'
 import CreateRestaurant from './components/CreateRestaurant.js'
+import Poi from './components/Poi.js'
+import SinglePoi from './components/SinglePoi.js'
+import CreatePoi from './components/CreatePoi.js'
+import UpdatePoi from './components/UpdatePoi.js'
 import Groups from './components/Groups.js'
 import SingleGroup from './components/SingleGroup.js'
 import CreateGroup from './components/CreateGroup.js'
@@ -52,6 +56,10 @@ const App = () => {
       <Route exact path="/activities/create-restaurant" component={CreateRestaurant}/>
       <Route exact path="/activities/update-restaurant/:restaurantId" component={UpdateRestaurant}/>
       <Route exact path="/activities/:restaurantId" component={SingleRestaurant}/>
+      <Route exact path="/poi" component={Poi}/>
+      <Route exact path="/poi/:poiId" component={SinglePoi}/>
+      <Route exact path="/createPoi" component={CreatePoi}/>
+      <Route exact path="/updatePoi" component={UpdatePoi}/>
       <Route exact path="/groups" component={Groups}/>
       <Route exact path="/groups/create-group" component={CreateGroup}/>
       <Route exact path="/groups/update-group/:groupId" component={UpdateGroup}/>

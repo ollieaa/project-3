@@ -56,25 +56,25 @@ router.route('/groups/:groupId')
 
 
 // POINTS OF INTEREST
-router.route('/pointsofinterest')
+router.route('/poi')
   .get(poi.getPoi)
   .post(secureRoute, poi.makePoi)
 
-router.route('/pointsofinterest/:category’')
+router.route('/poi/:category’')
   .get(secureRoute)
   .post(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
 
-router.route('/pointsofinterest/:id')
+router.route('/poi/:id')
   .get(poi.getSinglePoi)
   .delete(secureRoute, poi.removePoi)
   .put(secureRoute, poi.updatePoi)
 
-router.route('/pointsofinterest/:poiId/comment')
+router.route('/poi/:poiId/comment')
   .post(secureRoute, poi.makeComment)
 
-router.route('/pointsofinterest/:poiId/comment/:commentId')
+router.route('/poi/:poiId/comment/:commentId')
   .put(secureRoute, poi.updateComment)
 // .delete(secureRoute, poi.removeComment)
 
