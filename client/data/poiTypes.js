@@ -4,7 +4,6 @@ export default [
   { value: 'religious', label: 'Religious Buildings' },
   { value: 'historic', label: 'Historic Buildings' },
   { value: 'palace', label: 'Palaces' },
-  { value: 'other', label: 'Other' },
   { value: 'theatre', label: 'Theatre' },
   { value: 'sports', label: 'Sports' },
   { value: 'park', label: 'Park' },
@@ -14,5 +13,6 @@ export default [
   { value: 'market', label: 'Market' },
   { value: 'gardens', label: 'Gardens' },
   { value: 'monument', label: 'Monuments' },
-  { value: 'landmark', label: 'Landmarks' }
+  { value: 'landmark', label: 'Landmarks' },
+  { value: 'other', label: 'Other' }
 ]

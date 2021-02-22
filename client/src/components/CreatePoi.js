@@ -44,7 +44,7 @@ export default function Create({ history }) {
         headers: { Authorization: `Bearer ${token}` }
       })
       console.log(data._id)
-      history.push(`/activities/${data._id}`)
+      history.push(`/poi/${data._id}`)
     } catch (err) {
       // ! Handle the error in here!
       console.log(err.response.data)

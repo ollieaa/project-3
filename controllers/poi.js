@@ -19,7 +19,6 @@ async function makePoi(req, res, next) {
   } catch (err) {
     next(err)
   }
-
 }
 
 async function getSinglePoi(req, res, next) {
@@ -31,7 +30,6 @@ async function getSinglePoi(req, res, next) {
   } catch (err) {
     next(err)
   }
-
 }
 
 async function removePoi(req, res, next) {
