@@ -1,0 +1,35 @@
+.scrolling-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch
+}
+
+.scrolling-card {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 450px;
+  margin: 10px;
+  border: 1px solid gray;
+}
+
+.horizontal-card {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+}
+
+.horizontal-card-image {
+  display: flex;
+  flex: 1
+}
+
+.horizontal-card-content {
+  display: flex;
+  flex: 3
+}
+
+.avatar {
+  height: 100px
+}
