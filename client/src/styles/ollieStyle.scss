@@ -1,0 +1,90 @@
+#meetUpSearchPage, #meetUpsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+#searchForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#meetUpCategories {
+  width: 200px;
+}
+#meetUpsColumns{
+  display: flex;
+  flex-direction: row;
+}
+#meetUpsLeft {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: 1px solid black;
+}
+#meetUpSearch {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+#meetUpsRight {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 3;
+  border: 1px solid black;
+}
+.meetUpCard {
+  width: 25%;
+  margin: 20px;
+}
+#singleMeetUpPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#singleMeetUpTop {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  flex: 1;
+}
+#singleMeetUpMain {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  flex: 4;
+}
+#singleMeetUpColumnLeft{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 2;
+  border: 1px solid black;
+}
+#description {
+  width: 60%;
+}
+#singleMeetUpColumnRight{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: 1px solid black;
+}
+#postedByBox, #suggestionsBox {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+#postedByBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#suggestions {
+  display: flex;
+  flex-flow: row wrap;
+}
+.suggestion {
+  
+}

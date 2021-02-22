@@ -20,9 +20,9 @@ import CreateGroup from './components/CreateGroup.js'
 import UpdateGroup from './components/UpdateGroup.js'
 import Navbar from './components/Navbar.js'
 import Footer from './components/Footer.js'
-
-
-
+// NEW
+import MeetUpSearch from './components/MeetUpSearch.js'
+import './styles/ollieStyle.scss'
 
 
 
@@ -41,7 +41,7 @@ const App = () => {
       <Route exact path="/updateProfile" component={UpdateProfile}/>
       <Route exact path="/inbox" component={Inbox}/>
       <Route exact path="/meetUp" component={MeetUp}/>
-      <Route exact path="/singleMeetUp" component={SingleMeetUp}/>
+      <Route exact path="/meetUp/:meetUpId" component={SingleMeetUp}/>
       <Route exact path="/createMeetUp" component={CreateMeetUp}/>
       <Route exact path="/uodateMeetUp" component={UpdateMeetUp}/>
       <Route exact path="/activities" component={Activities}/>
@@ -51,6 +51,8 @@ const App = () => {
       <Route exact path="/groups" component={Groups}/>
       <Route exact path="/createGroup" component={CreateGroup}/>
       <Route exact path="/updateGroup" component={UpdateGroup}/>
+      {/* NEW */}
+      <Route exact path="/meetUpSearch" component={MeetUpSearch}/>
     </Switch>
     <Footer />
   </BrowserRouter>

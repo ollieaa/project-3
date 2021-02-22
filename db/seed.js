@@ -43,7 +43,7 @@ async function seedDatabase() {
     const restaurants = await Restaurant.create(getHardRestData(users))
 
     console.log(`🍽 ${restaurants.length} restaurants created!`)
-
+    console.log(restaurants)
     // * POI Data
 
     const poi = await Poi.create(getPoiData(users))

@@ -15,8 +15,8 @@ router.route('/meetUps')
 router.route('/meetUps/:location')  
   .get(meetUps.getMeetUpsByL)
 
-router.route('/meetUps/:location/:category')
-  .get(meetUps.getMeetUpsByLC)
+// router.route('/meetUps/:location/:category')
+//   .get(meetUps.getMeetUpsByLC)
 
 router.route('/meetUps/:location/:date')
   .get(meetUps.getMeetUpsByLD)
@@ -24,13 +24,13 @@ router.route('/meetUps/:location/:date')
 router.route('/meetUps/:location/:category/:date')
   .get(meetUps.getMeetUpsByLCD)
 
-router.route('/meetUps/:meetUpId')  
-  .get(secureRoute)
+router.route('/singleMeetUp/:meetUpId')  
+  .get(meetUps.getSingleMeetUp)
   .put(secureRoute)
   .delete(secureRoute)
  
-router.route('/meetups/:category/:date')  
-  .get()
+// router.route('/meetups/:category/:date')  
+//   .get()
 
 // RESTAURANTS
 
