@@ -15,9 +15,7 @@ const MeetUpSchema = new mongoose.Schema({
   attendees: { type: [mongoose.Schema.ObjectId], ref: 'User' },
   isActive: { type: Boolean },
   upVote: { type: Number },
-  creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  creator: { type: mongoose.Schema.ObjectId, ref: 'User' }
-
+  creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
 })

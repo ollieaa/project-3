@@ -5,3 +5,6 @@ const SingleActivity = () => {
 }
 
 export default SingleActivity
+
+
+//<a href={restaurant.link} target="_blank" rel="noreferrer">Find us on Yelp!</a>

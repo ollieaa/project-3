@@ -4,7 +4,7 @@ import poi from '../controllers/poi.js'
 import user from '../controllers/user.js'
 import meetUps from '../controllers/meetUps.js'
 //import comment from '../controllers/comment.js'
-//import groups from '../controllers/groups.js'
+import groups from '../controllers/groups.js'
 import secureRoute from '../middleware/secureRoute.js'
 
 const router = express.Router()
@@ -12,7 +12,7 @@ const router = express.Router()
 router.route('/meetUps')
   .post(secureRoute, meetUps.postMeetUp)
 
-router.route('/meetUps/:location')  
+router.route('/meetUps/:location')
   .get(meetUps.getMeetUpsByL)
 
 router.route('/meetUps/:location/:category')
@@ -24,25 +24,37 @@ router.route('/meetUps/:location/:date')
 router.route('/meetUps/:location/:category/:date')
   .get(meetUps.getMeetUpsByLCD)
 
-router.route('/meetUps/:meetUpId')  
+router.route('/meetUps/:meetUpId')
   .get(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
- 
-router.route('/meetups/:category/:date')  
+
+router.route('/meetups/:category/:date')
   .get()
 
 // RESTAURANTS
 
 router.route('/restaurants')
   .get(restaurants.getRestaurant)
-  .post(restaurants.postRestaurant)
+  .post(secureRoute, restaurants.postRestaurant)
 
 router.route('/restaurants/:restaurantId')
   .get(restaurants.getSingleRestaurant)
   .put(secureRoute, restaurants.updateRestaurant)
   .delete(secureRoute, restaurants.deleteRestaurant)
-  
+
+// GROUPS
+
+router.route('/groups')
+  .get(groups.getGroup)
+  .post(secureRoute, groups.postGroup)
+
+router.route('/groups/:groupId')
+  .get(groups.getSingleGroup)
+  .put(secureRoute, groups.updateGroup)
+  .delete(secureRoute, groups.deleteGroup)
+
+
 // POINTS OF INTEREST
 router.route('/pointsofinterest')
   .get(poi.getPoi)
@@ -98,14 +110,5 @@ router.route('/user/inbox/:commentId')
   .put(secureRoute)
   .delete(secureRoute)
 
-router.route('/groups')
-  .get(secureRoute)
-  .post(secureRoute)
-
-router.route('/groups/:groupId')
-  .get(secureRoute)
-  .post(secureRoute)
-  .put(secureRoute)
-  .delete(secureRoute)
 
 export default router

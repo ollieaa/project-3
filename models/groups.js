@@ -2,16 +2,18 @@ import mongoose from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 import Comment from './comment.js'
 
-
-
 const groupsSchema = new mongoose.Schema({
-  admin: { type: [mongoose.Schema.ObjectId], ref: 'User'},
+  creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  groupPassword: { type: String, required: true },
   name: { type: String, required: true },
   image: { type: String, required: true },
   description: { type: String, required: true },
-  members: { type: [mongoose.Schema.ObjectId], ref: 'User'},
-  meetups: { type: [mongoose.Schema.ObjectId], ref: 'MeetUp'},
+  members: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  admins: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  meetUps: [{ type: mongoose.Schema.ObjectId, ref: 'MeetUp' }],
   comments: [ Comment ]
 })
+
+groupsSchema.plugin(uniqueValidator)
 
 export default mongoose.model('Group', groupsSchema)
