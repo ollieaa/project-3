@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default function getRestaurantData() {
+export default function getRestaurantData(users) {
   const promises = []
 
   for (let i = 0; i <= 10; i++) {
@@ -21,7 +21,8 @@ export default function getRestaurantData() {
               long: data.businesses[0].coordinates.longitude,
               location: data.businesses[0].location.city,
               address: data.businesses[0].location.display_address,
-              phone: data.businesses[0].phone
+              phone: data.businesses[0].phone,
+              creator: users[0]
             }
             resolve(restaurant)
           })

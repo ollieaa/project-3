@@ -6,6 +6,7 @@ import errorHandler from './middleware/errorHandler.js'
 import { port } from './config/environment.js'
 import dotenv from 'dotenv'
 
+
 dotenv.config()
 
 const app = express()
@@ -13,7 +14,6 @@ const app = express()
 async function startServer() {
   
   await connectToDb()
-  console.log(process.env.APIKEY)
   app.use(express.json())
   app.use(logger)
   app.use('/api', router)
