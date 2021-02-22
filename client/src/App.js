@@ -13,8 +13,6 @@ import CreateMeetUp from './components/CreateMeetUp.js'
 import UpdateMeetUp from './components/UpdateMeetUp.js'
 import Activities from './components/Activities.js'
 import SingleActivity from './components/SingleActivity.js'
-import CreateActivity from './components/CreateActivity.js'
-import UpdateActivity from './components/UpdateActivity.js'
 import Restaurants from './components/Restaurants.js'
 import SingleRestaurant from './components/SingleRestaurant.js'
 import UpdateRestaurant from './components/UpdateRestaurant.js'
@@ -50,7 +48,6 @@ const App = () => {
       <Route exact path="/uodateMeetUp" component={UpdateMeetUp}/>
       <Route exact path="/activities" component={Activities}/>
       <Route exact path="/singleActivity" component={SingleActivity}/>
-      <Route exact path="/createActivity" component={CreateActivity}/>
       <Route exact path="/updateActivity" component={UpdateActivity}/>
       <Route exact path="/activities/food-and-drink" component={Restaurants}/>
       <Route exact path="/activities/create-restaurant" component={CreateRestaurant}/>
