@@ -23,7 +23,7 @@ export default function getPoiData(users) {
       category: 'indoor',
       name: 'Westminster Abbey',
       tube: 'Westminster',
-      description: 'The Abbey has been the coronation church since 1066, and is the final resting place of 17 monarchs. The church we see today was begun by Henry III in 1245. It\’s one of the most important Gothic buildings in the country, and has the medieval shrine of an Anglo-Saxon saint at its heart.',
+      description: 'The Abbey has been the coronation church since 1066, and is the final resting place of 17 monarchs. The church we see today was begun by Henry III in 1245. It/’s one of the most important Gothic buildings in the country, and has the medieval shrine of an Anglo-Saxon saint at its heart.',
       types: ['museum', 'religious', 'historic'],
       user: users[3],
       lat: 51.4987,
