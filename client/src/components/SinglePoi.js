@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-// import { isCreator } from '../lib/auth'
+import { isCreator } from '../lib/auth'
 
-// export default function SingleActivity({ match, history }) {
-export default function SingleActivity({ match }) {
+export default function SingleActivity({ match, history }) {
+// export default function SingleActivity({ match }) {
 
 
   const poiId = match.params.poiId
@@ -21,13 +21,13 @@ export default function SingleActivity({ match }) {
     fetchPoi()
   }, [])
 
-  // async function handleDelete() {
-  //   const token = localStorage.getItem('token')
-  //   await axios.delete(`/api/poi/${poiId}`, {
-  //     headers: { Authorization: `Bearer ${token}` }
-  //   })
-  //   history.push('/poi')
-  // }
+  async function handleDelete() {
+    const token = localStorage.getItem('token')
+    await axios.delete(`/api/poi/${poiId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    history.push('/poi')
+  }
 
   if (!poi.user) {
     return null
@@ -68,11 +68,11 @@ export default function SingleActivity({ match }) {
 
 
 
-      {/* <h2>{`Posted by: ${poi.user.username}`}</h2> */}
-      {/* {isCreator(poi.user._id) && <button
+      <h2>{`Posted by: ${poi.user.username}`}</h2>
+      {isCreator(poi.user._id) && <button
         // className="button is-danger"
         onClick={handleDelete}
-      >☠️ Delete Point of Interest</button>} */}
+      >☠️ Delete Point of Interest</button>}
     </div>
   </div>
 }
