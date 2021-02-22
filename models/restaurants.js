@@ -15,7 +15,7 @@ const RestaurantSchema = new mongoose.Schema({
   address: { type: [] },
   phone: { type: String },
   upVotes: { type: Number },
-  postedBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   comments: [ Comment ],
   meetUps: { type: mongoose.Schema.ObjectId, ref: 'MeetUp' }
 })

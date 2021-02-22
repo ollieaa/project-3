@@ -1,4 +1,6 @@
 import MeetUps from '../models/meetUps.js'
+import Restaurant from '../models/restaurants.js'
+
 
 async function getMeetUpsByL(req, res, next) {
   const location = req.params.location
@@ -21,9 +23,10 @@ async function getMeetUpsByLC(req, res, next) {
 }
 
 async function getMeetUpsByLD(req, res, next) {
-  const {location, date} = req.params
+  const location = req.params.location
+  const date = req.params.date
   try {
-    const meetUpsList = await MeetUps.find({location: location, date: date}).populate('creator')
+    const meetUpsList = await MeetUps.find({location: location, date: new Date(date)}).populate('creator')
     res.send(meetUpsList)
   } catch (err) {
     next(err)
@@ -54,7 +57,7 @@ async function postMeetUp(req, res, next) {
 async function getSingleMeetUp(req, res, next) {
   const id = req.params.meetUpId
   try {
-    const meetUp = await (await MeetUps.findById(id)).populate('creator').populate('comments.user').populate('poiSuggestions').populate('restaurantSuggestions').populate('attendees')
+    const meetUp = await MeetUps.findById(id).populate('creator').populate('restaurantSuggestions').populate('poiSuggestions')                                         
     res.send(meetUp)
   } catch (err) {
     next(err)
@@ -65,7 +68,7 @@ async function deleteMeetUp(req, res, next) {
   const id = req.params.meetUpId
   const currentUser = req.currentUser
   try {
-    const meetUpToDelete = await (await MeetUps.findById(id)).populate('creator')
+    const meetUpToDelete = await MeetUps.findById(id).populate('creator')
     if (!currentUser._id.equals(meetUpToDelete.creator)) {
       return res.status(401).send({message: 'Unauthorized Access'})
     }
