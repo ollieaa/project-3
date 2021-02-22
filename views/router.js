@@ -54,7 +54,7 @@ router.route('/poi/:category’')
   .put(secureRoute)
   .delete(secureRoute)
 
-router.route('/poi/:poiId')
+router.route('/poi/:id')
   .get(poi.getSinglePoi)
   .delete(secureRoute, poi.removePoi)
   .put(secureRoute, poi.updatePoi)
