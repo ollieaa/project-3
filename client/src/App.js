@@ -56,7 +56,6 @@ const App = () => {
       <Route exact path="/uodateMeetUp" component={UpdateMeetUp}/>
       <Route exact path="/activities" component={Activities}/>
       <Route exact path="/singleActivity" component={SingleActivity}/>
-      <Route exact path="/updateActivity" component={UpdateActivity}/>
       <Route exact path="/activities/food-and-drink" component={Restaurants}/>
       <Route exact path="/activities/create-restaurant" component={CreateRestaurant}/>
       <Route exact path="/activities/update-restaurant/:restaurantId" component={UpdateRestaurant}/>
