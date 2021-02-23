@@ -23,6 +23,7 @@ export default function UpdateRestaurant({ history, match }) {
   useEffect(() => {
     axios.get(`/api/restaurants/${restaurantId}`)
       .then(({ data }) => {
+        console.log(data.price)
         const mappedFormData = {
           ...data,
           category: data.category.map(cat => {
@@ -42,17 +43,17 @@ export default function UpdateRestaurant({ history, match }) {
   async function handleSubmit(event) {
     event.preventDefault()
     const token = localStorage.getItem('token')
-
+ 
     const newFormData = {
       ...formData,
       category: formData.category.map(cat => cat.value),
-      price: formData.price.map(amount => amount.value)
+      price: formData.price.value
     }
     try {
       const { data } = await axios.put(`/api/restaurants/${restaurantId}`, newFormData, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      history.push(`/restaurants/${data._id}`)
+      history.push(`/activities/${data._id}`)
     } catch (err) {
       console.log(err.response)
     }

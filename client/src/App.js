@@ -29,15 +29,10 @@ import Navbar from './components/Navbar.js'
 import Footer from './components/Footer.js'
 // NEW
 import MeetUpSearch from './components/MeetUpSearch.js'
+
 import './styles/ollieStyle.scss'
-
-
-
-
 import 'bulma'
-
-import 'bulma/css/bulma.css'
-import './styles/style.css'
+import './styles/style.scss'
 
 const App = () => {
   return <BrowserRouter>

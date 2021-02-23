@@ -89,7 +89,7 @@ async function getSingleUser(req, res, next) {
   const id = req.params.id
   
   try {
-    const singleUser = await User.findById(id).pop
+    const singleUser = await User.findById(id)
     res.status(200).send(singleUser)
   } catch (err) {
     next(err)

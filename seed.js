@@ -86,6 +86,8 @@ seedDatabase()
 //     const users = await User.create(getUserData())
 
 //     console.log(`🙋‍♀️ ${users.length} users created!`)
+    // console.log(`🍽 ${restaurants.length} restaurants created!`)
+    // * POI Data
 
 //     // * Restaurant Data
 
