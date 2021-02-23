@@ -4,7 +4,7 @@ import Comment from './comment.js'
 
 const groupsSchema = new mongoose.Schema({
   creator: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  groupPassword: { type: String, required: true },
+  passcode: { type: String, required: true },
   name: { type: String, required: true },
   image: { type: String, required: true },
   description: { type: String, required: true },

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const inputFields = ['name', 'groupPassword', 'description']
+const inputFields = ['name', 'passcode', 'description']
 
 export default function GroupForm({ formData, handleSubmit, handleChange }) {
 

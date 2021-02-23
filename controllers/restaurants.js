@@ -38,8 +38,8 @@ async function deleteRestaurant(req, res, next) {
   const currentUser = req.currentUser
 
   try {
-    const restaurantToDelete = await Restaurant.findByIdAndDelete(id)
-    if (!currentUser._id.equals(restaurantToDelete.creator)) {
+    const restaurantToDelete = await Restaurant.findById(id)
+    if (!currentUser._id.equals(restaurantToDelete.creator) && !currentUser.admin) {
       return res.status(401).send({ message: 'Unauthorized' })
     }
     await restaurantToDelete.deleteOne()
@@ -54,11 +54,11 @@ async function updateRestaurant(req, res, next) {
   const body = req.body
   const currentUser = req.currentUser
   try {
-    const updatedRestaurant = await Restaurant.findByIdAndUpdate(id, body, { new: true })
-    if (!currentUser._id.equals(updatedRestaurant.creator)) {
+    const updatedRestaurant = await Restaurant.findById(id)
+    if (!currentUser._id.equals(updatedRestaurant.creator) && !currentUser.admin) {
       return res.status(401).send({ message: 'Unauthorized' })
     }
-    await updatedRestaurant.deleteOne()
+    await updatedRestaurant.updateOne(body, { new: true })
     res.send(updatedRestaurant)
   } catch (err) {
     next(err)

@@ -53,6 +53,7 @@ export default function SingleGroup({ match, history }) {
 
     <article>
       <h1 className="title">{group.name}</h1>
+      <button className="button is-danger">Join group</button>
       <img src={group.image} alt={group.name} />
     </article>
 

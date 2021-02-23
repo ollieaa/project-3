@@ -9,7 +9,7 @@ export default function CreateGroup({ history }) {
     name: '',
     description: '',
     image: '',
-    groupPassword: ''
+    passcode: ''
   })
 
   function handleChange(event) {
@@ -32,14 +32,13 @@ export default function CreateGroup({ history }) {
     }
   }
 
-  
-
 
   return <div className="container">
     <h1 className="title">Add a new group</h1>
-    <ImageUpload 
+    <ImageUpload
       formData={formData}
-      updateFormData={updateFormData}/>
+      updateFormData={updateFormData}
+    />
     <GroupForm
       handleChange={handleChange}
       handleSubmit={handleSubmit}

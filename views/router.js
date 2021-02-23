@@ -12,12 +12,14 @@ const router = express.Router()
 
 // * IMAGES
 
-router.route('/imageUpload')
-  .get(image.getImages)
-  .post(image.postImage)
-  //.delete(image.deleteImage)
+router.route('/images')
+  .get(image.getImage)
+  .post(secureRoute, image.postImage)
 
-
+router.route('/images/:imageId')
+  .put(secureRoute, image.updateImage)
+  .get(image.getSingleImage)
+  
 //* MEET-UPS
 
 

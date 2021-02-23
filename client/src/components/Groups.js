@@ -3,8 +3,9 @@ import axios from 'axios'
 import { getLoggedInUserId } from '../lib/auth'
 import { Link } from 'react-router-dom'
 
-const Groups = () => {
+const Groups = ({ history }) => {
   const [groupsData, updateGroupsData] = useState([])
+  const [inputValue, updateInputValue] = useState('')
   const loggedIn = getLoggedInUserId()
 
   useEffect(() => {
@@ -14,12 +15,42 @@ const Groups = () => {
       })
   }, [])
 
+  
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log(inputValue)
+    try {
+      groupsData.map((group) => {
+        console.log(group.passcode)
+        console.log(inputValue)
+        if (group.passcode === inputValue) {
+          history.push(`/groups/${group._id}`)
+        } else {
+          console.log('Passcode does not match any known groups')
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
+
+  function handleChange(input) {
+    updateInputValue(input.target.value)
+  }
+
   return <div className="container">
     <div className="field">
       <label className="label">Join group</label>
       <div className="control">
-        <input className="input" type="text" placeholder="Enter group passcode"></input>
-        <button className="button is-danger">Submit</button>
+        <input
+          className="input"
+          type="text"
+          placeholder="Enter group passcode"
+          onChange={handleChange}
+          value={inputValue}></input>
+        <button className="button is-danger" onClick={handleSubmit}>Submit</button>
       </div>
     </div>
 
