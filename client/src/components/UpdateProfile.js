@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
+import { getLoggedInUserId } from '../lib/auth.js'
 import LooseForm from '././LooseForm.js'
 
 function updateProfile({ history }) {
+
+  const id = getLoggedInUserId()
+  console.log(id)
 
   const [formData, updateFormData] = useState({
     firstName: '',
@@ -16,27 +19,42 @@ function updateProfile({ history }) {
     interests: []
   })
 
+  useEffect(() => {
+    axios.get(`/api/user/${id}`)
+      .then(({ data }) => {
+        const mappedFormData = {
+          ...data,
+          interests: data.interests.map(type => {
+            return { value: type, label: type[0].toUpperCase() + type.slice(1) }
+          })
+        }
+        updateFormData(mappedFormData)
+      })
+  }, [])
+
   function handleChange(event) {
-    updateFormData({ ...formData, [event.target.name]: event.target.value })
+    const { name, value } = event.target
+    updateFormData({ ...formData, [name]: value })
   }
 
   async function handleSubmit(event) {
     event.preventDefault()
+    const token = localStorage.getItem('token')
 
     const newFormData = {
       ...formData,
-      types: formData.interests.map(type => type.value)
+      interests: formData.interests.map(type => type.value)
     }
-
     try {
-      const { data } = await axios.put('/api/register', newFormData, )
+      const { data } = await axios.put(`/api/user/${id}`, newFormData, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       console.log(data._id)
-      history.push('/profile')
+      history.push('/home')
     } catch (err) {
       console.log(err.response.data)
     }
   }
-
   return <LooseForm
     handleChange={handleChange}
     handleTypeChange={(interests) => updateFormData({ ...formData, interests })}

@@ -2,19 +2,21 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import RingLoader from 'react-spinners/RingLoader'
 import { Link } from 'react-router-dom'
+import { getLoggedInUserId, isCreator } from '../lib/auth.js'
 
-const Profile = () => {
+const Profile = ({ match, history }) => {
 
-  const _id = '6033ed185f5f1931b109cb1f'
-  const token = localStorage.getItem('token')
-  console.log(token)
+  const profileId = match.params.profileId
+  console.log(profileId)
+
+  const id = getLoggedInUserId()
 
   const [profile, updateProfile] = useState([])
   const [loading, updateLoading] = useState(true)
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await axios.get(`/api/user/${_id}`)
+      const { data } = await axios.get(`/api/user/${profileId}`)
       updateProfile(data)
       console.log(data)
       updateLoading(false)
@@ -28,13 +30,13 @@ const Profile = () => {
     </div>
   }
 
-  function handleDelete() {
-    axios.delete(`/api/user/${_id}`, {
+  async function handleDelete() {
+    const token = localStorage.getItem('token')
+    await axios.delete(`/api/user/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-      .then(resp => {
-        updateProfile(resp.data)
-      })
+    // ? react router method to change the url/route
+    history.push('/home')
   }
 
   return <div className="m-4">
@@ -66,12 +68,14 @@ const Profile = () => {
           </div>
           <div className="card mt-3" >
             <div className="card-content has-text-centered">
-              <Link className="button is-warning m-1" to={'/updateProfile'}>Update Profile</Link>
-              <button
-                className="button is-danger m-1"
+              {isCreator(profileId) && <Link
+                to={'/updateProfile'}
+                className="button is-warning mr-1"
+              >Update profile</Link>}              
+              {isCreator(profileId) && <button
+                className="button is-danger ml-2"
                 onClick={handleDelete}
-              >
-                Delete Profile</button>
+              >Delete profile</button>}
             </div>
           </div>
         </div>
