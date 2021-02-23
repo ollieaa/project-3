@@ -1,6 +1,6 @@
 import React from 'react'
 
-const inputFields = ['name', 'groupPassword', 'image', 'description', 'admins']
+const inputFields = ['name', 'groupPassword', 'image', 'description']
 
 export default function GroupForm({ formData, handleSubmit, handleChange }) {
   return <div className="section">
@@ -24,7 +24,7 @@ export default function GroupForm({ formData, handleSubmit, handleChange }) {
           </div>
         })}
 
-        <button className="button mt-5 is-danger">Submit</button>
+        <button className="button mt-5 is-success">Submit</button>
       </form>
     </div>
   </div>

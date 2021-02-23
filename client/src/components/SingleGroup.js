@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-// import { isCreator } from '../lib/auth'
+import { getLoggedInUserId, isCreator } from '../lib/auth'
 import { Link } from 'react-router-dom'
 
-export default function SingleGroup({ match }) {
+
+export default function SingleGroup({ match, history }) {
   const groupId = match.params.groupId
   const [group, updateGroup] = useState([])
+  const [user, updateUser] = useState({})
   const [loading, updateLoading] = useState(true)
   //const [commentText, setCommentText] = useState('')
-  // const token = localStorage.getItem('token')
-
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     async function fetchGroup() {
@@ -24,30 +25,35 @@ export default function SingleGroup({ match }) {
     fetchGroup()
   }, [])
 
-  console.log(group)
-  console.log(group.creator)
+  useEffect(() => {
+    async function fetchCurrentUser() {
+      try {
+        const { data } = await axios.get(`/api/user/${getLoggedInUserId()}`)
+        updateUser(data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchCurrentUser()
+  }, [])
+
 
   if (loading) {
     return <h1>Loading</h1>
   }
 
-
-  // async function handleDelete() {
-  //   await axios.delete(`/api/groups/${groupId}`, {
-  //     headers: { Authorization: `Bearer ${token}` }
-  //   })
-  //   history.push('/home')
-  // }
+  async function handleDelete() {
+    await axios.delete(`/api/groups/${groupId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    history.push('/home')
+  }
 
   return <div className="container">
 
     <article>
       <h1 className="title">{group.name}</h1>
       <img src={group.image} alt={group.name} />
-      {
-        // ! Remove below link when proper authorization complete - TESTING ONLY
-      }
-      <div className="button is-warning"><Link to={`/groups/update-group/${group._id}`}>Edit group</Link></div>
     </article>
 
     <article>
@@ -66,7 +72,7 @@ export default function SingleGroup({ match }) {
       <div><h2 className="title">Members section</h2></div>
       <h2 className="subtitle">Group members are listed here with name and avatar - link to profile</h2>
       {group.members.map((member) => {
-        return <div className="card" key={member}>{member}</div>
+        return <div className="card" key={member._id}>{member.firstName}</div>
       })}
     </article>
 
@@ -114,16 +120,17 @@ export default function SingleGroup({ match }) {
     </article>
 
 
-
     <article>
-      {/* {isCreator(restaurant.creator._id) && <button
-        className="button is-danger"
-        onClick={handleDelete}
-      >Delete Restaurant</button>}
-      {isCreator(restaurant.creator._id) && <Link
-        to={`/activities/update-restaurant/${restaurant._id}`}
-        className="button is-secondary"
-      >Update Restaurant</Link>} */}
+      {(isCreator(group.creator._id) || user.admin)
+        && <button
+          className="button is-success"
+          onClick={handleDelete}
+        >Delete Group</button>}
+      {(isCreator(group.creator._id) || user.admin)
+        && <Link
+          to={`/groups/update-group/${group._id}`}
+          className="button is-success"
+        >Update Group</Link>}
     </article>
   </div>
 }

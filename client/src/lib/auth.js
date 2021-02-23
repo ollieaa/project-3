@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+
 export function getLoggedInUserId() {
   if (!localStorage) return false
   const token = localStorage.getItem('token')
@@ -7,10 +10,28 @@ export function getLoggedInUserId() {
   return payloadAsObject.userId
 }
 
-
 export function isCreator(userIdToCompare) {
   if (!userIdToCompare) return false
-  // console.log(userIdToCompare)
-  // console.log(getLoggedInUserId())
   return userIdToCompare === getLoggedInUserId()
+}
+
+export function getAdmin() {
+  const [user, updateUser] = useState('')
+
+  useEffect(() => {
+    axios.get(`/api/users/${getLoggedInUserId}`)
+      .then(resp => {
+        updateUser(resp.user)
+      })
+    console.log(user)
+  }, [])
+  return user.admin
+}
+
+
+export function isAdmin(userIdToCompare) {
+  if (!userIdToCompare) return false
+  // console.log(userIdToCompare)
+  // console.log(getUserAdmin)
+  return userIdToCompare === getUserAdmin()
 }
