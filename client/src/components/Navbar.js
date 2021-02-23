@@ -73,6 +73,29 @@ function Navbar({history}) {
              </div>
          
              <div className="navbar-end">
+
+               {loggedInUser && <div className="navbar-item">
+                 <div className="navbar-item has-dropdown is-hoverable">
+                   <figure className="image is-32x32">
+                     <img className="is-rounded" src={loggedInUser.image}/>
+                   </figure> 
+                   <a className="navbar-link"></a>
+                            
+                   <div className="navbar-dropdown">
+                     <p className="navbar-item tag">{loggedInUser.firstName + ' ' + loggedInUser.lastName}</p>
+                     {/* <hr className="navbar-divider"/> */}
+                     <Link className="navbar-item" to={`/profile/${loggedInUser._id}`}>
+                       Profile
+                     </Link>
+                     <Link className="navbar-item" to={`/inbox/${loggedInUser._id}`}>
+                       Messages
+                     </Link>
+                     <Link className="navbar-item" to={'/poi'}>
+                       Your MeetUps
+                     </Link>
+                   </div>
+                 </div>
+               </div>}
                <div className="navbar-item">
                  <div className="buttons">
                    {loggedInUser.length === 0 &&
