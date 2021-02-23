@@ -1,7 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 
-const UpdateProfile = () => {
-  return <h1>Update Profile</h1>
+import LooseForm from '././LooseForm.js'
+
+function updateProfile({ history }) {
+
+  const [formData, updateFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    image: '',
+    age: '',
+    homeTown: '',
+    interests: []
+  })
+
+  function handleChange(event) {
+    updateFormData({ ...formData, [event.target.name]: event.target.value })
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+
+    const newFormData = {
+      ...formData,
+      types: formData.interests.map(type => type.value)
+    }
+
+    try {
+      const { data } = await axios.put('/api/register', newFormData, )
+      console.log(data._id)
+      history.push('/profile')
+    } catch (err) {
+      console.log(err.response.data)
+    }
+  }
+
+  return <LooseForm
+    handleChange={handleChange}
+    handleTypeChange={(interests) => updateFormData({ ...formData, interests })}
+    handleSubmit={handleSubmit}
+    formData={formData}
+  />
 }
 
-export default UpdateProfile
+export default updateProfile
