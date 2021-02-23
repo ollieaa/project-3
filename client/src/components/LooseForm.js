@@ -26,7 +26,7 @@ function LooseForm({ formData, handleSubmit, handleChange, handleTypeChange }) {
           </div>
         })}
         <label className="label">
-          Interests
+          {'Interests'}
         </label>
         <Select
           defaultValue={[]}
@@ -36,9 +36,9 @@ function LooseForm({ formData, handleSubmit, handleChange, handleTypeChange }) {
           className="basic-multi-select"
           classNamePrefix="select"
           onChange={handleTypeChange}
-          value={formData.types}
+          value={formData.interests}
         />
-        <button className="button mt-5 is-success">Submit</button>
+        <button className="button mt-5 is-warning">Submit</button>
       </form>
     </div>
   </div>

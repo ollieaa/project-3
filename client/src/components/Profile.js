@@ -7,7 +7,6 @@ import { getLoggedInUserId, isCreator } from '../lib/auth.js'
 const Profile = ({ match, history }) => {
 
   const profileId = match.params.profileId
-  console.log(profileId)
 
   const id = getLoggedInUserId()
 
@@ -43,7 +42,7 @@ const Profile = ({ match, history }) => {
     <div className="title is-size-1 m-6">
       <h1>Welcome back {profile.firstName}</h1>
     </div>
-    <div className="columns has-text-centered ">
+    <div className="columns has-text-centered">
       <div className="column is-one-third p-0 mt-3 mb-3 ml-3">
         <div>
           <div className="card" >
@@ -63,15 +62,22 @@ const Profile = ({ match, history }) => {
               <div className="content">
                 <h4>Age: {profile.age}</h4>
                 <h4>Location: {profile.homeTown}</h4>
+                <h4>Interests: {profile.interests.map(interest => {
+                  if (interest.lenght === interest.lenght - 1) {
+                    return interest[0].toUpperCase() + interest.slice(1) + ''
+                  } else {
+                    return interest[0].toUpperCase() + interest.slice(1) + ', '
+                  }
+                })}</h4>
               </div>
             </div>
           </div>
           <div className="card mt-3" >
             <div className="card-content has-text-centered">
               {isCreator(profileId) && <Link
-                to={'/updateProfile'}
+                to={`/updateProfile/:${profileId}`}
                 className="button is-warning mr-1"
-              >Update profile</Link>}              
+              >Update profile</Link>}
               {isCreator(profileId) && <button
                 className="button is-danger ml-2"
                 onClick={handleDelete}

@@ -24,14 +24,18 @@ const Home = () => {
     width: '200px'
   }
 
-  return <div>
+  const heroStyle = {
+    height: '70vh'
+  }
+
+  return <main>
     <div>
-      <div className="columns has-text-centered">
-        <div className="column">
+      <div className="columns" style={heroStyle}>
+        <div className="column has-text-right mr-6">
           <img src="https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg" style={logoStyle} />
           <h1 className="title">Loose End</h1>
         </div>
-        <div className="column has-text-centered is-align-content-center">
+        <div className="column has-text-left ml-6">
           <h2 className="title ">New Places.</h2>
           <h2 className="title">New People.</h2>
           <Link className="button is-warning" to={'/register'}>Sign Up</Link>
@@ -41,24 +45,24 @@ const Home = () => {
         <Link to={'/meetUp'} className="button is-normal is-warning m-2" style={navButton}>Meet Ups</Link>
         <Link to={'/activities'} className="button is-normal is-warning mt-2 mb-2" style={navButton}>Restaurants</Link>
         <Link to={'/groups'} className="button is-normal is-warning m-2" style={navButton}>Groups</Link>
-        <Link to={'/poi'} className="button is-normal is-warning m-2" style={navButton}>Points of Interest</Link>
+        <Link to={'/poi'} className="button is-normal is-warning mt-2" style={navButton}>Points of Interest</Link>
       </div>
     </div>
     <div className="has-text-centered mt-3">
-      <p><strong>Restaurants and points of interest in London, GB</strong></p>
+      <p><strong>Restaurants in London, GB</strong></p>
     </div>
     <div className="columns m-5">
       <div className="column">
         <RandomRestaurant />
       </div>
       <div className="column">
-        <RandomPoi />
+        <RandomRestaurant />
       </div>
       <div className="column">
         <RandomRestaurant />
       </div>
       <div className="column">
-        <RandomPoi />
+        <RandomRestaurant />
       </div>
     </div>
     <div style={backgroundStyle}>
@@ -77,7 +81,24 @@ const Home = () => {
         <Link className="button is-warning mb-3" to={'/register'} style={signUpButtonStyle}>Sign Up</Link>
       </div>
     </div>
-  </div>
+    <div className="has-text-centered mt-3">
+      <p><strong>Points on interest in London, GB</strong></p>
+    </div>
+    <div className="columns m-5">
+      <div className="column">
+        <RandomPoi />
+      </div>
+      <div className="column">
+        <RandomPoi />
+      </div>
+      <div className="column">
+        <RandomPoi />
+      </div>
+      <div className="column">
+        <RandomPoi />
+      </div>
+    </div>
+  </main>
 }
 
 export default Home

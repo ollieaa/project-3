@@ -6,7 +6,6 @@ import LooseForm from '././LooseForm.js'
 function updateProfile({ history }) {
 
   const id = getLoggedInUserId()
-  console.log(id)
 
   const [formData, updateFormData] = useState({
     firstName: '',
@@ -24,8 +23,8 @@ function updateProfile({ history }) {
       .then(({ data }) => {
         const mappedFormData = {
           ...data,
-          interests: data.interests.map(type => {
-            return { value: type, label: type[0].toUpperCase() + type.slice(1) }
+          interests: data.interests.map(interest => {
+            return { value: interest, label: interest[0].toUpperCase() + interest.slice(1) }
           })
         }
         updateFormData(mappedFormData)
@@ -43,14 +42,14 @@ function updateProfile({ history }) {
 
     const newFormData = {
       ...formData,
-      interests: formData.interests.map(type => type.value)
+      interests: formData.interests.map(interest => interest.value)
     }
     try {
       const { data } = await axios.put(`/api/user/${id}`, newFormData, {
         headers: { Authorization: `Bearer ${token}` }
       })
       console.log(data._id)
-      history.push('/home')
+      history.push(`/profile/:${id}`)
     } catch (err) {
       console.log(err.response.data)
     }
