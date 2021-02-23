@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import PoiForm from '././PoiForm.js'
+
+
 export default function Update({ history, match }) {
 
   const poiId = match.params.poiId
@@ -10,7 +13,6 @@ export default function Update({ history, match }) {
     name: '',
     tube: '',
     description: '',
-    types: [],
     address: '',
     price: '',
     time: '',
@@ -20,7 +22,7 @@ export default function Update({ history, match }) {
     link: ''
   })
 
-  const inputFields = ['category', 'name', 'tube', 'description', 'types', 'address', 'price', 'time', 'phone', 'funfact', 'image', 'link']
+  const inputFields = ['category', 'name', 'tube', 'description', 'address', 'price', 'time', 'phone', 'funfact', 'image', 'link']
 
   useEffect(() => {
     axios.get(`/api/poi/${poiId}`)
@@ -54,54 +56,61 @@ export default function Update({ history, match }) {
         headers: { Authorization: `Bearer ${token}` }
       })
       console.log(data._id)
-      history.push(`/activities/${data._id}`)
+      history.push(`/poi/${data._id}`)
     } catch (err) {
       console.log(err.response.data)
     }
   }
 
-  return <div className="section">
-    <div className="container">
-      <form onSubmit={handleSubmit}>
-        {inputFields.map(field => {
-          return <div key={field} className="field">
-            <label className="label">
-              {field[0].toUpperCase() + field.slice(1)}
-            </label>
-            <div className="control">
-              <input
-                className="input"
-                type="text"
-                value={formData[field]}
-                onChange={handleChange}
-                name={field}
-              />
-            </div>
-          </div>
-        })}
-        <select name="types" onChange={handleTypesChange}>
-          <option value="gallery">Gallery</option>
-          <option value="gardens">Gardens</option>
-          <option value="historic">Historic Site</option>
-          <option value="landmark">Landmark</option>
-          <option value="market">Market</option>
-          <option value="Monument">Monument</option>
-          <option value="museum">Museum</option>
-          <option value="Palace">Palace</option>
-          <option value="park">Park</option>
-          <option value="Planetarium">Planetarium</option>
-          <option value="art">Public Art</option>
-          <option value="religious">Religious Building</option>
-          <option value="square">Square</option>
-          <option value="statue">Statue</option>
-          <option value="Other">Other</option>
+  return <PoiForm
+    handleChange={handleChange}
+    handleTypeChange={(types) => updateFormData({ ...formData, types })}
+    handleSubmit={handleSubmit}
+    onChange={handleChange}
+    formData={formData}
+  />
+  // return <div className="section">
+  //   <div className="container">
+  //     <form onSubmit={handleSubmit}>
+  //       {inputFields.map(field => {
+  //         return <div key={field} className="field">
+  //           <label className="label">
+  //             {field[0].toUpperCase() + field.slice(1)}
+  //           </label>
+  //           <div className="control">
+  //             <input
+  //               className="input"
+  //               type="text"
+  //               value={formData[field]}
+  //               onChange={handleChange}
+  //               name={field}
+  //             />
+  //           </div>
+  //         </div>
+  //       })}
+  //       <select name="types" onChange={handleTypesChange}>
+  //         <option value="gallery">Gallery</option>
+  //         <option value="gardens">Gardens</option>
+  //         <option value="historic">Historic Site</option>
+  //         <option value="landmark">Landmark</option>
+  //         <option value="market">Market</option>
+  //         <option value="Monument">Monument</option>
+  //         <option value="museum">Museum</option>
+  //         <option value="Palace">Palace</option>
+  //         <option value="park">Park</option>
+  //         <option value="Planetarium">Planetarium</option>
+  //         <option value="art">Public Art</option>
+  //         <option value="religious">Religious Building</option>
+  //         <option value="square">Square</option>
+  //         <option value="statue">Statue</option>
+  //         <option value="Other">Other</option>
 
 
-        </select>
-        <button className="button">Submit</button>
-      </form>
-    </div>
-  </div>
+  //       </select>
+  //       <button className="button">Submit</button>
+  //     </form>
+  //   </div>
+  // </div>
 }
 
 

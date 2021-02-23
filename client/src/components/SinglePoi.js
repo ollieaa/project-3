@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { isCreator } from '../lib/auth'
+import { Link } from 'react-router-dom'
 
-export default function SingleActivity({ match, history }) {
-// export default function SingleActivity({ match }) {
 
+export default function SinglePoi({ match, history }) {
 
   const poiId = match.params.poiId
   const [poi, updatePoi] = useState({})
@@ -69,10 +69,14 @@ export default function SingleActivity({ match, history }) {
 
 
       <h2>{`Posted by: ${poi.user.username}`}</h2>
+      {isCreator(poi.user._id) && <Link
+        to={`/updatePoi/${poiId}`}
+        className="button is-secondary"
+      >Update point of interest</Link>}
       {isCreator(poi.user._id) && <button
-        // className="button is-danger"
+        className="button is-danger"
         onClick={handleDelete}
-      >☠️ Delete Point of Interest</button>}
+      >Delete Point of Interest</button>}
     </div>
   </div>
 }
