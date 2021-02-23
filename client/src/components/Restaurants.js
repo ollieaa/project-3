@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { getLoggedInUserId } from '../lib/auth'
 import { Link } from 'react-router-dom'
+import restaurantCategories from '../data/restaurants/restaurantCategories.js'
 
 const Restaurants = () => {
   const [restaurantData, updateRestaurantData] = useState([])
   const [priceRange, updatePriceRange] = useState('Any price range')
   const [category, updateCategory] = useState('All categories')
   const [loading, updateLoading] = useState(true)
+  const loggedIn = getLoggedInUserId()
+
 
   useEffect(() => {
     axios.get('/api/restaurants')
@@ -22,7 +26,8 @@ const Restaurants = () => {
 
   function filterRestaurants() {
     return restaurantData.filter(restaurant => {
-      return priceRange === 'Any price range' || restaurant.price === priceRange
+      return (priceRange === 'Any price range' || restaurant.price === priceRange)
+      && (category === 'All categories' || (restaurant.category.includes(category)))
     })
   }
 
@@ -40,6 +45,7 @@ const Restaurants = () => {
   if (loading) {
     return <h1>Loading</h1>
   }
+
 
   return <section className="section">
     <div className="container">
@@ -63,31 +69,14 @@ const Restaurants = () => {
         // * DROP-DOWN FOR CATEGORIES
       }
 
-      <div className="select is-danger">
+      <div className="select is-success">
         <select onChange={(event) => updateCategory(event.target.value)}>
           <option>All categories</option>
-          <option>Chinese</option>
-          <option>Tea Rooms</option>
-          <option>Wineries</option>
-          <option>Bars</option>
-          <option>Lounges</option>
-          <option>Cocktail Bars</option>
-          <option>Szechuan</option>
-          <option>French</option>
-          <option>British</option>
-          <option>Indian</option>
-          <option>Breakfast & Brunch</option>
-          <option>Italian</option>
-          <option>Steakhouses</option>
-          <option>Burgers</option>
-          <option>Modern European</option>
-          <option>Mediterranean</option>
-          <option>Coffee & Tea Shops</option>
-          <option>Cafes</option>
+          {restaurantCategories.map((restaurant, i) => {
+            return <option value={restaurant.value} key={i}>{restaurant.label}</option>
+          })}
         </select>
       </div>
-
-
 
 
       <div className="column">
@@ -120,7 +109,7 @@ const Restaurants = () => {
 
 
     </div>
-    <div className="button is-success"><Link to='/activities/create-restaurant'>Add restaurant</Link></div>
+    {loggedIn && <div className="button is-success"><Link to='/activities/create-restaurant'>Add restaurant</Link></div>}
     <div className="button is-success"><Link to='/activities'>Back to activities</Link></div>
   </section>
 }

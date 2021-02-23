@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { getLoggedInUserId } from '../lib/auth'
 import { Link } from 'react-router-dom'
 
 const Activities = () => {
   const [restaurantData, updateRestaurantData] = useState([])
+  const loggedIn = getLoggedInUserId()
+
 
   useEffect(() => {
     axios.get('/api/restaurants')
@@ -23,8 +26,7 @@ const Activities = () => {
 
         <div className="restaurant-container">
 
-          <div className="button is-success"><Link to='/activities/create-restaurant'>Add somewhere new!</Link></div>
-
+          {loggedIn && <div className="button is-success"><Link to='/activities/create-restaurant'>Add restaurant</Link></div>}
           <div className="scrolling-wrapper">
             {restaurantData.slice(0, 10).map((restaurant, index) => {
               return <div key={index} className="hscroll-card">

@@ -1,6 +1,20 @@
 export default [
-  { value: 'Cafe', label: 'Cafe' },
   { value: 'Bars', label: 'Bars' },
+  { value: 'Breakfast & Brunch', label: 'Breakfast & Brunch' },
+  { value: 'British', label: 'British' },
+  { value: 'Burgers', label: 'Burgers' },
+  { value: 'Cafes', label: 'Cafes' },
+  { value: 'Chinese', label: 'Chinese' },
+  { value: 'Cocktail Bars', label: 'Cocktail Bars' },
+  { value: 'Coffee & Tea Shops', label: 'Coffee & Tea Shops' },
+  { value: 'French', label: 'French' },
   { value: 'Indian', label: 'Indian' },
-  { value: 'British', label: 'British' }
+  { value: 'Italian', label: 'Italian' },
+  { value: 'Lounges', label: 'Lounges' },
+  { value: 'Mediterranean', label: 'Mediterranean' },
+  { value: 'Modern European', label: 'Modern European' },
+  { value: 'Steakhouses', label: 'Steakhouses' },
+  { value: 'Szechuan', label: 'Szechuan' },
+  { value: 'Tea Rooms', label: 'Tea Rooms' },
+  { value: 'Wineries', label: 'Wineries' }
 ]

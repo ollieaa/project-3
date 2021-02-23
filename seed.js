@@ -2,12 +2,14 @@ import mongoose from 'mongoose'
 import connectToDb from './lib/connectToDb.js'
 import dotenv from 'dotenv'
 dotenv.config()
+
 // * Models
 import User from './models/user.js'
 import MeetUp from './models/meetUps.js'
 import Restaurant from './models/restaurants.js'
 import Poi from './models/poi.js'
 import Group from './models/groups.js'
+
 // * Data Files
 import getUserData from './db/data/userData.js'
 import getMeetUpData from './db/data/meetUpData.js'
@@ -15,7 +17,10 @@ import getMeetUpData from './db/data/meetUpData.js'
 import getRestaurantData from './db/data/restaurantsData.js'
 import getPoiData from './db/data/poiData.js'
 import getGroupData from './db/data/groupData.js'
+
+
 async function seedDatabase() {
+  
   try {
     await connectToDb()
     console.log(':white_check_mark: Database connected!')
@@ -41,6 +46,7 @@ async function seedDatabase() {
     console.log(`:woman-with-bunny-ears-partying: ${groups.length} groups created!`)
     await mongoose.connection.close()
     console.log(':wave: Goodbye!')
+    
   } catch (err) {
     console.log(':see_no_evil: Something went wrong with seeding!')
     console.log(err)

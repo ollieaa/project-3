@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { getLoggedInUserId } from '../lib/auth'
 import { Link } from 'react-router-dom'
 
 const Groups = () => {
   const [groupsData, updateGroupsData] = useState([])
+  const loggedIn = getLoggedInUserId()
 
   useEffect(() => {
     axios.get('/api/groups')
@@ -21,7 +23,7 @@ const Groups = () => {
       </div>
     </div>
 
-    <div className="button is-success"><Link to='/groups/create-group'>Add new group</Link></div>
+    {loggedIn && <div className="button is-success"><Link to='/groups/create-group'>Add new group</Link></div>}
 
   </div>
 }
