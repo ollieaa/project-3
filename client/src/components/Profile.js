@@ -38,7 +38,7 @@ const Profile = () => {
   }
 
   return <div className="m-4">
-    <div className="title is-size-1">
+    <div className="title is-size-1 m-6">
       <h1>Welcome back {profile.firstName}</h1>
     </div>
     <div className="columns has-text-centered ">
