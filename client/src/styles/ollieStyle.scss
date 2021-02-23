@@ -86,5 +86,18 @@
   flex-flow: row wrap;
 }
 .suggestion {
-
+  width: 33%;
+}
+#dateAndLocation {
+  display: flex;
+  flex-direction: row;
+}
+#tagsAndButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#meetUpTags {
+  display: flex;
+  flex-direction: row;
 }

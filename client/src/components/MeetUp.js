@@ -17,7 +17,6 @@ const MeetUp = ({location}) => {
     async function getMeetUps() {
       const {data} = await axios.get(`/api/meetUps/${search.location}/${search.date}`)
       updateMeetUps(data)
-      console.log(data)
     }
     getMeetUps()
   }, [])

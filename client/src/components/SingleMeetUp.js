@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import dateOnly from '../lib/getDate'
+import {isCreator} from '../lib/auth.js'
+import { RestaurantSuggestion, PoiSuggestion } from './Suggestion.js'
 
 const SingleMeetUp = ({match, history}) => {
 
@@ -15,7 +17,6 @@ const SingleMeetUp = ({match, history}) => {
     async function getMeetUp() {
       try {
         const {data} = await axios.get(`/api/singleMeetUp/${meetUpId}`)
-        console.log(data)
         updateMeetUp(data)
       } catch (err) {
         console.log(err)
@@ -54,14 +55,30 @@ const SingleMeetUp = ({match, history}) => {
 
   return <div id="singleMeetUpPage">
     <div id="singleMeetUpTop">
-      <span>{meetUp.location}</span>
-      <span>{dateOnly(meetUp.date)}</span>
-      <h1>{meetUp.name}</h1>
-      {meetUp.tags.map((tag) => {
-        return <span key={tag}>
-          {tag}
-        </span>
-      })}
+      <div id="dateAndLocation">
+        <span>{meetUp.location}</span>
+        <span>{dateOnly(meetUp.date)}</span>
+      </div>
+      <h1><strong>{meetUp.name}</strong></h1>
+      <div id="tagsAndButtons">
+        <div id="meetUpTags">
+          {meetUp.tags.map((tag) => {
+            return <span key={tag}>
+              {tag}
+            </span>
+          })}
+        </div>
+        <div id="buttons">
+          {isCreator(meetUp.creator._id) && <button
+          className="button is-danger"
+          onClick={handleDelete}
+          >Delete MeetUp</button>}
+          {isCreator(meetUp.creator._id) && <Link
+          to={`/updateMeetUp/${meetUp._id}`}
+          className="button is-secondary"
+          >Update MeetUp</Link>}
+        </div>
+      </div>
     </div>
     <div id="singleMeetUpMain">
       <div id="singleMeetUpColumnLeft">
@@ -84,14 +101,14 @@ const SingleMeetUp = ({match, history}) => {
                   <p>{comment.text}</p>
                 </div>
               </div>
-              {/* {isCreator(comment.user._id) && */}
+              {isCreator(comment.user._id) &&
               <div className="media-right">
                 <button
                   className="delete"
                   onClick={() => handleDeleteComment(comment._id)}>
                 </button>
               </div>
-              {/* } */}
+              }
             </article>
           })}
           <article className="media">
@@ -148,8 +165,9 @@ const SingleMeetUp = ({match, history}) => {
           </div>
           <div id="suggestionsBox">
             <h2>Suggested Activites</h2>
-            <div id="suggestions">
-              
+            <div id="suggestions">             
+              <RestaurantSuggestion suggestions={meetUp.restaurantSuggestions}/>
+              <PoiSuggestion suggestions={meetUp.poiSuggestions}/>
             </div>
           </div>
       </div>

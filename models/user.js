@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   image: { type: String },
   age: { type: Number },
-  admin: { type: String },
+  admin: { type: Boolean },
   homeTown: { type: String },
   eventsAttended: [{ type: mongoose.Schema.ObjectId, ref: 'MeetUp' }],
   eventsCreated: [{ type: mongoose.Schema.ObjectId, ref: 'MeetUp'  }],

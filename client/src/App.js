@@ -53,7 +53,7 @@ const App = () => {
       <Route exact path="/meetUp" component={MeetUp}/>
       <Route exact path="/meetUp/:meetUpId" component={SingleMeetUp}/>
       <Route exact path="/createMeetUp" component={CreateMeetUp}/>
-      <Route exact path="/uodateMeetUp" component={UpdateMeetUp}/>
+      <Route exact path="/updateMeetUp/:meetUpId" component={UpdateMeetUp}/>
       <Route exact path="/activities" component={Activities}/>
       <Route exact path="/singleActivity" component={SingleActivity}/>
       <Route exact path="/activities/food-and-drink" component={Restaurants}/>

@@ -22,7 +22,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["food & drink"],
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
-      creator: users[0],
+      creator: users[0]._id,
     },
     {
       name: "Evening to spare in London",
@@ -33,7 +33,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["food & drink"],
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
-      creator: users[0],
+      creator: users[0]._id,
     },
     {
       name: "Evening to spare in London",
@@ -44,7 +44,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["food & drink"],
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
-      creator: users[0],
+      creator: users[0]._id,
     },
     {
       name: "Evening to spare in London",
@@ -55,7 +55,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["food & drink"],
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
-      creator: users[0],
+      creator: users[0]._id,
     },
     {
       name: "Evening to spare in London",
@@ -66,7 +66,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["food & drink"],
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
-      creator: users[0],
+      creator: users[0]._id,
     },
     {
       name: "Evening to spare in London",
@@ -77,7 +77,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["food & drink"],
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
-      creator: users[0],
+      creator: users[0]._id,
     },
     {
       name: "Evening to spare in London",
@@ -88,7 +88,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["food & drink"],
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
-      creator: users[0],
+      creator: users[0]._id,
     },
     {
       name: "Evening to spare in London",
@@ -99,7 +99,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["food & drink"],
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
-      creator: users[0],
+      creator: users[0]._id,
     },
     {
       name: "Share a walk along the river?",
@@ -110,7 +110,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["outdoor"],
       poiSuggestions: [poi[0]._id, poi[1]._id],
       isActive: true,
-      creator: users[1],
+      creator: users[1]._id,
     },
     {
       name: "Looking for a foodie to try out Dishoom with next weekend",
@@ -121,7 +121,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["food & drink"],
       restaurantSuggestions: [restaurants[1]._id],
       isActive: true,
-      creator: users[2],
+      creator: users[2]._id,
     },
     {
       name: "Is anyone else dying to see the new exhibition at the V&A???",
@@ -132,7 +132,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       tags: ["museums"],
       poiSuggestions: [poi[1]._id],
       isActive: true,
-      creator: users[3],
+      creator: users[3]._id,
     },
     {
       name: "At a loose end for a few hours next week, up for suggestions",
@@ -144,7 +144,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id, restaurants[1]._id],
       poiSuggestions: [poi[0]._id, poi[1]._id],
       isActive: true,
-      creator: users[0],
+      creator: users[0]._id,
     }
   ]
 }
