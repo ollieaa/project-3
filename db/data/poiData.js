@@ -5,7 +5,7 @@ export default function getPoiData(users) {
       name: 'Tower of London',
       tube: 'Tower Hill',
       description: 'When William the Conqueror built a mighty stone tower at the centre of his London fortress in the 1070s, defeated Londoners must have looked on in awe. Now nearly 1000 years later, the Tower still has the capacity to fascinate and horrify. As protector of the Crown Jewels, home of the Yeomen Warders and its legendary guardians, the pampered ravens, the Tower now attracts over three million visitors a year. Here, the Ceremony of the Keys and other traditions live on, as do the ghost stories and terrible tales of torture and execution. But the Tower also has a richer and more complex history, having been home to a wide array of institutions including the Royal Mint, the Royal Armouries and even a zoo.',
-      types: ['museum', 'historic', 'palace', 'landmark'],
+      types: ['museum', 'palace', 'landmark'],
       user: users[3],
       lat: 51.5081,
       long: 0.0759,
@@ -23,8 +23,8 @@ export default function getPoiData(users) {
       category: 'indoor',
       name: 'Westminster Abbey',
       tube: 'Westminster',
-      description: 'The Abbey has been the coronation church since 1066, and is the final resting place of 17 monarchs. The church we see today was begun by Henry III in 1245. It\’s one of the most important Gothic buildings in the country, and has the medieval shrine of an Anglo-Saxon saint at its heart.',
-      types: ['museum', 'religious', 'historic'],
+      description: 'The Abbey has been the coronation church since 1066, and is the final resting place of 17 monarchs. The church we see today was begun by Henry III in 1245. It/’s one of the most important Gothic buildings in the country, and has the medieval shrine of an Anglo-Saxon saint at its heart.',
+      types: ['museum', 'religious', 'landmark'],
       user: users[3],
       lat: 51.4987,
       long: 0.1289,
@@ -119,7 +119,7 @@ export default function getPoiData(users) {
       name: 'St. Paul\'s Cathedral',
       tube: 'St. Paul\'s',
       description: 'For more than 1,400 years, a Cathedral dedicated to St Paul has stood at the highest point in the City. The present Cathedral, the masterpiece of Britain\'s most famous architect Sir Christopher Wren, is at least the fourth to have stood on the site. It was built between 1675 and 1710, after its predecessor was destroyed in the Great Fire of London, and services began in 1697. This was the first Cathedral to be built after the English Reformation in the sixteenth-century, when Henry VIII removed the Church of England from the jurisdiction of the Pope and the Crown took control of the life of the church.',
-      types: ['museum', 'religious', 'historic', 'landmark'],
+      types: ['museum', 'religious', 'landmark'],
       user: users[3],
       lat: 51.5138,
       long: 0.0984,
@@ -195,7 +195,7 @@ export default function getPoiData(users) {
       name: 'Shakespeare\'s Globe Theater',
       tube: 'Blackfriars',
       description: 'Shakespeare\'s Globe is a reconstruction of the Globe Theatre, an Elizabethan playhouse for which William Shakespeare wrote his plays, in the London Borough of Southwark, on the south bank of the River Thames. The original theatre was built in 1599, destroyed by the fire in 1613, rebuilt in 1614, and then demolished in 1644. The modern Globe Theatre is an academic approximation based on available evidence of the 1599 and 1614 buildings.',
-      types: ['historic', 'theatre'],
+      types: ['landmark', 'theatre'],
       user: users[3],
       lat: 51.5081,
       long: 0.0972,
@@ -233,7 +233,7 @@ export default function getPoiData(users) {
       name: 'Palace of Westminster (Houses of Parliament)',
       tube: 'Westminster',
       description: 'The Palace of Westminster serves as the meeting place for both the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom.',
-      types: ['palace', 'historic', 'landmark'],
+      types: ['palace', 'landmark'],
       user: users[3],
       lat: 51.4995,
       long: 0.1248,
@@ -271,7 +271,7 @@ export default function getPoiData(users) {
       name: 'Kensington Palace',
       tube: 'High Street Kensington',
       description: 'Kensington Palace has been a residence of the British Royal Family since the 17th century, and is currently the official London residence of the Duke and Duchess of Cambridge. Today, the State Rooms are open to the public and managed by the independent charity Historic Royal Palaces, a nonprofit organisation that does not receive public funds.',
-      types: ['museum', 'palace', 'historic', 'gardens'],
+      types: ['museum', 'palace', 'landmark', 'gardens'],
       user: users[3],
       lat: 51.5050,
       long: 0.1877,
@@ -309,7 +309,7 @@ export default function getPoiData(users) {
       name: 'Buckingham Palace',
       tube: 'Victoria',
       description: 'Buckingham Palace has served as the official London residence of the UK’s sovereigns since 1837 and today is the administrative headquarters of the Monarch. Although in use for the many official events and receptions held by The Queen, the State Rooms at Buckingham Palace are open to visitors every summer.',
-      types: ['historic', 'palace', 'landmark'],
+      types: ['palace', 'landmark'],
       user: users[3],
       lat: 51.5014,
       long: 0.1419,
@@ -474,7 +474,6 @@ export default function getPoiData(users) {
 //   Museums/Galleries
 //   Religious 
 //   Palaces
-//   Historic sites 
 //   Other 
 
 // 2. outdoor  

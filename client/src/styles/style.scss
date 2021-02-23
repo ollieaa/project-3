@@ -14,6 +14,14 @@
   border: 1px solid gray;
 }
 
+.scrolling-card-small {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  border: 1px solid gray;
+}
+
 .horizontal-card {
   display: flex;
   flex-direction: row;

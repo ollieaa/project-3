@@ -1,12 +1,14 @@
 import React from 'react'
 
-const inputFields = ['name', 'groupPassword', 'image', 'description']
+import poiTypes from '../data/poiTypes.js'
+import Select from 'react-select'
 
-export default function GroupForm({ formData, handleSubmit, handleChange }) {
+const inputFields = ['category', 'name', 'tube', 'description', 'address', 'price', 'time', 'phone', 'funfact', 'image', 'link']
+
+function PoiForm({ formData, handleSubmit, handleChange, handleTypeChange }) {
   return <div className="section">
     <div className="container">
       <form onSubmit={handleSubmit}>
-
         {inputFields.map(field => {
           return <div key={field} className="field">
             <label className="label">
@@ -23,9 +25,23 @@ export default function GroupForm({ formData, handleSubmit, handleChange }) {
             </div>
           </div>
         })}
-
+        <label className="label">
+          Types: 
+        </label>
+        <Select
+          defaultValue={[]}
+          isMulti
+          name="colors"
+          options={poiTypes}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          onChange={handleTypeChange}
+          value={formData.types}
+        />
         <button className="button mt-5 is-success">Submit</button>
       </form>
     </div>
   </div>
 }
+
+export default PoiForm

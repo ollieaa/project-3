@@ -7,10 +7,11 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import 'bulma'
 // import SinglePoi from './components/SinglePoi.js'
+import poiTypes from '../data/poiTypes'
 
 
 
-const Activities = () => {
+const Poi = () => {
   // return <h1>Activities</h1>
 
   const [poiData, updatePoi] = useState([])
@@ -18,6 +19,7 @@ const Activities = () => {
   const [search, updateSearch] = useState('')
   const _ = require('lodash')
 
+  console.log(poiData, 'heyyyyyyy')
 
   useEffect(() => {
     async function fetchData() {
@@ -31,7 +33,7 @@ const Activities = () => {
 
   function filterPoi() {
     return poiData.filter(poi => {
-      return (type === 'All' || (poi.types === type))
+      return (type === 'All' || (poi.types.includes(type)))
         && poi.name.toLowerCase().includes(search.toLowerCase())
     })
   }
@@ -48,35 +50,24 @@ const Activities = () => {
       </div>
     </section>
 
+
     <div className="filter-container">
+
       <select onChange={(event) => updateType(event.target.value)} >
-        <option value="all">All</option>
-        <option value="gallery">Gallery</option>
-        <option value="gardens">Gardens</option>
-        <option value="historic">Historic Site</option>
-        <option value="landmark">Landmark</option>
-        <option value="market">Market</option>
-        <option value="monument">Monument</option>
-        <option value="museum">Museum</option>
-        <option value="palace">Palace</option>
-        <option value="park">Park</option>
-        <option value="planetarium">Planetarium</option>
-        <option value="art">Public Art</option>
-        <option value="religious">Religious Building</option>
-        <option value="square">Square</option>
-        <option value="statue">Statue</option>
-        <option value="Other">Other</option>
+        <option>All</option>
+        {poiTypes.map((poi, i) => {
+          return <option value={poi.value} key={i}>{poi.label}</option>
+        })}
       </select>
 
-      <input onChange={(event) => updateSearch(event.target.value)} placeholder="Search yourself!" />
+      <input onChange={(event) => updateSearch(event.target.value)} placeholder="Search..." />
+    
     </div>
-
-
 
     <div className="card">
 
       <div className="card">
-        {poiData.map((poi, index) => {
+        {filterPoi().map((poi, index) => {
           return <div key={index}>
             <Link to={`/poi/${poi._id}`}>
               <header className="card-header">
@@ -94,14 +85,9 @@ const Activities = () => {
         })}
       </div>
 
-      {/* <div className="poi">
-        {filterPoi().map((poi, i) =>
-          <SinglePoi key={i} poi={poi} />)}
-      </div> */}
-
     </div>
 
   </div>
 }
 
-export default Activities
+export default Poi

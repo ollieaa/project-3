@@ -2,19 +2,24 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 // import { isCreator } from '../lib/auth'
 import { Link } from 'react-router-dom'
+import { getLoggedInUserId, isCreator } from '../lib/auth'
 
-export default function SingleRestaurant({ match }) {
+export default function SingleRestaurant({ match, history }) {
   const restaurantId = match.params.restaurantId
   const [restaurant, updateRestaurant] = useState([])
+  const [user, updateUser] = useState('')
+  const [loading, updateLoading] = useState(true)
   //const [commentText, setCommentText] = useState('')
-  // const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token')
 
 
   useEffect(() => {
     async function fetchRestaurant() {
       try {
         const { data } = await axios.get(`/api/restaurants/${restaurantId}`)
+        console.log(data.creator._id)
         updateRestaurant(data)
+        updateLoading(false)
       } catch (err) {
         console.log(err)
       }
@@ -22,12 +27,29 @@ export default function SingleRestaurant({ match }) {
     fetchRestaurant()
   }, [])
 
-  // async function handleDelete() {
-  //   await axios.delete(`/api/restaurants/${restaurantId}`, {
-  //     headers: { Authorization: `Bearer ${token}` }
-  //   })
-  //   history.push('/activities')
-  // }
+  useEffect(() => {
+    async function fetchCurrentUser() {
+      try {
+        const { data } = await axios.get(`/api/user/${getLoggedInUserId()}`)
+        updateUser(data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchCurrentUser()
+  }, [])
+
+  if (loading) {
+    return <h1>Loading</h1>
+  }
+
+
+  async function handleDelete() {
+    await axios.delete(`/api/restaurants/${restaurantId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    history.push('/activities')
+  }
 
   return <div className="container">
 
@@ -62,19 +84,31 @@ export default function SingleRestaurant({ match }) {
     <article>
       <div><h2 className="title">Up-coming events section</h2></div>
       <h2 className="subtitle">All future events are listed here</h2>
-      <div className="card">Future event</div>
-      <div className="card">Future event</div>
-      <div className="card">Future event</div>
-      <div className="card">Future event</div>
+      <div className="scrolling-wrapper">
+        <div className="scrolling-card-small">Future event</div>
+        <div className="scrolling-card-small">Future event</div>
+        <div className="scrolling-card-small">Future event</div>
+        <div className="scrolling-card-small">Future event</div>
+        <div className="scrolling-card-small">Future event</div>
+        <div className="scrolling-card-small">Future event</div>
+        <div className="scrolling-card-small">Future event</div>
+        <div className="scrolling-card-small">Future event</div>
+      </div>
     </article>
 
     <article>
       <div><h2 className="title">Previous events section</h2></div>
       <h2 className="subtitle">All previous events are listed here</h2>
-      <div className="card">Previous event</div>
-      <div className="card">Previous event</div>
-      <div className="card">Previous event</div>
-      <div className="card">Previous event</div>
+      <div className="scrolling-wrapper">
+        <div className="scrolling-card-small">Previous event</div>
+        <div className="scrolling-card-small">Previous event</div>
+        <div className="scrolling-card-small">Previous event</div>
+        <div className="scrolling-card-small">Previous event</div>
+        <div className="scrolling-card-small">Previous event</div>
+        <div className="scrolling-card-small">Previous event</div>
+        <div className="scrolling-card-small">Previous event</div>
+        <div className="scrolling-card-small">Previous event</div>
+      </div>
     </article>
 
     <article>
@@ -102,22 +136,17 @@ export default function SingleRestaurant({ match }) {
       </div>
     </article>
 
-
-    {
-      // ! Remove below link when proper authorization complete - TESTING ONLY
-    }
-
-    <div className="button is-warning"><Link to={`/activities/update-restaurant/${restaurant._id}`}>Edit restaurant</Link></div>
-
     <article>
-      {/* {isCreator(restaurant.creator._id) && <button
-        className="button is-danger"
-        onClick={handleDelete}
-      >Delete Restaurant</button>}
-      {isCreator(restaurant.creator._id) && <Link
-        to={`/activities/update-restaurant/${restaurant._id}`}
-        className="button is-secondary"
-      >Update Restaurant</Link>} */}
+      {(isCreator(restaurant.creator._id) || user.admin)
+        && <button
+          className="button is-success"
+          onClick={handleDelete}
+        >Delete {restaurant.name}</button>}
+      {(isCreator(restaurant.creator._id) || user.admin)
+        && <Link
+          to={`/activities/update-restaurant/${restaurant._id}`}
+          className="button is-success"
+        >Update {restaurant.name}</Link>}
     </article>
   </div>
 }

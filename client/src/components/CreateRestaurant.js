@@ -26,13 +26,11 @@ export default function CreateRestaurant({ history }) {
   async function handleSubmit(event) {
     event.preventDefault()
     const token = localStorage.getItem('token')
-
     const newFormData = {
       ...formData,
       category: formData.category.map(cat => cat.value),
-      price: formData.price.map(price => price.value)
+      price: formData.price.value
     }
-
     try {
       const { data } = await axios.post('/api/restaurants', newFormData, {
         headers: { Authorization: `Bearer ${token}` }
@@ -48,12 +46,12 @@ export default function CreateRestaurant({ history }) {
     <RestaurantForm
       handleChange={handleChange}
       handleCategoryChange={(category) => updateFormData({ ...formData, category })}
-      andlePriceChange={(price) => updateFormData({ ...formData, price })}
+      handlePriceChange={(price) => updateFormData({ ...formData, price })}
       handleSubmit={handleSubmit}
       formData={formData}
     />
 
-    <div className="button is-success"><Link to={'/activities/food-and-drink'}>Head back</Link></div>
+    <div className="button is-success"><Link to={'/activities/food-and-drink'}>Back to food and drink</Link></div>
   </div>
 
 
