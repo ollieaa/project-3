@@ -29,6 +29,7 @@ import Navbar from './components/Navbar.js'
 import Footer from './components/Footer.js'
 // NEW
 import MeetUpSearch from './components/MeetUpSearch.js'
+import ImageUpload from './components/ImageUpload.js'
 
 import './styles/ollieStyle.scss'
 import 'bulma'
@@ -66,6 +67,7 @@ const App = () => {
       <Route exact path="/updateGroup" component={UpdateGroup}/>
       {/* NEW */}
       <Route exact path="/meetUpSearch" component={MeetUpSearch}/>
+      <Route exact path="/upload-image" component={ImageUpload}/>
     </Switch>
     <Footer />
   </BrowserRouter>

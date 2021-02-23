@@ -15,7 +15,7 @@ const router = express.Router()
 router.route('/imageUpload')
   .get(image.getImages)
   .post(image.postImage)
-  .delete(image.deleteImage)
+  //.delete(image.deleteImage)
 
 
 //* MEET-UPS
