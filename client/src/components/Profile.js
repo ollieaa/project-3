@@ -37,6 +37,14 @@ const Profile = ({ match, history }) => {
     history.push('/home')
   }
 
+  const imageStyle = {
+    width: '200px'
+  }
+
+  const cardStyle = {
+    height: '230px'
+  }
+
   return <div className="m-4">
     <div className="title is-size-1 m-6">
       <h1>Welcome back {profile.firstName}</h1>
@@ -62,12 +70,11 @@ const Profile = ({ match, history }) => {
                 <h4>Age: {profile.age}</h4>
                 <h4>Location: {profile.homeTown}</h4>
                 <h4>Interests: {profile.interests.map((interest, index) => {
-                  if (index < interest.length - 1) {
-                    console.log(index)
-                    console.log(interest)
-                    return (interest[0].toUpperCase() + interest.slice(1)) + ', '
+                  const item = interest[0].toUpperCase() + interest.slice(1)
+                  if (index === profile.interests.length - 1) {
+                    return item
                   } else {
-                    return (interest[0].toUpperCase() + interest.slice(1)) + ' '
+                    return item + ', '
                   }
                 })}</h4>
               </div>
@@ -91,56 +98,35 @@ const Profile = ({ match, history }) => {
         <div className="card mb-2">
           <h2 className="subtitle mt-3">Restaurants Wishlist</h2>
           <div className="columns m-2">
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
+            {profile.restaurantWishlist.map((restaurant) => {
+              return <Link key={restaurant._id} to={`/activities/${restaurant._id}`}>
+                <div className="card m-2 column" style={cardStyle}>
+                  <img src={restaurant.image} style={imageStyle} />
+                  <h4>{restaurant.name}</h4>
+                  <h6>{ }</h6>
+                </div>
+              </Link>
+            })}
           </div>
         </div>
         <div className="card">
           <h2 className="subtitle mt-3">Points of Interest Wishlist</h2>
           <div className="columns m-2">
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
+            {profile.poiWishlist.map((poi) => {
+              return <Link key={poi._id} to={`/poi/${poi._id}`}>
+                <div className="card m-2 column" style={cardStyle}>
+                  <img src={poi.image} style={imageStyle} />
+                  <h4>{poi.name}</h4>
+                  <h6>{ }</h6>
+                </div>
+              </Link>
+            })}
           </div>
         </div>
         <div className="card mt-2 mb-2">
           <h2 className="subtitle mt-3">Attended Events</h2>
           <div className="columns m-2">
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
-            <div className="card m-2 column">
-              <img src={profile.image} />
-              <h4>{profile.firstName}</h4>
-            </div>
+
           </div>
         </div>
       </div>

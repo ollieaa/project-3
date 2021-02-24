@@ -12,8 +12,6 @@ function RandomRestaurant() {
   }
   const num1 = random()
 
-  console.log(num1)
-
   useEffect(() => {
     async function fetchData() {
       const { data } = await axios.get('/api/restaurants')
