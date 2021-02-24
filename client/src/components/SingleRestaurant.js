@@ -24,7 +24,7 @@ export default function SingleRestaurant({ match, history }) {
         console.log(err)
       }
     }
-    fetchRestaurant()
+    fetchRestaurant()        
   }, [])
 
   useEffect(() => {

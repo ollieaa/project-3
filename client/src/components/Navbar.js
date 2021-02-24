@@ -13,7 +13,7 @@ function Navbar({ history }) {
     const userId = getLoggedInUserId()
 
     async function getLoggedInUser() {
-      const { data } = await axios.get(`api/user/${userId}`)
+      const { data } = await axios.get(`/api/user/${userId}`)
       updateLoggedInUser(data)
     }
     if (userId) {

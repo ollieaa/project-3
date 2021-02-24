@@ -25,7 +25,7 @@ export default function CreateMeetUp({history}) {
 
   async function getLoggedInUser() {
     const userId = getLoggedInUserId()
-    const {data} = await axios.get(`api/user/${userId}`)
+    const {data} = await axios.get(`/api/user/${userId}`)
     updateLoggedInUser(data)
   }
 
