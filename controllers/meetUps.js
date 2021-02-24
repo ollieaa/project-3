@@ -1,5 +1,21 @@
 import MeetUps from '../models/meetUps.js'
 import Restaurant from '../models/restaurants.js'
+import mongoose from 'mongoose'
+
+function convertToYYYYMMDD(d) {
+  date = new Date(d);
+  year = date.getFullYear();
+  month = date.getMonth()+1;
+  dt = date.getDate();
+
+  if (dt < 10) {
+      dt = '0' + dt;
+  }
+  if (month < 10) {
+      month = '0' + month;
+  }
+  return (year+'-' + month + '-'+dt);
+}
 
 
 async function getMeetUpsByL(req, res, next) {
@@ -69,7 +85,7 @@ async function deleteMeetUp(req, res, next) {
   const currentUser = req.currentUser
   try {
     const meetUpToDelete = await MeetUps.findById(id).populate('creator')
-    if (!currentUser._id.equals(meetUpToDelete.creator)) {
+    if (!currentUser._id.equals(meetUpToDelete.creator._id)) {
       return res.status(401).send({message: 'Unauthorized Access'})
     }
     await meetUpToDelete.deleteOne()
@@ -88,7 +104,7 @@ async function updateMeetUp(req, res, next) {
     if (!meetUpToUpdate) {
       return res.status(404).send({message: 'MeetUp Not Found'})
     }
-    if (!currentUser._id.equals(meetUpToUpdate.creator)) {
+    if (!currentUser._id.equals(meetUpToUpdate.creator_id)) {
       return res.status(401).send({message: 'Unauthorized Access'})
     }
     meetUpToUpdate.set(body)

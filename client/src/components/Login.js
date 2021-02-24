@@ -27,35 +27,64 @@ function Login({ history }) {
     }
   }
 
-  return <div className="section">
-    <div className="container">
-      <form onSubmit={handleSubmit}>
-        <div className="field">
-          <label className="label">Email</label>
-          <div className="control">
-            <input
-              className="input"
-              type="text"
-              value={formData.email}
-              onChange={handleChange}
-              name={'email'}
-            />
+  const logoStyle = {
+    width: '300px'
+  }
+
+  const inputStyle = {
+    width: '300px',
+    margin: 'auto',
+    display: 'block'
+  }
+
+  const buttonStyle = {
+    margin: 'auto',
+    display: 'block'
+  }
+
+  return <div>
+    <div className="column has-text-centered">
+      <img src="https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg" style={logoStyle} />
+      <h1 className="title is-size-3">Loose End</h1>
+    </div>
+    <div className="section pt-3">
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <div className="field">
+            <label className="label has-text-centered">Email</label>
+            <div className="control has-icons-left" style={inputStyle}>
+              <input
+                className="input"
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                name={'email'}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-envelope"></i>
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input
-              className="input"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              name={'password'}
-            />
+          <div className="field">
+            <label className="label has-text-centered">Password</label>
+            <div className="control has-icons-left" style={inputStyle}>
+              <input
+                className="input"
+                type="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                name={'password'}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-lock"></i>
+              </span>
+            </div>
           </div>
-        </div>
-        <button className="button">Submit</button>
-      </form>
+          <button className="button is-warning" style={buttonStyle}>Submit</button>
+        </form>
+      </div>
     </div>
   </div>
 }

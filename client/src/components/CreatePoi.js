@@ -27,6 +27,7 @@ function CreatePoi({ history }) {
 
   async function handleSubmit(event) {
     event.preventDefault()
+    const token = localStorage.getItem('token')
 
     const newFormData = {
       ...formData,
@@ -34,7 +35,9 @@ function CreatePoi({ history }) {
     }
 
     try {
-      const { data } = await axios.post('/api/poi', newFormData, )
+      const { data } = await axios.post('/api/poi', newFormData, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       console.log(data._id)
       history.push('/poi')
     } catch (err) {

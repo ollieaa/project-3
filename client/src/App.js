@@ -43,8 +43,8 @@ const App = () => {
       <Route exact path="/about" component={About}/>
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
-      <Route exact path="/profile" component={Profile}/>
-      <Route exact path="/updateProfile" component={UpdateProfile}/>
+      <Route exact path="/profile/:profileId" component={Profile}/>
+      <Route exact path="/updateProfile/:profileId" component={UpdateProfile}/>
       <Route exact path="/inbox" component={Inbox}/>
       <Route exact path="/meetUp" component={MeetUp}/>
       <Route exact path="/meetUp/:meetUpId" component={SingleMeetUp}/>
@@ -68,6 +68,7 @@ const App = () => {
       {/* NEW */}
       <Route exact path="/meetUpSearch" component={MeetUpSearch}/>
       <Route exact path="/upload-image" component={ImageUpload}/>
+      <Route exact path="/map" component={Map}/>
     </Switch>
     <Footer />
   </BrowserRouter>
