@@ -22,6 +22,8 @@ async function getSingleGroup(req, res, next) {
 async function postGroup(req, res, next) {
   const body = req.body
   body.creator = req.currentUser
+  body.members = req.currentUser
+  body.admins = req.currentUser
   try {
     const newGroup = await Group.create(body)
     res.status(201).send(newGroup)

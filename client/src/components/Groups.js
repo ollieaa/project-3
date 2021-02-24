@@ -37,7 +37,7 @@ const Groups = ({ history }) => {
 
   function NoPasscodeMatch() {
     if (passcodeSubmit && !passcodeMatch) {
-      return <div>No match</div>
+      return <div>Oh no, we couldn't find your group! Please check your passcode.</div>
     } else {
       return null
     }
@@ -49,8 +49,10 @@ const Groups = ({ history }) => {
   }
 
   return <div className="container">
+    <h1 className="title">Group search</h1>
+    <h2 className="subtitle">Enter the passcode provided by your group admin to find your group.</h2>
     <div className="field">
-      <label className="label">Join group</label>
+      <label className="label">Find group</label>
       <div className="control">
         <input
           className="input"
