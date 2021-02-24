@@ -35,3 +35,5 @@ export function isAdmin(userIdToCompare) {
   // console.log(getUserAdmin)
   return userIdToCompare === getUserAdmin()
 }
+
+

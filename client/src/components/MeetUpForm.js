@@ -1,30 +1,112 @@
 import React from 'react'
+import Select from 'react-select'
+import {times} from '../lib/times'
+import interestTypes from '../data/interestTypes'
 
-const inputFields = ['name', 'location', 'image', 'description']
+export default function MeetUpForm({ formData, handleSubmit, handleChange, handleTagChange }) {
 
-export default function GroupForm({ formData, handleSubmit, handleChange }) {
+
   return <div className="section">
     <div className="container">
       <form onSubmit={handleSubmit}>
-
-        {inputFields.map(field => {
-          return <div key={field} className="field">
+          <div className="field">
             <label className="label">
-              {field[0].toUpperCase() + field.slice(1)}
+              MeetUp Title:
             </label>
             <div className="control">
               <input
                 className="input"
                 type="text"
-                value={formData[field]}
+                value={formData.name}
                 onChange={handleChange}
-                name={field}
+                name="name"
               />
             </div>
           </div>
-        })}
-
-        <button className="button mt-5 is-success">Submit</button>
+          <div className="field">
+            <label className="label">
+              Location:
+            </label>
+            <div className="control">
+              <input
+                className="input"
+                type="text"
+                value={formData.location}
+                onChange={handleChange}
+                name="location"
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">
+              Date:
+            </label>
+            <div className="control">
+            <input type="date" value={formData.date} onChange={handleChange} name="date"/>
+           
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">
+              Time:
+            </label>
+            <div className="control">
+              <div className="select">              
+                <select 
+                value={formData.time}
+                onChange={handleChange}
+                name="time">
+                  {times.map((time)=> {
+                    return <option key={time}>{time}</option>
+                  })}
+                </select>                 
+              </div>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">
+              Description:
+            </label>
+            <div className="control">
+              <textarea
+                className="textarea"
+                value={formData.description}
+                onChange={handleChange}
+                name="description"
+                placeholder="Give your MeetUp a description..."
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">
+              Image URL:
+            </label>
+            <div className="control">
+              <input
+                className="input"
+                type="text"
+                value={formData.image}
+                onChange={handleChange}
+                name="image"
+              />
+            </div>
+          </div>
+            <label className="label">
+              Tags:
+            </label>
+            <div className="control">
+              <Select
+                defaultValue={[]}
+                isMulti
+                name="tags"
+                options={interestTypes}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                onChange={handleTagChange}
+                value={formData.tags}
+              />
+            </div>
+        <button className="button mt-5 is-success">Create MeetUp</button>
       </form>
     </div>
   </div>

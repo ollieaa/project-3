@@ -39,6 +39,24 @@ export function PoiSuggestion({suggestions}) {
   })  
 }
 
+export function CreateSuggestion({item}) {
+
+  return <div className="card" key={item}>
+            <div className="card-image">
+              <figure className="image is-4by3">
+                <img src={item.image} alt={item.name}/>
+              </figure>
+            </div>
+            <div className="card-content">
+              <div className="content">
+                {item.name}
+              </div>
+            </div>
+          </div>
+}
+
+
+
 
 
 

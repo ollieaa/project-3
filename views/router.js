@@ -15,8 +15,8 @@ const router = express.Router()
 
   
 
-
-
+router.route('/meetUps')
+  .post(secureRoute, meetUps.postMeetUp)
 
 router.route('/meetUps/:location/:date')
   .get(meetUps.getMeetUpsByLD)
@@ -26,8 +26,8 @@ router.route('/meetUps/:location/:category/:date')
 
 router.route('/singleMeetUp/:meetUpId')  
   .get(meetUps.getSingleMeetUp)
-  .put(secureRoute)
-  .delete(secureRoute)
+  .put(secureRoute, meetUps.updateMeetUp)
+  .delete(secureRoute, meetUps.deleteMeetUp)
  
   
 

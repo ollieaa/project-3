@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {withRouter} from 'react-router'
 import {getLoggedInUserId} from '../lib/auth.js'
@@ -38,29 +38,27 @@ function Navbar({history}) {
                <span aria-hidden="true"></span>
                <span aria-hidden="true"></span>
              </a>
-           </div>
-         
+           </div>         
            <div id="navbarBasicExample" className="navbar-menu">
              <div className="navbar-start">
                <Link className="navbar-item" to={'/home'}>
                  Home
-               </Link>
-         
+               </Link>         
                <Link className="navbar-item" to={'/meetUpSearch'}>
                  MeetUps
                </Link>
+               {loggedInUser._id &&
                <Link className="navbar-item" to={'/createMeetUp'}>
                  New MeetUp
-               </Link>
+               </Link>}
          
                <div className="navbar-item has-dropdown is-hoverable">
                  <a className="navbar-link">
                    Activities
-                 </a>
-         
+                 </a>         
                  <div className="navbar-dropdown">
-                   <Link className="navbar-item" to={'/activities'}>
-                     All Activities
+                   <Link className="navbar-item" to={'/map'}>
+                     Activity Map
                    </Link>
                    <Link className="navbar-item" to={'/activities/food-and-drink'}>
                      Food & Drink
@@ -74,7 +72,7 @@ function Navbar({history}) {
          
              <div className="navbar-end">
 
-               {loggedInUser && <div className="navbar-item">
+               {loggedInUser._id && <div className="navbar-item">
                  <div className="navbar-item has-dropdown is-hoverable">
                    <figure className="image is-32x32">
                      <img className="is-rounded" src={loggedInUser.image}/>
@@ -82,8 +80,7 @@ function Navbar({history}) {
                    <a className="navbar-link"></a>
                             
                    <div className="navbar-dropdown">
-                     <p className="navbar-item tag">{loggedInUser.firstName + ' ' + loggedInUser.lastName}</p>
-                     {/* <hr className="navbar-divider"/> */}
+                     <p className="navbar-item tag">{loggedInUser.firstName + ' ' + loggedInUser.lastName}</p>                     
                      <Link className="navbar-item" to={`/profile/${loggedInUser._id}`}>
                        Profile
                      </Link>
