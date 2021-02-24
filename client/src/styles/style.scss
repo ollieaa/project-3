@@ -14,6 +14,10 @@
   border: 1px solid gray;
 }
 
+.scrolling-card:hover {
+  transform: scale(1.1)
+}
+
 .scrolling-card-small {
   flex: 0 0 auto;
   width: 200px;
@@ -25,24 +29,39 @@
 .horizontal-card {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  height: 200px;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+.horizontal-card:hover {
+  transform: scale(1.1)
 }
 
 .horizontal-card-image {
   display: flex;
-  flex: 1
+  flex: 1;
+  border-radius: 10px 0px 0px 10px;
 }
 
 .horizontal-card-content {
   display: flex;
-  flex: 3
+  flex: 4;
+  border-radius: 0px 10px 10px 0px;
+  font-weight: bold;
+}
+
+.horizontal-card-title {
+  font-size: 30px;
+}
+
+.horizontal-card-text {
+  font-size: 22px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .avatar {
   height: 100px
-}
-
-.isNotJoined {
-  display: none
 }
 
