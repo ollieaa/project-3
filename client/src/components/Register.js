@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-import LooseForm from '././LooseForm.js'
+import RegisterForm from '././RegisterForm.js'
 
 function Register({ history }) {
 
@@ -29,7 +29,6 @@ function Register({ history }) {
     }
 
     try {
-      console.log(newFormData)
       const { data } = await axios.post('/api/register', newFormData,)
       console.log(data._id)
       history.push('/login')
@@ -52,7 +51,7 @@ function Register({ history }) {
         <div>
           <h1 className="title has-text-centered is-size-1 mt-5">Join Our Family</h1>
         </div>
-        <LooseForm
+        <RegisterForm
           handleChange={handleChange}
           handleTypeChange={(interests) => updateFormData({ ...formData, interests })}
           handleSubmit={handleSubmit}

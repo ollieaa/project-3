@@ -3,44 +3,27 @@ import React from 'react'
 import interestTypes from '../data/interestTypes.js'
 import Select from 'react-select'
 
-const inputFields = ['firstName', 'lastName', 'email', 'password', 'image', 'age', 'homeTown']
+const inputFields = ['firstName', 'lastName', 'image', 'age', 'homeTown']
 
 function LooseForm({ formData, handleSubmit, handleChange, handleTypeChange }) {
   return <div className="section">
     <div className="container">
       <form onSubmit={handleSubmit}>
         {inputFields.map(field => {
-          if (field === 'password') {
-            return <div key={field} className="field">
-              <label className="label">
-                {field[0].toUpperCase() + field.slice(1)}
-              </label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="password"
-                  value={formData[field]}
-                  onChange={handleChange}
-                  name={field}
-                />
-              </div>
+          return <div key={field} className="field">
+            <label className="label">
+              {field[0].toUpperCase() + field.slice(1)}
+            </label>
+            <div className="control">
+              <input
+                className="input"
+                type="text"
+                value={formData[field]}
+                onChange={handleChange}
+                name={field}
+              />
             </div>
-          } else {
-            return <div key={field} className="field">
-              <label className="label">
-                {field[0].toUpperCase() + field.slice(1)}
-              </label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="text"
-                  value={formData[field]}
-                  onChange={handleChange}
-                  name={field}
-                />
-              </div>
-            </div>
-          }
+          </div>
         })}
         <label className="label">
           {'Interests'}

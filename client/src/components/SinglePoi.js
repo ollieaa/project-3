@@ -105,7 +105,7 @@ export default function SinglePoi({ match, history }) {
 
 
 
-      <h2>{`Posted by: ${poi.user.firstName}`}</h2>
+      <Link to={`/profile/${poi.user._id}`}><h2>{`Posted by: ${poi.user.firstName}`}</h2></Link>
       {isCreator(poi.user._id) && <Link
         to={`/updatePoi/${poiId}`}
         className="button is-secondary"
