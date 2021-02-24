@@ -8,14 +8,14 @@ function RandomEvent() {
   const [loading, updateLoading] = useState(true)
 
   function random() {
-    return Math.floor(Math.random() * 11)
+    return Math.floor(Math.random() * 23)
   }
+
   const num1 = random()
 
   useEffect(() => {
     async function fetchData() {
       const { data } = await axios.get('/api/poi')
-      console.log(data)
       updateEvent(data)
       updateLoading(false)
     }

@@ -25,11 +25,12 @@ function Register({ history }) {
 
     const newFormData = {
       ...formData,
-      types: formData.interests.map(type => type.value)
+      interests: formData.interests.map(type => type.value)
     }
 
     try {
-      const { data } = await axios.post('/api/register', newFormData, )
+      console.log(newFormData)
+      const { data } = await axios.post('/api/register', newFormData,)
       console.log(data._id)
       history.push('/login')
     } catch (err) {
@@ -37,12 +38,36 @@ function Register({ history }) {
     }
   }
 
-  return <LooseForm
-    handleChange={handleChange}
-    handleTypeChange={(interests) => updateFormData({ ...formData, interests })}
-    handleSubmit={handleSubmit}
-    formData={formData}
-  />
+  const logoStyle = {
+    width: '300px'
+  }
+
+  const rightStyle = {
+    marginTop: '35%'
+  }
+
+  return <div>
+    <div className="columns has-text-centered">
+      <div className="column is-half">
+        <div>
+          <h1 className="title has-text-centered is-size-1 mt-5">Join Our Family</h1>
+        </div>
+        <LooseForm
+          handleChange={handleChange}
+          handleTypeChange={(interests) => updateFormData({ ...formData, interests })}
+          handleSubmit={handleSubmit}
+          formData={formData}
+        />
+      </div>
+      <div className="column is-half">
+        <div className="column has-text-centered" style={rightStyle}>
+          <h1 className="title is-size-1">Loose End</h1>
+          <img src="https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg" style={logoStyle} />
+          <p className="subtitle">Loose End is a platform for finding and building local communities. People use Loose End to meet new people, explore new places, find local hot spots, and pursue their passions, together.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 }
 
 export default Register
