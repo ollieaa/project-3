@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-// import { isCreator } from '../lib/auth'
 import { Link } from 'react-router-dom'
 import { getLoggedInUserId, isCreator } from '../lib/auth'
 
@@ -39,6 +38,14 @@ export default function SingleRestaurant({ match, history }) {
     fetchCurrentUser()
   }, [])
 
+  async function handleAddToWishlist() {
+    const newWishlist = user.restaurantWishlist.concat(restaurantId)
+    await axios.put(`/api/user/${user._id}`, { restaurantWishlist: newWishlist }, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    console.log('That worked!')
+  }
+
   if (loading) {
     return <h1>Loading</h1>
   }
@@ -72,7 +79,7 @@ export default function SingleRestaurant({ match, history }) {
 
     <article>
       <button className="button is-danger">Create Event at {restaurant.name}</button>
-      <button className="button is-danger">Add {restaurant.name} to your wishlist</button>
+      <button className="button is-success" onClick={handleAddToWishlist}>Add {restaurant.name} to your wishlist</button>
       <button className="button is-danger">Upvote</button>
     </article>
 

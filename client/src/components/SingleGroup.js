@@ -30,6 +30,7 @@ export default function SingleGroup({ match, history }) {
       try {
         const { data } = await axios.get(`/api/user/${getLoggedInUserId()}`)
         updateUser(data)
+        updateLoading(false)
       } catch (err) {
         console.log(err)
       }
@@ -37,9 +38,11 @@ export default function SingleGroup({ match, history }) {
     fetchCurrentUser()
   }, [])
 
-
-  if (loading) {
-    return <h1>Loading</h1>
+  async function handleUserJoin() {
+    const newGroup = user.groups.concat(groupId)
+    await axios.put(`/api/user/${user._id}`, { groups: newGroup }, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
   }
 
   async function handleDelete() {
@@ -49,11 +52,15 @@ export default function SingleGroup({ match, history }) {
     history.push('/home')
   }
 
+  if (loading) {
+    return <h1>Loading</h1>
+  }
+
   return <div className="container">
 
     <article>
       <h1 className="title">{group.name}</h1>
-      <button className="button is-danger">Join group</button>
+      {!getLoggedInUserId.groups.includes(group._id) && <button className="button is-danger" onClick={handleUserJoin}>Join group</button>}
       <img src={group.image} alt={group.name} />
     </article>
 

@@ -10,6 +10,7 @@ export default function CreateGroup({ history }) {
     description: '',
     image: '',
     passcode: ''
+    // members: []
   })
 
   function handleChange(event) {
