@@ -34,7 +34,6 @@ const Profile = ({ match, history }) => {
     await axios.delete(`/api/user/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    // ? react router method to change the url/route
     history.push('/home')
   }
 
@@ -64,6 +63,8 @@ const Profile = ({ match, history }) => {
                 <h4>Location: {profile.homeTown}</h4>
                 <h4>Interests: {profile.interests.map((interest, index) => {
                   if (index < interest.length - 1) {
+                    console.log(index)
+                    console.log(interest)
                     return (interest[0].toUpperCase() + interest.slice(1)) + ', '
                   } else {
                     return (interest[0].toUpperCase() + interest.slice(1)) + ''
