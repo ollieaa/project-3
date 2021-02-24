@@ -29,7 +29,7 @@ import Navbar from './components/Navbar.js'
 import Footer from './components/Footer.js'
 // NEW
 import MeetUpSearch from './components/MeetUpSearch.js'
-
+import Map from './components/Map.js'
 import './styles/ollieStyle.scss'
 import 'bulma'
 import './styles/style.scss'
@@ -66,6 +66,7 @@ const App = () => {
       <Route exact path="/updateGroup" component={UpdateGroup}/>
       {/* NEW */}
       <Route exact path="/meetUpSearch" component={MeetUpSearch}/>
+      <Route exact path="/map" component={Map}/>
     </Switch>
     <Footer />
   </BrowserRouter>
