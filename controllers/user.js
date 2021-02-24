@@ -89,7 +89,7 @@ async function getSingleUser(req, res, next) {
   const id = req.params.id
   
   try {
-    const singleUser = await User.findById(id)
+    const singleUser = await User.findById(id).populate('poiWishlist').populate('restaurantWishlist').populate('eventsAttended').populate('eventsCreated').populate('upcomingEvents')
     res.status(200).send(singleUser)
   } catch (err) {
     next(err)
