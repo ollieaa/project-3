@@ -11,7 +11,7 @@ import poiTypes from '../data/poiTypes'
 // ? import components from my library
 import MapGL, { Marker } from 'react-map-gl'
 
-const Map = () => {
+const Geography = () => {
   const [poiData, updatePoi] = useState([])
   const [type, updateType] = useState('All')
   const [search, updateSearch] = useState('')
@@ -122,7 +122,7 @@ const Map = () => {
 
 }
 
-export default Map
+export default Geography
 
 
 

@@ -231,7 +231,7 @@ export default function getPoiData(users) {
         51.5081,
         -0.0972
       ],
-      address: '',
+      address: '21 New Globe Walk, London SE1 9DT, United Kingdom',
       price: 'Depends on the event',
       time: 'Depends on the show',
       phone: '',

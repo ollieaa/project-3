@@ -30,7 +30,7 @@ import Footer from './components/Footer.js'
 // NEW
 import MeetUpSearch from './components/MeetUpSearch.js'
 import ImageUpload from './components/ImageUpload.js'
-
+import Geography from './components/Map.js'
 import './styles/ollieStyle.scss'
 import 'bulma'
 import './styles/style.scss'
@@ -68,7 +68,7 @@ const App = () => {
       {/* NEW */}
       <Route exact path="/meetUpSearch" component={MeetUpSearch}/>
       <Route exact path="/upload-image" component={ImageUpload}/>
-      <Route exact path="/map" component={Map}/>
+      <Route exact path="/map" component={Geography}/>
     </Switch>
     <Footer />
   </BrowserRouter>
