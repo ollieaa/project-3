@@ -39,6 +39,7 @@ export default function CreateMeetUp({history}) {
       suggestionType.splice(itemToRemove, 1)
     } else {
       suggestionType.push(id)
+      console.log(suggestionType)
     }
   }
 
@@ -80,7 +81,7 @@ export default function CreateMeetUp({history}) {
           formData={formData} 
         /> 
       </div>
-      {/* <div id="createMeetUpRight">
+      <div id="createMeetUpRight">
         <div className="card" id="createSuggestions">
           <header className="card-header">
             <h2><strong>Suggest Activities from your WishList</strong></h2>
@@ -89,21 +90,21 @@ export default function CreateMeetUp({history}) {
             <div className="content" id="createSuggestionsArea">
               {loggedInUser.restaurantWishlist.map((item) => {
 
-                return <div key={item._id} onClick={handleSelect(item._id, restaurantSuggestions)}>
+                return <a key={item._id} onClick={handleSelect(item._id, restaurantSuggestions)}>
                   <CreateSuggestion item={item}/>
-                </div>
+                </a>
               })}
               {loggedInUser.poiWishlist.map((item) => {
 
-                return <div key={item._id} onClick={handleSelect(item._id, poiSuggestions)}>
+                return <a key={item._id} onClick={handleSelect(item._id, poiSuggestions)}>
                   <CreateSuggestion item={item}/>
-                </div>
+                </a>
               })}
 
             </div>
           </div>
         </div>        
-      </div>  */}
+      </div> 
     </div>
     
   </div>

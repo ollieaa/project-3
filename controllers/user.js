@@ -19,7 +19,7 @@ async function login(req, res, next) {
   try {
     const user = await User.findOne({ email: req.body.email })
     if (!user || !user.validatePassword(password)) {
-      return res.status(401).send({ message: 'Unauthorized, please try again' })
+      return res.status(401).send({ message: 'Your password is incorrect, please try again' })
     }
     
     const token = jwt.sign(
@@ -89,7 +89,7 @@ async function getSingleUser(req, res, next) {
   const id = req.params.id
   
   try {
-    const singleUser = await User.findById(id)
+    const singleUser = await User.findById(id).populate('poiWishlist').populate('restaurantWishlist').populate('eventsAttended').populate('eventsCreated').populate('upcomingEvents')
     res.status(200).send(singleUser)
   } catch (err) {
     next(err)
