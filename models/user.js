@@ -16,8 +16,9 @@ const userSchema = new mongoose.Schema({
   eventsAttended: [{ type: mongoose.Schema.ObjectId, ref: 'MeetUp' }],
   eventsCreated: [{ type: mongoose.Schema.ObjectId, ref: 'MeetUp'  }],
   upcomingEvents: [{ type: mongoose.Schema.ObjectId, ref: 'MeetUp' }],
-  interests: [String],
-  wishlist: [String],
+  interests: { type: [String ] },
+  restuarantWishlist: [{ type: mongoose.Schema.ObjectId, ref: 'Restaurant' }],
+  poiWishlist: [{ type: mongoose.Schema.ObjectId, ref: 'Poi' }],
   userReviews: [ CommentSchema ],
   inbox: [ CommentSchema ]
 })

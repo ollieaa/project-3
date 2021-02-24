@@ -33,7 +33,7 @@ function RandomEvent() {
   }
 
   return <div>
-    <Link to={`/activities/${event[num1]._id}`}>
+    <Link to={`/poi/${event[num1]._id}`}>
       <div className="card" style={cardStyle}>
         <div className="card-image">
           <figure className="image is-4by3">

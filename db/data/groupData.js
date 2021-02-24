@@ -3,7 +3,7 @@ export default function getGroupData(users, meetUps) {
 
     {
       creator: users[0],
-      groupPassword: 'XYZ',
+      passcode: 'XYZ',
       name: 'TEST Group',
       image: 'https://theanswerclass.com/wp-content/uploads/2018/02/bigstock-Happy-Group-Of-People-3928383-2-1-scaled.jpg',
       description: 'This is my test group',

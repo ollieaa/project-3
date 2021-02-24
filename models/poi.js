@@ -16,9 +16,13 @@ const poiSchema = new mongoose.Schema({
   },
   // user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
-
-  lat: { type: Number },
-  long: { type: Number },
+  latlng: { 
+    type: [Number],
+    // validate: (latlngArray) => {
+    //   return latlngArray.length > 0
+    // }
+  },
+  address: { type: String },
   price: { type: String },
   time: { type: String }, 
   phone: { type: String },

@@ -1,11 +1,25 @@
 import React from 'react'
 
-const inputFields = ['name', 'groupPassword', 'image', 'description']
+const inputFields = ['name', 'passcode', 'description']
 
 export default function GroupForm({ formData, handleSubmit, handleChange }) {
+
+
   return <div className="section">
     <div className="container">
-      <form onSubmit={handleSubmit}>
+      
+      <form className="form">
+
+        
+        {/* <label className="label">Image Upload</label>
+
+        <div className="control">
+          <button className="button" onClick={handleUpload}>Click to upload and image</button>
+        </div>
+
+        <div className="image-container">
+          { formData.image && <UploadedImage /> }
+        </div> */}
 
         {inputFields.map(field => {
           return <div key={field} className="field">
@@ -24,7 +38,7 @@ export default function GroupForm({ formData, handleSubmit, handleChange }) {
           </div>
         })}
 
-        <button className="button mt-5 is-success">Submit</button>
+        <button className="button mt-5 is-success" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   </div>

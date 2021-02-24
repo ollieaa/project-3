@@ -11,7 +11,7 @@ export default function UpdateGroup({ history, match }) {
     name: '',
     description: '',
     image: '',
-    groupPassword: ''
+    passcode: ''
   })
 
   useEffect(() => {

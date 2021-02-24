@@ -7,8 +7,11 @@ export default function getPoiData(users) {
       description: 'When William the Conqueror built a mighty stone tower at the centre of his London fortress in the 1070s, defeated Londoners must have looked on in awe. Now nearly 1000 years later, the Tower still has the capacity to fascinate and horrify. As protector of the Crown Jewels, home of the Yeomen Warders and its legendary guardians, the pampered ravens, the Tower now attracts over three million visitors a year. Here, the Ceremony of the Keys and other traditions live on, as do the ghost stories and terrible tales of torture and execution. But the Tower also has a richer and more complex history, having been home to a wide array of institutions including the Royal Mint, the Royal Armouries and even a zoo.',
       types: ['museum', 'palace', 'landmark'],
       user: users[3],
-      lat: 51.5081,
-      long: 0.0759,
+      latlng: [
+        51.508530,
+        -0.076132
+      ],
+      address: 'St Katharine\'s & Wapping, London EC3N 4AB, United Kingdom',
       price: '£25 for adults, £12.50 for children',
       time: '',
       phone: '+44 20 3166 6000',
@@ -26,8 +29,11 @@ export default function getPoiData(users) {
       description: 'The Abbey has been the coronation church since 1066, and is the final resting place of 17 monarchs. The church we see today was begun by Henry III in 1245. It/’s one of the most important Gothic buildings in the country, and has the medieval shrine of an Anglo-Saxon saint at its heart.',
       types: ['museum', 'religious', 'landmark'],
       user: users[3],
-      lat: 51.4987,
-      long: 0.1289,
+      latlng: [
+        51.4987,
+        -0.1289
+      ],
+      address: '20 Deans Yd, Westminster, London SW1P 3PA, United Kingdom',
       price: '£18 for adults, £7 for children',
       time: '',
       phone: '+44 20 7222 5152',
@@ -44,9 +50,12 @@ export default function getPoiData(users) {
       tube: 'Blackfriars',
       description: 'The Tate Britain Gallery houses the world\'s largest collection of British art. Opened in 1897, it was the first of the Tate network that currently includes the Tate Modern, Tate Liverpool and Tate St Ives.',
       types: ['museum', 'gallery'],
-      user: users[3],      
-      lat: 51.4911,
-      long: 0.1278,
+      user: users[3],
+      latlng: [
+        51.4911,
+        -0.1278
+      ],
+      address: 'Millbank, Westminster, London SW1P 4RG, United Kingdom',
       price: 'Free with some charges for exhibits',
       time: '',
       phone: '+44 (0)20 7887 8888',
@@ -59,13 +68,16 @@ export default function getPoiData(users) {
     },
     {
       category: 'outdoor',
-      name: 'Royal Botanical Gardens (Kew Gardens)',
+      name: 'Kew Gardens',
       tube: 'Kew Gardens',
       description: 'Kew Gardens is a botanic garden that houses the "largest and most diverse botanical and mycological collections in the world". Founded in 1840, from the exotic garden at Kew Park in Middlesex, England, its living collections includes some of the 27,000 taxa curated by Royal Botanic Gardens, Kew, while the herbarium, which is one of the largest in the world, has over 8.5 million preserved plant and fungal specimens.',
       types: ['gardens', 'landmark', 'park'],
-      user: users[3],      
-      lat: 51.4787,
-      long: 0.2956,
+      user: users[3],
+      latlng: [
+        51.4787,
+        -0.2956
+      ],
+      address: 'Richmond, TW9 3AE, United Kingdom',
       price: '£10 for adults, £4.50 for children',
       time: '10am - 5pm',
       phone: '+44 20 8332 5655',
@@ -82,9 +94,12 @@ export default function getPoiData(users) {
       tube: 'Charing Cross',
       description: 'Trafalgar Square is a public square in the City of Westminster, Central London, established in the early 19th century around the area formerly known as Charing Cross. The Square\'s name commemorates the Battle of Trafalgar, the British naval victory in the Napoleonic Wars over France and Spain that took place on 21 October 1805 off the coast of Cape Trafalgar.',
       types: ['square', 'statue', 'monument', 'landmark'],
-      user: users[3],      
-      lat: 51.5080,
-      long: 0.1281,
+      user: users[3],
+      latlng: [
+        51.5080,
+        -0.1281
+      ],
+      address: 'Charing Cross, London WC2N 5DN, United Kingdom',
       price: 'Free',
       time: '24/7',
       phone: '',
@@ -101,9 +116,12 @@ export default function getPoiData(users) {
       tube: 'Richmond Station',
       description: 'The park is a top UK site for ancient trees and supports a range of rare species including fungi, birds, beetles, bats, grasses and wildflowers. Discover the Isabella Plantation woodland gardens, refuel at Pembroke Lodge tea rooms and enjoy distant views of St Paul’s Cathedral from King Henry’s Mound. Try your hand at power kiting, horse riding or golf, or hire a bike for some off-road cycling along the Tamsin Trail.',
       types: ['park', 'gardens'],
-      user: users[3],      
-      lat: 51.4412,
-      long: 0.2745,
+      user: users[3],
+      latlng: [
+        51.4494,
+        -0.2739
+      ],
+      address: 'Richmond, London, United Kingdom',
       price: 'Free',
       time: 'Pedestrian gates are open 24/7, except during the deer culls in November and February',
       phone: '+44 (0)300 061 2200',
@@ -121,8 +139,11 @@ export default function getPoiData(users) {
       description: 'For more than 1,400 years, a Cathedral dedicated to St Paul has stood at the highest point in the City. The present Cathedral, the masterpiece of Britain\'s most famous architect Sir Christopher Wren, is at least the fourth to have stood on the site. It was built between 1675 and 1710, after its predecessor was destroyed in the Great Fire of London, and services began in 1697. This was the first Cathedral to be built after the English Reformation in the sixteenth-century, when Henry VIII removed the Church of England from the jurisdiction of the Pope and the Crown took control of the life of the church.',
       types: ['museum', 'religious', 'landmark'],
       user: users[3],
-      lat: 51.5138,
-      long: 0.0984,
+      latlng: [
+        51.5138,
+        -0.0984
+      ],
+      address: 'St. Paul\'s Churchyard, London EC4M 8AD, United Kingdom',
       price: '£17 for adults, £7.20 for children',
       time: '10am - 4:30pm',
       phone: '+44 0207 246 8350',
@@ -140,8 +161,11 @@ export default function getPoiData(users) {
       description: 'The museum is home to life and earth science specimens comprising some 80 million items within five main collections: botany, entomology, mineralogy, palaeontology and zoology. The museum is a centre of research specialising in taxonomy, identification and conservation. Given the age of the institution, many of the collections have great historical as well as scientific value, such as specimens collected by Charles Darwin. The museum is particularly famous for its exhibition of dinosaur skeletons and ornate architecture—sometimes dubbed a cathedral of nature—both exemplified by the large Diplodocus cast that dominated the vaulted central hall before it was replaced in 2017 with the skeleton of a blue whale hanging from the ceiling.',
       types: ['museum'],
       user: users[3],
-      lat: 51.4967,
-      long: 0.1764,
+      latlng: [
+        51.4967,
+        -0.1764
+      ],
+      address: 'Cromwell Rd, South Kensington, London SW7 5BD, United Kingdom',
       price: 'Free',
       time: '10am - 5:50pm',
       phone: '',
@@ -159,10 +183,13 @@ export default function getPoiData(users) {
       description: 'The Tate Modern holds the national collection of British art from 1900 to the present day and international modern and contemporary art.',
       types: ['gallery'],
       user: users[3],
-      lat: 51.5076,
-      long: 0.0994,
+      latlng: [
+        51.5076,
+        -0.0994
+      ],
+      address: 'Bankside, London SE1 9TG, United Kingdom',
       price: 'Free',
-      time: '',
+      time: '10a-6p',
       phone: '+44 (0)20 7887 8888',
       funfact: 'Tate Modern is housed in the former Bankside Power Station. The building is almost the same size as Westminster Abbey with the signature central chimney standing at 99m tall. The building was converted and opened to the public in 2000.',
       image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1613818132/tate_modern_zrjiqy.jpg',
@@ -178,8 +205,11 @@ export default function getPoiData(users) {
       description: 'The British Museum was founded in 1753 and opened its doors in 1759. It was the first national museum to cover all fields of human knowledge, open to visitors from across the world.',
       types: ['museum'],
       user: users[3],
-      lat: 51.5194,
-      long: 0.1270,
+      latlng: [
+        51.5194,
+        -0.1270
+      ],
+      address: 'Great Russell St, Bloomsbury, London WC1B 3DG, United Kingdom',
       price: 'Free',
       time: '10am - 6pm',
       phone: '',
@@ -189,7 +219,7 @@ export default function getPoiData(users) {
       upVotes: 0,
       comments: [],
       events: []
-    }, 
+    },
     {
       category: 'indoor',
       name: 'Shakespeare\'s Globe Theater',
@@ -197,10 +227,13 @@ export default function getPoiData(users) {
       description: 'Shakespeare\'s Globe is a reconstruction of the Globe Theatre, an Elizabethan playhouse for which William Shakespeare wrote his plays, in the London Borough of Southwark, on the south bank of the River Thames. The original theatre was built in 1599, destroyed by the fire in 1613, rebuilt in 1614, and then demolished in 1644. The modern Globe Theatre is an academic approximation based on available evidence of the 1599 and 1614 buildings.',
       types: ['landmark', 'theatre'],
       user: users[3],
-      lat: 51.5081,
-      long: 0.0972,
+      latlng: [
+        51.5081,
+        -0.0972
+      ],
+      address: '',
       price: 'Depends on the event',
-      time: '',
+      time: 'Depends on the show',
       phone: '',
       funfact: 'Different flags were used to signpost what kind of play was being performed that day. Flying high above the theatre, they were a good way of advertising the genre of the performance, or notifying prospective theatre-goers of a last-minute cancellation. This was true of many Elizabethan theatres. Black flags were raised for tragedy plays. Red ones announced history plays. Comedies were signalled by the flying of white flags.',
       image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1613822944/shakespeare_dm1w7d.jpg',
@@ -216,10 +249,13 @@ export default function getPoiData(users) {
       description: 'The British Library is the national library of the United Kingdom and the largest library in the world by number of items catalogued. It is estimated to contain 170–200 million-plus items from many countries.',
       types: ['museum', 'other'],
       user: users[3],
-      lat: 51.5300,
-      long: 0.1277,
+      latlng: [
+        51.5300,
+        -0.1277
+      ],
+      address: '21 New Globe Walk, SE1 9DT, London, United Kingdom',
       price: 'Free, special exhibits subject to charge',
-      time: '',
+      time: '10am-6pm',
       phone: '+44 (0)330 333 1144',
       funfact: 'Whilst not accessible to us normal folk, treasures of the King\'s Library include a copy of the Gutenberg Bible and Caxton\'s first edition of Geoffrey Chaucer\'s \'Canterbury Tales\' (pictured below). If you really wanna see the gems in here, become a library member and request to see a few of these beauties for yourself in the \'Rare books and Manuscripts\' reading room – you won\'t regret it. ',
       image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1613822816/british_library_xayker.jpg',
@@ -230,13 +266,16 @@ export default function getPoiData(users) {
     },
     {
       category: 'indoor',
-      name: 'Palace of Westminster (Houses of Parliament)',
+      name: 'Houses of Parliament',
       tube: 'Westminster',
       description: 'The Palace of Westminster serves as the meeting place for both the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom.',
       types: ['palace', 'landmark'],
       user: users[3],
-      lat: 51.4995,
-      long: 0.1248,
+      latlng: [
+        51.4995,
+        -0.1248
+      ],
+      address: 'Westminster, London SW1A 0AA, United Kingdom',
       price: '£19.50 for adult, first child free, additional children £8',
       time: 'Tours available on Saturdays and most holidays',
       phone: '+44 20 7219 3000',
@@ -254,10 +293,13 @@ export default function getPoiData(users) {
       description: 'The V&A is the world’s leading museum of art and design, housing a permanent collection of over 2.3 million objects that span over 5,000 years of human creativity. The Museum holds many of the UK\'s national collections and houses some of the greatest resources for the study of architecture, furniture, fashion, textiles, photography, sculpture, painting, jewellery, glass, ceramics, book arts, Asian art and design, theatre and performance.',
       types: ['museum'],
       user: users[3],
-      lat: 51.4966,
-      long: 0.1722,
+      latlng: [
+        51.4966,
+        -0.1722
+      ],
+      address: 'Cromwell Rd, Knightsbridge, London SW7 2RL, United Kingdom',
       price: 'Free',
-      time: '',
+      time: '10a-7p',
       phone: '+44 (0)20 7942 2000',
       funfact: 'One of the artworks in the museum’s collection is the Tippoo’s Tiger, which was made for Tipu Sultan the ruler of Mysore in India. It depicts a tiger pouncing on a man and has long been a very popular exhibit at the museum, in part for its interior organ that mimics the growls of the tiger and its victim\'s moans.',
       image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1613822815/victoria_and_albert_qi54la.jpg',
@@ -273,8 +315,11 @@ export default function getPoiData(users) {
       description: 'Kensington Palace has been a residence of the British Royal Family since the 17th century, and is currently the official London residence of the Duke and Duchess of Cambridge. Today, the State Rooms are open to the public and managed by the independent charity Historic Royal Palaces, a nonprofit organisation that does not receive public funds.',
       types: ['museum', 'palace', 'landmark', 'gardens'],
       user: users[3],
-      lat: 51.5050,
-      long: 0.1877,
+      latlng: [
+        51.5050,
+        -0.1877
+      ],
+      address: 'Kensington, London W8 4PX, United Kingdom',
       price: '£17.00 for adults, £8.50 for children',
       time: '',
       phone: '+44 (0)33 3320 6000',
@@ -292,8 +337,11 @@ export default function getPoiData(users) {
       description: 'Hyde Park is one of London’s eight Royal Parks and covers an area of 350 acres.',
       types: ['park'],
       user: users[3],
-      lat: 51.5073,
-      long: 0.1657,
+      latlng: [
+        51.5073,
+        -0.1657
+      ],
+      address: 'Westminster, London, W2 2UH, United Kingdom',
       price: 'Free',
       time: '5am - 12am',
       phone: '',
@@ -311,8 +359,11 @@ export default function getPoiData(users) {
       description: 'Buckingham Palace has served as the official London residence of the UK’s sovereigns since 1837 and today is the administrative headquarters of the Monarch. Although in use for the many official events and receptions held by The Queen, the State Rooms at Buckingham Palace are open to visitors every summer.',
       types: ['palace', 'landmark'],
       user: users[3],
-      lat: 51.5014,
-      long: 0.1419,
+      latlng: [
+        51.5014,
+        -0.1419
+      ],
+      address: 'Westminster, London SW1A 1AA, United Kingdom',
       price: '',
       time: 'Free to visit and watch the Changing of the Guard, tours available in summer months',
       phone: '',
@@ -330,8 +381,11 @@ export default function getPoiData(users) {
       description: 'Borough Market is a source of British and International produce. As London’s oldest food market, it has been serving the people of Southwark for 1,000 years.',
       types: ['market'],
       user: users[3],
-      lat: 51.5055,
-      long: 0.0910,
+      latlng: [
+        51.5055,
+        -0.0910
+      ],
+      address: '8 Southwark St, London SE1 1TL, United Kingdom',
       price: 'Free',
       time: '10am (8am on Saturdays) - 6pm',
       phone: '+44 20 7407 1002',
@@ -349,10 +403,13 @@ export default function getPoiData(users) {
       description: 'In the heart of London\'s West End, two minutes away from Oxford Circus and Piccadilly Circus, find 150 shops and over 50 independent restaurants and bars.',
       types: ['other'],
       user: users[3],
-      lat: 51.513332,
-      long: -0.138889,
+      latlng: [
+        51.513332,
+        -0.138889
+      ],
+      address: 'Carnaby St, City of Westminster, London, UK, W1F 9PS',
       price: 'Free',
-      time: '',
+      time: '24/7, shop hours will vary',
       phone: '',
       funfact: 'The area around Carnaby Street was used as a mass burial ground for victims of the Great Plague in the 17th century. It was also home to one of the first “pest houses”, built to nurse those who had succumbed to the disease.',
       image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1613822816/carnaby_tzdc7a.jpg',
@@ -368,8 +425,11 @@ export default function getPoiData(users) {
       description: 'The was built between 1671 and 1677 to commemorate the Great Fire of London and to celebrate the rebuilding of the City.',
       types: ['monument'],
       user: users[3],
-      lat: 51.5101,
-      long: 0.0859,
+      latlng: [
+        51.5101,
+        -0.0859
+      ],
+      address: 'Fish St Hill, Bridge, London EC3R 8AH, United Kingdom',
       price: 'Free, although you can climb to the top for a fee (£5.40 for adults, £2.70 for children',
       time: '24/7',
       phone: '',
@@ -387,8 +447,11 @@ export default function getPoiData(users) {
       description: 'During the Second World War, this group of basement offices in Whitehall served as the centre of Britain’s war effort. The complex, known as the Cabinet War Rooms, was occupied by leading government ministers, military strategists and Prime Minister Winston Churchill.',
       types: ['museum'],
       user: users[3],
-      lat: 51.5022,
-      long: 0.1294,
+      latlng: [
+        51.5022,
+        -0.1294
+      ],
+      address: 'Clive Steps, King Charles St, London SW1A 2AQ, United Kingdom',
       price: '£22',
       time: '',
       phone: '+44 20 7416 5000',
@@ -406,8 +469,11 @@ export default function getPoiData(users) {
       description: 'The Tottenham Hotspur Stadium is the home of Tottenham Hotspur in north London, replacing the club\'s previous stadium, White Hart Lane. With a seating capacity of 62,850, it is the third-largest football stadium in England and the largest club stadium in London. It is designed to be a multi-purpose stadium and features the world\'s first dividing, retractable football pitch, which reveals a synthetic turf field underneath for NFL London Games, concerts and other events.',
       types: ['sports'],
       user: users[3],
-      lat: 51.6043,
-      long: 0.0662,
+      latlng: [
+        51.6043,
+        -0.0662
+      ],
+      address: '782 High Rd, Tottenham, London N17 0BX, United Kingdom',
       price: 'Tours are available at £26.25 for adults and £13.15 for children',
       time: '',
       phone: '+44 0344 499 5000',
@@ -425,10 +491,13 @@ export default function getPoiData(users) {
       description: 'A shopping and entertainment hub in London\'s West End, Covent Garden centres on the elegant, car-free Piazza, home to fashion stores, craft stalls at the Apple Market, and the Royal Opera House.',
       types: ['market', 'shopping'],
       user: users[3],
-      lat: 51.5117,
-      long: 0.1240,
+      latlng: [
+        51.5117,
+        -0.1240
+      ],
+      address: 'Covent Garden, London WC2',
       price: 'Free',
-      time: '',
+      time: '24/7 to visit, although opening hours of establishments will vary',
       phone: '',
       funfact: 'Covent Garden has over 60 pubs and bars!',
       image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1613827442/covent_garden_ovhrqp.jpg',
@@ -436,9 +505,97 @@ export default function getPoiData(users) {
       upVotes: 0,
       comments: [],
       events: []
+    },
+    {
+      category: 'outdoor',
+      name: 'Wembley Stadium',
+      tube: 'Wembley Central',
+      description: 'Wembley is the home of the England national football team, as well as the FA Cup Final and Semi Finals, The Football League Cup Final, The FA Community Shield, The Football League Play Off Finals and The Rugby League Challenge Cup Final. The stadium also regularly hosts other major sporting events including regular season NFL games and is known worldwide for its epic music concerts.',
+      types: ['sports', 'landmark'],
+      user: users[3],
+      latlng: [
+        51.5560,
+        -0.2796
+      ],
+      address: 'Empire Way, Barnet London Boro, Wembley, HA9 0WS, London',
+      price: 'Varies depending on what event you are attending',
+      time: 'Varies depending on what event you are attending',
+      phone: '+44 0333 999 1863',
+      funfact: 'While younger generations imagine the arch-topped stadium when they hear the name Wembley, for generations of older sports fans, it will always be the white twin towers of the original Wembley that come to mind. Built as the centrepiece of the British Empire Exhibition of 1923, the first Wembley stood exactly where the new one is. Its complete demolition in 2003—including the iconic, white twin towers towers—was highly controversial at the time.',
+      image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1614100331/wembly_xmvh9u.jpg',
+      link: 'https://www.wembleystadium.com/',
+      upVotes: 0,
+      comments: [],
+      events: []
+    },
+    {
+      category: 'outdoor',
+      name: 'Emirates Stadium',
+      tube: 'Arsenal',
+      description: 'The Emirates Stadium (known as Arsenal Stadium for UEFA competitions) is the home football stadium of Arsenal. With a capacity of 60,704 it is the fourth-largest football stadium in England.',
+      types: ['sports'],
+      user: users[3],
+      latlng: [
+        51.5549,
+        -0.1084
+      ],
+      address: 'Hornsey Rd, London N7 7AJ, United Kingdom',
+      price: '£25 for a stadium tour (£16 for children), game tickets vary',
+      time: 'Tours are from 10a-4p, game times vary',
+      phone: '+44 0207 619 5003',
+      funfact: 'The stadium is build over an industrial and waste disposal estate.',
+      image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1614100331/emirates_toqeck.jpg',
+      link: 'https://www.arsenal.com/the-club/emirates-stadium',
+      upVotes: 0,
+      comments: [],
+      events: []
+    },
+    {
+      category: 'outside',
+      name: 'Stamford Bridge',
+      tube: 'Fulham Broadway',
+      description: 'Opened in 1877, the stadium was used by the London Athletic Club until 1905, when new owner Gus Mears founded Chelsea Football Club to occupy the ground; Chelsea have played their home games there ever since.',
+      types: ['sports'],
+      user: users[3],
+      latlng: [
+        51.4817,
+        -0.1910
+      ],
+      address: 'Fulham Rd, Fulham, London SW6 1HS, United Kingdom',
+      price: 'Stadium tours are £30 for adults and £22 for children, and tickets for games vary',
+      time: 'Varies depending on what event you are attending',
+      phone: '+44 371 811 1955',
+      funfact: 'The weather vane which has sat on top of the East Stand for decades is modelled on former striker George Hilsdon, who became the first person to score 100 goals for Chelsea in 1910.',
+      image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1614100331/stamford_gx0dps.jpg',
+      link: 'https://www.chelseafc.com/en',
+      upVotes: 0,
+      comments: [],
+      events: []
+    },
+    {
+      category: 'outdoor',
+      name: 'Leicester Square',
+      tube: 'Leicester Square',
+      description: 'Known throughout the world as the beating heart of London’s West End, the square and surrounding area welcomes over 2.5 million visitors each week. Visitors can experience some of the best shows and theatres in the city as well as over 52 star-studded red carpet film premieres each year. Some of the largest children’s stores on the planet make for unforgettable family days-out. Combine all this with the glitz and glamour of the greatest casinos, clubs, hotels and restaurants.',
+      types: ['square'],
+      user: users[3],
+      latlng: [
+        51.5104,
+        -0.1301
+      ],
+      address: 'Leicester Square, West End, London WC2H 7LU, United Kingdom',
+      price: 'Free',
+      time: '24/7, business hours vary',
+      phone: '',
+      funfact: 'Until the end of the 17th Century, Leicester Square was a popular place for dueling. In 1699, Richard Coote, the First Earl of Bellomont, killed a man a duel allegedly over the affections of a woman. He later became the colonial governor of Massachusetts, New Hampshire, and New York.',
+      image: 'https://res.cloudinary.com/dnma7wqzb/image/upload/v1614101562/leicester_lwmct6.jpg',
+      link: 'https://www.leicestersquare.london/',
+      upVotes: 0,
+      comments: [],
+      events: []
     }
   ].map(poi => {
-    poi.user = users[0]
+    poi.user = users[3]
     return poi
   })
 }
@@ -451,8 +608,11 @@ export default function getPoiData(users) {
 //   description: '',
 //   types: [],
 //   user: users[3],
-//   lat: ,
-//   long: ,
+//  latlng: [
+//   51.5117,
+//   -0.1240
+// ],
+// address: '',
 //   price: '',
 //   time: '',
 //   phone: '',
@@ -463,28 +623,3 @@ export default function getPoiData(users) {
 //   comments: [],
 //   events: []
 // },
-
-
-// CATEGORIES
-// 1. indoor
-// 2. outdoor
-
-// SUBCATEGORIES
-// 1. indoor
-//   Museums/Galleries
-//   Religious 
-//   Palaces
-//   Other 
-
-// 2. outdoor  
-//   Park
-//   Public Art
-//   Planetarium
-//   Square 
-//   Statue
-//   Market
-//   Gardens
-//   Harbor
-//   Monument
-//   Landmark
-

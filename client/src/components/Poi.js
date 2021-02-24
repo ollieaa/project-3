@@ -1,13 +1,11 @@
-// FILTER/SEARCH BAR DON'T WORK
-
-
 // import React from 'react'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import 'bulma'
-// import SinglePoi from './components/SinglePoi.js'
 import poiTypes from '../data/poiTypes'
+import RingLoader from 'react-spinners/RingLoader'
+
 
 
 
@@ -18,6 +16,8 @@ const Poi = () => {
   const [type, updateType] = useState('All')
   const [search, updateSearch] = useState('')
   const _ = require('lodash')
+  const [loading, updateLoading] = useState(true)
+
 
   console.log(poiData, 'heyyyyyyy')
 
@@ -27,9 +27,16 @@ const Poi = () => {
       updatePoi(data)
       const shuffledPoi = _.shuffle(data)
       updatePoi(shuffledPoi)
+      updateLoading(false)
     }
     fetchData()
   }, [])
+
+  if (loading) {
+    return <div className="container has-text-centered mt-6">
+      <RingLoader loading={loading} size={80} color={'#fbbc04'} />
+    </div>
+  }
 
   function filterPoi() {
     return poiData.filter(poi => {
@@ -45,7 +52,7 @@ const Poi = () => {
           Points of interest
         </p>
         <p className="subtitle">
-          Browse below, filter by type or search by keyword!
+          Browse below, filter by type, search by keyword or create your own!
         </p>
       </div>
     </section>
@@ -61,7 +68,9 @@ const Poi = () => {
       </select>
 
       <input onChange={(event) => updateSearch(event.target.value)} placeholder="Search..." />
-    
+
+      <div className="button is-success"><Link to='/createPoi'>Add somewhere new!</Link></div>
+
     </div>
 
     <div className="card">

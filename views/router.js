@@ -6,16 +6,21 @@ import meetUps from '../controllers/meetUps.js'
 //import comment from '../controllers/comment.js'
 import groups from '../controllers/groups.js'
 import secureRoute from '../middleware/secureRoute.js'
+import image from '../controllers/imageController.js'
 
 const router = express.Router()
 
+// * IMAGES
 
+router.route('/images')
+  .get(image.getImage)
+  .post(secureRoute, image.postImage)
 
-
-
+router.route('/images/:imageId')
+  .put(secureRoute, image.updateImage)
+  .get(image.getSingleImage)
   
-
-
+//* MEET-UPS
 
 
 router.route('/meetUps/:location/:date')
@@ -24,10 +29,10 @@ router.route('/meetUps/:location/:date')
 router.route('/meetUps/:location/:category/:date')
   .get(meetUps.getMeetUpsByLCD)
 
-router.route('/singleMeetUp/:meetUpId')  
+router.route('/singleMeetUp/:meetUpId')
   .get(meetUps.getSingleMeetUp)
-  .put(secureRoute)
-  .delete(secureRoute)
+  .put(secureRoute, meetUps.updateMeetUp)
+  .delete(secureRoute, meetUps.deleteMeetUp)
  
   
 

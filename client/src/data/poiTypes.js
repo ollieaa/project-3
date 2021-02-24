@@ -9,7 +9,6 @@ export default [
   { value: 'palace', label: 'Palaces' },
   { value: 'park', label: 'Park' },
   // { value: 'public', label: 'Public Art' },
-  // WHY DOESN'T THIS RETURN
   { value: 'religious', label: 'Religious Building' },
   { value: 'sports', label: 'Sports' },
   { value: 'square', label: 'Square' },

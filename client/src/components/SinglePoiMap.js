@@ -93,12 +93,3 @@ export default function SinglePoi({ match, history }) {
     </div>
   </div>
 }
-
-// import React from 'react'
-
-// const SingleActivity = () => {
-//   return <h1>WHY WONT YOU WORK YOU MOTHER FUCKER</h1>
-
-// }
-
-// export default SingleActivity

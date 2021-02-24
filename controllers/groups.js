@@ -1,6 +1,4 @@
 import Group from '../models/groups.js'
-import User from '../models/user.js'
-
 
 async function getGroup(req, res, next) {
   try {
@@ -38,8 +36,8 @@ async function deleteGroup(req, res, next) {
   const currentUser = req.currentUser
 
   try {
-    const groupToDelete = await Group.findByIdAndDelete(id)
-    if (!currentUser._id.equals(groupToDelete.creator)) {
+    const groupToDelete = await Group.findById(id)
+    if (!currentUser._id.equals(groupToDelete.creator) && !currentUser.admin) {
       return res.status(401).send({ message: 'Unauthorized' })
     }
     await groupToDelete.deleteOne()
@@ -53,15 +51,17 @@ async function updateGroup(req, res, next) {
   const id = req.params.groupId
   const body = req.body
   const currentUser = req.currentUser
+  console.log(currentUser.admin)
   try {
-    const updatedGroup = await Group.findByIdAndUpdate(id, body, { new: true })
-    if (!currentUser._id.equals(updatedGroup.creator)) {
+    const updatedGroup = await Group.findById(id)
+    if (!currentUser._id.equals(updatedGroup.creator) && !currentUser.admin) {
       return res.status(401).send({ message: 'Unauthorized' })
     }
-    await updatedGroup.deleteOne()
+    await updatedGroup.updateOne(body, { new: true })
     res.send(updatedGroup)
   } catch (err) {
     next(err)
+    console.log(currentUser)
   }
 
 }

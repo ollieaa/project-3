@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 import RestaurantForm from './RestaurantForm'
+import ImageUpload from './ImageUpload.js'
 
 export default function CreateRestaurant({ history }) {
 
@@ -43,6 +44,10 @@ export default function CreateRestaurant({ history }) {
 
   return <div className="container">
     <h1 className="title">Add a restaurant</h1>
+    <ImageUpload
+      formData={formData}
+      updateFormData={updateFormData}
+    />
     <RestaurantForm
       handleChange={handleChange}
       handleCategoryChange={(category) => updateFormData({ ...formData, category })}
