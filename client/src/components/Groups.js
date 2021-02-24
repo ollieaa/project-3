@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 const Groups = ({ history }) => {
   const [groupsData, updateGroupsData] = useState([])
   const [inputValue, updateInputValue] = useState('')
+  const [passcodeMatch, updatePasscodeMatch] = useState(false)
+  const [passcodeSubmit, updatePasscodeSubmit] = useState(false)
   const loggedIn = getLoggedInUserId()
 
   useEffect(() => {
@@ -15,18 +17,17 @@ const Groups = ({ history }) => {
       })
   }, [])
 
-  
+
   function handleSubmit(event) {
     event.preventDefault()
     console.log(inputValue)
+    updatePasscodeSubmit(true)
     try {
       groupsData.map((group) => {
-        console.log(group.passcode)
         console.log(inputValue)
         if (group.passcode === inputValue) {
+          updatePasscodeMatch(true)
           history.push(`/groups/${group._id}`)
-        } else {
-          console.log('Passcode does not match any known groups')
         }
       })
     } catch (err) {
@@ -34,6 +35,13 @@ const Groups = ({ history }) => {
     }
   }
 
+  function NoPasscodeMatch() {
+    if (passcodeSubmit && !passcodeMatch) {
+      return <div>No match</div>
+    } else {
+      return null
+    }
+  }
 
 
   function handleChange(input) {
@@ -51,6 +59,7 @@ const Groups = ({ history }) => {
           onChange={handleChange}
           value={inputValue}></input>
         <button className="button is-danger" onClick={handleSubmit}>Submit</button>
+        <NoPasscodeMatch />
       </div>
     </div>
 
