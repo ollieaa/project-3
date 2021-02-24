@@ -49,7 +49,7 @@ function updateProfile({ history }) {
         headers: { Authorization: `Bearer ${token}` }
       })
       console.log(data._id)
-      history.push(`/profile/:${id}`)
+      history.push(`/profile/${id}`)
     } catch (err) {
       console.log(err.response.data)
     }
