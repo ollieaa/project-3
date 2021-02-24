@@ -16,7 +16,6 @@ function RandomRestaurant() {
     async function fetchData() {
       const { data } = await axios.get('/api/restaurants')
       updateEvent(data)
-      console.log(data)
       updateLoading(false)
     }
     fetchData()

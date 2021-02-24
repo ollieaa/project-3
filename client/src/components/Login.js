@@ -45,7 +45,7 @@ function Login({ history }) {
   return <div>
     <div className="column has-text-centered">
       <img src="https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg" style={logoStyle} />
-      <h1 className="title">Loose End</h1>
+      <h1 className="title is-size-3">Loose End</h1>
     </div>
     <div className="section pt-3">
       <div className="container">

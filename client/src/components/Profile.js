@@ -62,11 +62,11 @@ const Profile = ({ match, history }) => {
               <div className="content">
                 <h4>Age: {profile.age}</h4>
                 <h4>Location: {profile.homeTown}</h4>
-                <h4>Interests: {profile.interests.map(interest => {
-                  if (interest.lenght === interest.lenght - 1) {
-                    return interest[0].toUpperCase() + interest.slice(1) + ''
+                <h4>Interests: {profile.interests.map((interest, index) => {
+                  if (index < interest.length - 1) {
+                    return (interest[0].toUpperCase() + interest.slice(1)) + ', '
                   } else {
-                    return interest[0].toUpperCase() + interest.slice(1) + ', '
+                    return (interest[0].toUpperCase() + interest.slice(1)) + ''
                   }
                 })}</h4>
               </div>
