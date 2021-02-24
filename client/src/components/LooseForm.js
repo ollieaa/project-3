@@ -19,6 +19,7 @@ function LooseForm({ formData, handleSubmit, handleChange, handleTypeChange }) {
                 <input
                   className="input"
                   type="password"
+                  placeholder="Please re-type password before submitting updates"
                   value={formData[field]}
                   onChange={handleChange}
                   name={field}

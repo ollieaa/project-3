@@ -67,7 +67,7 @@ const Profile = ({ match, history }) => {
                     console.log(interest)
                     return (interest[0].toUpperCase() + interest.slice(1)) + ', '
                   } else {
-                    return (interest[0].toUpperCase() + interest.slice(1)) + ''
+                    return (interest[0].toUpperCase() + interest.slice(1)) + ' '
                   }
                 })}</h4>
               </div>
@@ -89,8 +89,12 @@ const Profile = ({ match, history }) => {
       </div>
       <div className="column is-two-thirds p-0 mt-3 mb-3 ml-2">
         <div className="card mb-2">
-          <h2 className="subtitle mt-2">Events Attended</h2>
+          <h2 className="subtitle mt-3">Restaurants Wishlist</h2>
           <div className="columns m-2">
+            <div className="card m-2 column">
+              <img src={profile.image} />
+              <h4>{profile.firstName}</h4>
+            </div>
             <div className="card m-2 column">
               <img src={profile.image} />
               <h4>{profile.firstName}</h4>
@@ -106,7 +110,7 @@ const Profile = ({ match, history }) => {
           </div>
         </div>
         <div className="card">
-          <h2 className="subtitle mt-2">Upcoming Events</h2>
+          <h2 className="subtitle mt-3">Points of Interest Wishlist</h2>
           <div className="columns m-2">
             <div className="card m-2 column">
               <img src={profile.image} />
@@ -123,7 +127,7 @@ const Profile = ({ match, history }) => {
           </div>
         </div>
         <div className="card mt-2 mb-2">
-          <h2 className="subtitle mt-2">Events Created</h2>
+          <h2 className="subtitle mt-3">Attended Events</h2>
           <div className="columns m-2">
             <div className="card m-2 column">
               <img src={profile.image} />
