@@ -8,7 +8,7 @@ export default function SingleGroup({ match, history }) {
   const groupId = match.params.groupId
   const [group, updateGroup] = useState({})
   const [user, updateUser] = useState({})
-  const [allUsers, updateAllUsers] = useState([])
+  const [members, updateMembers] = useState([])
   const [loading, updateLoading] = useState(true)
   const [isNotJoined, updateIsNotJoined] = useState(true)
   //const [commentText, setCommentText] = useState('')
@@ -39,6 +39,20 @@ export default function SingleGroup({ match, history }) {
     fetchCurrentUser()
   }, [])
 
+  useEffect(() => {
+    async function fetchMembers() {
+      try {
+        const { data } = await axios.get(`/api/groups/${groupId}`)
+        const memberArray = data.members
+        updateMembers(memberArray)
+      }
+      catch (err) {
+        console.log(err)
+      }
+    }
+    fetchMembers()
+  }, [])
+
 
   async function handleUserJoin() {
     const newGroup = user.groups.concat(groupId)
@@ -63,8 +77,8 @@ export default function SingleGroup({ match, history }) {
   }
 
 
-  async function handleGroupLeave() { 
- 
+  async function handleGroupLeave() {
+
     if (group.members.filter(member => member._id === user._id)) {
       const memberToRemove = group.members.findIndex(member => member._id === user._id)
       const newGroup = group.members
@@ -94,7 +108,7 @@ export default function SingleGroup({ match, history }) {
     <article>
       <h1 className="title">{group.name}</h1>
       {!group.members.includes(user) && <button className="button is-danger" onClick={handleUserJoin, handleGroupJoin}>Join group</button>}
-      {!group.members.includes(user) && <button className="button is-danger" onClick={handleGroupLeave}>Leave group</button>}
+      {!group.members.includes(user) && <button className="button is-danger" onClick={handleGroupLeave, handleUserLeave}>Leave group</button>}
       <div className={isNotJoined}>You are member</div>
       <img src={group.image} alt={group.name} />
     </article>
