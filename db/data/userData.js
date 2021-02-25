@@ -8,7 +8,7 @@ function getUserData() {
       image: 'https://image.freepik.com/free-vector/man-avatar-profile-round-icon_24640-14044.jpg',
       age: 28,
       admin: true,
-      homeTown: 'London',
+      homeTown: 'London'
     },
     {
       firstName: 'Ollie',
