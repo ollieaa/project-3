@@ -59,7 +59,7 @@ const Restaurants = () => {
     <section className="hero is-success">
       <div className="hero-body">
         <p className="title">
-          Eating and Drinking
+          Food & Drink
         </p>
       </div>
     </section>
@@ -130,25 +130,44 @@ const Restaurants = () => {
                   backgroundSize: 'cover'
                 }}>
                 </div>
+
                 <div className="horizontal-card-content ml-4 my-2">
                   <div className="media">
                     <div className="media-content">
                       <div className="horizontal-card-title">{restaurant.name}</div>
                       <div className="horizontal-card-text has-text-success">{restaurant.category}</div>
                       <div className="horizontal-card-text">{restaurant.price} </div>
-                      <div className="control">
-                        <div className="tags has-addons">
-                          <span className="tag is-success" style={{
-                            fontSize: '20px'
-                          }}>⭐️</span>
-                          <span className="tag is-light" style={{
-                            fontSize: '20px'
-                          }}>{restaurant.upvotes}</span>
+                      <div className="control-row">
+                        <div className="control">
+                          <div className="tags has-addons">
+                            <span className="tag is-success" style={{
+                              fontSize: '20px'
+                            }}>🙋‍♀️</span>
+                            <span className="tag is-light" style={{
+                              fontSize: '20px'
+                            }}>1</span>
+                          </div>
+                        </div>
+                        <div className="control ml-4">
+                          <div className="tags has-addons">
+                            <span className="tag is-success" style={{
+                              fontSize: '20px'
+                            }}>⭐️</span>
+                            <span className="tag is-light" style={{
+                              fontSize: '20px'
+                            }}>1</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                <div className="horizontal-card-content-right">
+                  Hello!
+                </div>
+
+                
               </div>
             </Link>
           </div>

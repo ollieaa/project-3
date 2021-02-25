@@ -8,8 +8,8 @@ export default function SingleRestaurant({ match, history }) {
   const [restaurant, updateRestaurant] = useState([])
   const [user, updateUser] = useState('')
   const [loading, updateLoading] = useState(true)
-  //const [commentText, setCommentText] = useState('')
   const token = localStorage.getItem('token')
+  const loggedIn = getLoggedInUserId()
 
 
   useEffect(() => {
@@ -60,35 +60,92 @@ export default function SingleRestaurant({ match, history }) {
 
   return <div className="container">
 
-    <article>
-      <h1 className="title">{restaurant.name}</h1>
-      <div className="button is-success"><Link to={'/activities/food-and-drink'}>Head back</Link></div>
-      <figure className='image'>
-        <img src={restaurant.image} alt={restaurant.name} />
-      </figure>
-    </article>
+    {/*
+    // * HERO SECTION
+    */}
 
-    <article>
-      <h2 className="subtitle">{`Upvotes: ${restaurant.upVotes}`}</h2>
-      <h2 className="subtitle">{`Price: ${restaurant.price}`}</h2>
-      <h2 className="subtitle">{`Address: ${restaurant.address}`}</h2>
-      <h2 className="subtitle">{`City: ${restaurant.location}`}</h2>
-      <h2 className="subtitle">{`Phone: ${restaurant.phone}`}</h2>
-      <a href={restaurant.link} target="_blank" rel="noreferrer">Find out more at Yelp!</a>
-    </article>
+    <section className="hero is-medium is-link restaurant-hero"
+      style={{
+        backgroundImage: `url(${restaurant.image})`,
+        backgroundSize: 'cover'
+      }}>
+      <div className="hero-body restaurant-hero">
+        <p className="title is-1">
+          {restaurant.name}
+        </p>
+      </div>
+    </section>
 
-    <article>
-      <button className="button is-danger">Create Event at {restaurant.name}</button>
-      <button className="button is-success" onClick={handleAddToWishlist}>Add {restaurant.name} to your wishlist</button>
-      <button className="button is-danger">Upvote</button>
-    </article>
+    {/*
+    // * LEVEL SECTION
+    */}
 
-    <article>
-      <div><h2 className="title">Map section</h2></div>
-      <div><img src="https://www.kvc.org/wp-content/uploads/2014/09/dcmap-narrow-1038x475.png" alt="map" /></div>
-    </article>
+    <div className="level mt-2">
+      <div className="level-left">
+        <div className="level-item">
+          <div className="tags has-addons">
+            <span className="tag is-success" style={{
+              fontSize: '20px'
+            }}>🙋‍♀️</span>
+            <span className="tag is-light" style={{
+              fontSize: '20px'
+            }}>1</span>
+          </div>
+        </div>
+        <div className="level-item">
+          <div className="tags has-addons">
+            <span className="tag is-success" style={{
+              fontSize: '20px'
+            }}>⭐️</span>
+            <span className="tag is-light" style={{
+              fontSize: '20px'
+            }}>1</span>
+          </div>
+        </div>
+      </div>
+      <div className="level-right">
+        {loggedIn && <p className="level-item">
+          <button className="button is-success">Create meet-up at {restaurant.name}</button></p>}
+        {loggedIn && <p className="level-item">
+          <button className="button is-success" onClick={handleAddToWishlist}>Add {restaurant.name} to your wishlist</button></p>}
+      </div>
+    </div>
 
-    <article>
+
+    <div className="columns">
+      <div className="column">
+        <div className="card">
+          <div className="card-content">
+            <div className="content">
+              <h2 className="subtitle">{`Upvotes: ${restaurant.upVotes}`}</h2>
+              <h2 className="subtitle">{`Price: ${restaurant.price}`}</h2>
+              <h2 className="subtitle">{`Address: ${restaurant.address}`}</h2>
+              <h2 className="subtitle">{`City: ${restaurant.location}`}</h2>
+              <h2 className="subtitle">{`Phone: ${restaurant.phone}`}</h2>
+              <a href={restaurant.link} target="_blank" rel="noreferrer">Find out more at Yelp!</a>
+            </div>
+          </div>
+          <footer className="card-footer">
+            <a href="#" className="card-footer-item">Save</a>
+            <a href="#" className="card-footer-item">Edit</a>
+            <a href="#" className="card-footer-item">Delete</a>
+          </footer>
+        </div>
+      </div>
+      <div className="column is-two-thirds">
+        <div className="card">
+          <div className="card-content">
+            <div className="content">
+              <div><h2 className="title">Map section</h2></div>
+              <img src="https://www.kvc.org/wp-content/uploads/2014/09/dcmap-narrow-1038x475.png" alt="map" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <section>
       <div><h2 className="title">Up-coming events section</h2></div>
       <h2 className="subtitle">All future events are listed here</h2>
       <div className="scrolling-wrapper">
@@ -101,9 +158,9 @@ export default function SingleRestaurant({ match, history }) {
         <div className="scrolling-card-small">Future event</div>
         <div className="scrolling-card-small">Future event</div>
       </div>
-    </article>
+    </section>
 
-    <article>
+    <section>
       <div><h2 className="title">Previous events section</h2></div>
       <h2 className="subtitle">All previous events are listed here</h2>
       <div className="scrolling-wrapper">
@@ -116,9 +173,9 @@ export default function SingleRestaurant({ match, history }) {
         <div className="scrolling-card-small">Previous event</div>
         <div className="scrolling-card-small">Previous event</div>
       </div>
-    </article>
+    </section>
 
-    <article>
+    <section>
       <div><h2 className="title">Comments section</h2></div>
       <h2 className="subtitle">All comments on this restaurant are shown here</h2>
       <div className="media-content">
@@ -141,9 +198,9 @@ export default function SingleRestaurant({ match, history }) {
           </p>
         </div>
       </div>
-    </article>
+    </section>
 
-    <article>
+    <section>
       {(isCreator(restaurant.creator._id) || user.admin)
         && <button
           className="button is-success"
@@ -154,6 +211,6 @@ export default function SingleRestaurant({ match, history }) {
           to={`/activities/update-restaurant/${restaurant._id}`}
           className="button is-success"
         >Update {restaurant.name}</Link>}
-    </article>
+    </section>
   </div>
 }
