@@ -3,7 +3,6 @@ import axios from 'axios'
 import RingLoader from 'react-spinners/RingLoader'
 import { Link } from 'react-router-dom'
 import { getLoggedInUserId, isCreator } from '../lib/auth.js'
-//import Comment from '../components/Comment.js'
 
 const Profile = ({ match, history }) => {
 
@@ -16,12 +15,15 @@ const Profile = ({ match, history }) => {
   const [text, setText] = useState('')
   const token = localStorage.getItem('token')
 
+  async function fetchData() {
+    const { data } = await axios.get(`/api/user/${profileId}`)
+    console.log('hello')
+    updateProfile(data)
+    updateLoading(false)
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      const { data } = await axios.get(`/api/user/${profileId}`)
-      updateProfile(data)
-      updateLoading(false)
-    }
+
     fetchData()
   }, [])
 
@@ -46,6 +48,7 @@ const Profile = ({ match, history }) => {
       .then(resp => {
         setText('')
         updateProfile(resp.data)
+        fetchData()
       })
   }
 
@@ -55,11 +58,13 @@ const Profile = ({ match, history }) => {
     })
       .then(resp => {
         updateProfile(resp.data)
+        fetchData()
       })
   }
 
   const imageStyle = {
-    width: '200px'
+    width: '170px',
+    height: '128px'
   }
 
   const cardStyle = {
@@ -109,7 +114,7 @@ const Profile = ({ match, history }) => {
               >Update profile</Link>}
               {isCreator(profileId) && <button
                 className="button is-danger ml-2"
-                onClick={handleDelete}
+                onClick={() => handleDelete}
               >Delete profile</button>}
             </div>
           </div>
@@ -196,7 +201,7 @@ const Profile = ({ match, history }) => {
             <div className="field">
               <p className="control">
                 <button
-                  onClick={handleComment}
+                  onClick={() => handleComment}
                   className="button is-info"
                 >
                   Submit
