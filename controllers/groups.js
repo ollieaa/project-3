@@ -22,6 +22,8 @@ async function getSingleGroup(req, res, next) {
 async function postGroup(req, res, next) {
   const body = req.body
   body.creator = req.currentUser
+  body.members = req.currentUser
+  body.admins = req.currentUser
   try {
     const newGroup = await Group.create(body)
     res.status(201).send(newGroup)
@@ -66,11 +68,25 @@ async function updateGroup(req, res, next) {
 
 }
 
+async function joinGroup(req, res, next) {
+  const id = req.params.groupId
+  const body = req.body
+  try {
+    const updatedGroup = await Group.findById(id)
+    await updatedGroup.updateOne(body, { new: true })
+    res.send(updatedGroup)
+  } catch (err) {
+    next(err)
+  }
+
+}
+
 
 export default {
   getGroup,
   getSingleGroup,
   postGroup,
   updateGroup,
-  deleteGroup
+  deleteGroup,
+  joinGroup
 }

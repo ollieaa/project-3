@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getLoggedInUserId } from '../lib/auth.js'
 
 import RandomRestaurant from './RandomEvent.js'
 import RandomPoi from './RandomPoi.js'
 
 const Home = () => {
+
+  const loggedIn = getLoggedInUserId()
 
   const logoStyle = {
     width: '500px'
@@ -46,7 +49,7 @@ const Home = () => {
         <div className="column has-text-left pl-6" style={rightStyle}>
           <h2 className="title is-size-1">New Places.</h2>
           <h2 className="title is-size-1">New People.</h2>
-          <Link className="button is-warning" to={'/register'}>Sign Up</Link>
+          {!loggedIn && <Link className="button is-warning" to={'/register'}>Sign Up</Link>}
         </div>
       </div>
       <div className="has-text-centered">
@@ -89,7 +92,7 @@ const Home = () => {
         </div>
       </div>
       <div className="pb-3">
-        <Link className="button is-warning mb-3" to={'/register'} style={signUpButtonStyle}>Sign Up</Link>
+        {!loggedIn && <Link className="button is-warning mb-3" to={'/register'} style={signUpButtonStyle}>Sign Up</Link>}
       </div>
     </div>
     <div className="has-text-centered mt-3">

@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom'
 
 export default function SingleGroup({ match, history }) {
   const groupId = match.params.groupId
-  const [group, updateGroup] = useState([])
+  const [group, updateGroup] = useState({})
   const [user, updateUser] = useState({})
+  const [members, updateMembers] = useState([])
   const [loading, updateLoading] = useState(true)
+  const [isNotJoined, updateIsNotJoined] = useState(true)
   //const [commentText, setCommentText] = useState('')
   const token = localStorage.getItem('token')
 
@@ -37,9 +39,52 @@ export default function SingleGroup({ match, history }) {
     fetchCurrentUser()
   }, [])
 
+  useEffect(() => {
+    async function fetchMembers() {
+      try {
+        const { data } = await axios.get(`/api/groups/${groupId}`)
+        const memberArray = data.members
+        updateMembers(memberArray)
+      }
+      catch (err) {
+        console.log(err)
+      }
+    }
+    fetchMembers()
+  }, [])
 
-  if (loading) {
-    return <h1>Loading</h1>
+
+  async function handleUserJoin() {
+    const newGroup = user.groups.concat(groupId)
+    await axios.put(`/api/user/${user._id}`, { groups: newGroup }, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  }
+
+  async function handleUserLeave() {
+    console.log(user.groups)
+    if (user.groups.includes(group._id)) {
+      const groupToRemove = user.groups.findIndex(group => group === group._id)
+      await axios.put(`/api/user/${user._id}`, { groups: user.groups.splice(groupToRemove, 1) }, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+    }
+  }
+
+  async function handleGroupJoin() {
+    const newMember = group.members.concat(user)
+    await axios.put(`/api/groups/join-group/${groupId}`, { members: newMember })
+  }
+
+
+  async function handleGroupLeave() {
+
+    if (group.members.filter(member => member._id === user._id)) {
+      const memberToRemove = group.members.findIndex(member => member._id === user._id)
+      const newGroup = group.members
+      newGroup.splice(memberToRemove, 1)
+      await axios.put(`/api/groups/join-group/${groupId}`, { members: newGroup })
+    }
   }
 
   async function handleDelete() {
@@ -49,11 +94,22 @@ export default function SingleGroup({ match, history }) {
     history.push('/home')
   }
 
+
+  if (loading) {
+    return <h1>Loading</h1>
+  }
+
+
+  console.log(group.members)
+  console.log(user)
+
   return <div className="container">
 
     <article>
       <h1 className="title">{group.name}</h1>
-      <button className="button is-danger">Join group</button>
+      {!group.members.includes(user) && <button className="button is-danger" onClick={handleUserJoin, handleGroupJoin}>Join group</button>}
+      {!group.members.includes(user) && <button className="button is-danger" onClick={handleGroupLeave, handleUserLeave}>Leave group</button>}
+      <div className={isNotJoined}>You are member</div>
       <img src={group.image} alt={group.name} />
     </article>
 
@@ -67,6 +123,8 @@ export default function SingleGroup({ match, history }) {
     <article>
       <button className="button is-danger">Create meet-up for {group.name}</button>
       <button className="button is-danger">Add member to {group.name}</button>
+      {(isCreator(group.creator._id) || user.admin)
+        && <div>Your password is {group.passcode}</div>}
     </article>
 
     <article>

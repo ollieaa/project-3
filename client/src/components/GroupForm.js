@@ -1,6 +1,6 @@
 import React from 'react'
 
-const inputFields = ['name', 'passcode', 'description']
+const inputFields = ['name', 'description']
 
 export default function GroupForm({ formData, handleSubmit, handleChange }) {
 
@@ -9,17 +9,6 @@ export default function GroupForm({ formData, handleSubmit, handleChange }) {
     <div className="container">
       
       <form className="form">
-
-        
-        {/* <label className="label">Image Upload</label>
-
-        <div className="control">
-          <button className="button" onClick={handleUpload}>Click to upload and image</button>
-        </div>
-
-        <div className="image-container">
-          { formData.image && <UploadedImage /> }
-        </div> */}
 
         {inputFields.map(field => {
           return <div key={field} className="field">

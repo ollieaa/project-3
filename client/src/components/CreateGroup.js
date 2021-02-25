@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+var generator = require('generate-password')
 
 import GroupForm from './GroupForm'
 import ImageUpload from './ImageUpload.js'
@@ -20,8 +21,13 @@ export default function CreateGroup({ history }) {
     event.preventDefault()
     const token = localStorage.getItem('token')
     const newFormData = {
-      ...formData
+      ...formData,
+      passcode: generator.generate({
+        length: 10, 
+        numbers: true
+      }) 
     }
+    console.log(formData.passcode)
     try {
       const { data } = await axios.post('/api/groups', newFormData, {
         headers: { Authorization: `Bearer ${token}` }
@@ -31,6 +37,7 @@ export default function CreateGroup({ history }) {
       console.log(err.response.data)
     }
   }
+
 
 
   return <div className="container">

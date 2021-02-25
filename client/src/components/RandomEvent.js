@@ -8,7 +8,7 @@ function RandomRestaurant() {
   const [loading, updateLoading] = useState(true)
 
   function random() {
-    return Math.floor(Math.random() * 11)
+    return Math.floor(Math.random() * event.length)
   }
   const num1 = random()
 

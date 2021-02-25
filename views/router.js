@@ -57,7 +57,11 @@ router.route('/groups')
 router.route('/groups/:groupId')
   .get(groups.getSingleGroup)
   .put(secureRoute, groups.updateGroup)
+  
   .delete(secureRoute, groups.deleteGroup)
+
+router.route('/groups/join-group/:groupId')
+  .put(groups.joinGroup)
 
 
 // POINTS OF INTEREST
