@@ -9,6 +9,7 @@ const Restaurants = () => {
   const [priceRange, updatePriceRange] = useState('Any price range')
   const [category, updateCategory] = useState('All categories')
   const [loading, updateLoading] = useState(true)
+  const [numberOfRestaurants, updateNumberOfRestaurants] = useState(0)
   const loggedIn = getLoggedInUserId()
 
 
@@ -20,6 +21,7 @@ const Restaurants = () => {
         })
         updateRestaurantData(filteredRestData)
         updateLoading(false)
+        updateNumberOfRestaurants(filteredRestData.length)
       })
   }, [])
 
@@ -27,91 +29,164 @@ const Restaurants = () => {
   function filterRestaurants() {
     return restaurantData.filter(restaurant => {
       return (priceRange === 'Any price range' || restaurant.price === priceRange)
-      && (category === 'All categories' || (restaurant.category.includes(category)))
+        && (category === 'All categories' || (restaurant.category.includes(category)))
     })
   }
 
   function NoRestaurants() {
     const filteredData = restaurantData.filter(restaurant => {
-      return priceRange === 'Any price range' || restaurant.price === priceRange
+      return (priceRange === 'Any price range' || restaurant.price === priceRange)
+        && (category === 'All categories' || (restaurant.category.includes(category)))
     })
     if (filteredData.length < 1) {
-      return <div>No restaurants found</div>
+      updateNumberOfRestaurants(filteredData.length)
+      return <div className="title is-4">Sorry, nowhere matches your search!</div>
     }
+    updateNumberOfRestaurants(filteredData.length)
     return null
   }
-
 
   if (loading) {
     return <h1>Loading</h1>
   }
 
 
-  return <section className="section">
+  return <div>
+
+    {/*
+    // * TITLE SECTION
+    */}
+
+    <section className="hero is-success">
+      <div className="hero-body">
+        <p className="title has-text-centered">
+          Food & Drink
+        </p>
+      </div>
+    </section>
+
     <div className="container">
-      <h2 className="title">Eating and drinking</h2>
 
-      {
-        // * DROP-DOWN FOR PRICE RANGE
-      }
+      {/*
+    // * LEVEL SECTION
+    */}
 
-      <div className="select is-success">
-        <select onChange={(event) => updatePriceRange(event.target.value)}>
-          <option>Any price range</option>
-          <option>£</option>
-          <option>££</option>
-          <option>£££</option>
-          <option>££££</option>
-        </select>
-      </div>
-
-      {
-        // * DROP-DOWN FOR CATEGORIES
-      }
-
-      <div className="select is-success">
-        <select onChange={(event) => updateCategory(event.target.value)}>
-          <option>All categories</option>
-          {restaurantCategories.map((restaurant, i) => {
-            return <option value={restaurant.value} key={i}>{restaurant.label}</option>
-          })}
-        </select>
-      </div>
-
-
-      <div className="column">
-        {filterRestaurants().map((restaurant, index) => {
-          return <div key={index} className="column">
-            <Link to={`/activities/${restaurant._id}`}>
-              <div className="horizontal-card">
-                <div className="horizontal-card-image">
-                  <img src={restaurant.image} alt={restaurant.name} />
+      <div className="level mt-2">
+        <div className="level-left">
+          <div className="level-item">
+            <p className="subtitle is-5">
+              <strong>{numberOfRestaurants}</strong> restaurants
+          </p>
+          </div>
+          <div className="level-item">
+            <div className="field has-addons">
+              <p className="control">
+                <div className="select is-success">
+                  <select onChange={(event) => updatePriceRange(event.target.value)}>
+                    <option>Any price range</option>
+                    <option>£</option>
+                    <option>££</option>
+                    <option>£££</option>
+                    <option>££££</option>
+                  </select>
                 </div>
-                <div className="horizontal-card-content">
-                  <div className="media">
-                    <div className="media-content">
-                      <p className="title is-4">{restaurant.name}</p>
-                      <p className="subtitle is-6">{restaurant.category}</p>
-                      <p className="subtitle is-6"> Upvotes: {restaurant.upVotes}</p>
-                      {restaurant.price && <p className="subtitle is-6">{'Price: ' + restaurant.price}</p>}
-                      <p className="subtitle is-6">{'Address: ' + restaurant.address + ', ' + restaurant.location}</p>
+              </p>
+              <p className="control">
+                <div className="select is-success">
+                  <select onChange={(event) => updateCategory(event.target.value)}>
+                    <option>All categories</option>
+                    {restaurantCategories.map((restaurant, i) => {
+                      return <option value={restaurant.value} key={i}>{restaurant.label}</option>
+                    })}
+                  </select>
+                </div>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="level-right">
+          <div className="level-item">
+            <div className="button is-success is-light">
+              <span className="icon is-small">
+                🧭
+            </span>
+              <span className="subtitle"><Link to='/activities/create-restaurant'>See on a map</Link></span>
+            </div>
+          </div>
+          <div className="level-item">
+            <div className="subtitle">Have we missed somewhere?</div>
+          </div>
+          {loggedIn && <div className="level-item"><div className="is-link is-success is-light subtitle"><Link to='/activities/create-restaurant'>Add somewhere new!</Link></div></div>}
+        </div>
+      </div>
+
+      {/*
+    // * RESTAURANT LIST SECTION
+    */}
+
+      <section className="section">
+        <div className="column">
+          {filterRestaurants().map((restaurant, index) => {
+            return <div key={index} className="column">
+              <Link to={`/activities/${restaurant._id}`}>
+                <div className=" card horizontal-card">
+                  <div className="horizontal-card-image" style={{
+                    backgroundImage: `url(${restaurant.image})`,
+                    backgroundSize: 'cover'
+                  }}>
+                  </div>
+                  <div className="horizontal-card-content ml-4 my-2">
+                    <div className="media">
+                      <div className="media-content">
+                        <div className="horizontal-card-title">{restaurant.name}</div>
+                        <div className="horizontal-card-buttons">
+                          {restaurant.category.map((cat, index) => {
+                            return <div className="button is-success is-light mr-2" key={index}>{cat}</div>
+                          })}
+                        </div>
+                        <div className="horizontal-card-text">{restaurant.price} </div>
+                        <div className="control-row">
+                          <div className="control">
+                            <div className="tags has-addons">
+                              <span className="tag is-success" style={{
+                                fontSize: '20px'
+                              }}>🙋‍♀️</span>
+                              <span className="tag is-success is-light" style={{
+                                fontSize: '20px'
+                              }}>1</span>
+                            </div>
+                          </div>
+                          <div className="control ml-4">
+                            <div className="tags has-addons">
+                              <span className="tag is-success" style={{
+                                fontSize: '20px'
+                              }}>⭐️</span>
+                              <span className="tag is-success is-light" style={{
+                                fontSize: '20px'
+                              }}>1</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+
+                  <div className="horizontal-card-content-right">
+                    Hello!
                 </div>
-              </div>
-            </Link>
-          </div>
-        })}
 
-        <NoRestaurants />
 
-      </div>
-
+                </div>
+              </Link>
+            </div>
+          })}
+          <NoRestaurants />
+        </div>
+      </section>
 
     </div>
-    {loggedIn && <div className="button is-success"><Link to='/activities/create-restaurant'>Add restaurant</Link></div>}
-    <div className="button is-success"><Link to='/activities'>Back to activities</Link></div>
-  </section>
+  </div>
+
 }
 
 

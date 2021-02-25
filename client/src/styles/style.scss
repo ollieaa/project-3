@@ -14,6 +14,10 @@
   border: 1px solid gray;
 }
 
+.scrolling-card:hover {
+  transform: scale(1.1)
+}
+
 .scrolling-card-small {
   flex: 0 0 auto;
   width: 200px;
@@ -22,27 +26,75 @@
   border: 1px solid gray;
 }
 
+// * RESTAURANT PAGE
+
 .horizontal-card {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  height: 200px;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+.horizontal-card:hover {
+  transform: scale(1.1)
 }
 
 .horizontal-card-image {
   display: flex;
-  flex: 1
+  flex: 1;
+  border-radius: 10px 0px 0px 10px;
 }
 
 .horizontal-card-content {
   display: flex;
-  flex: 3
+  flex: 3;
+  border-radius: 0px 10px 10px 0px;
+  font-weight: bold;
 }
+
+.horizontal-card-content-right {
+  display: flex;
+  flex: 1;
+  border-radius: 0px 10px 10px 0px;
+  font-weight: bold;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.horizontal-card-title {
+  font-size: 30px;
+}
+
+.horizontal-card-text {
+  font-size: 22px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.control-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+// * SINGLE RESTAURANT PAGE
+
+.restaurant-hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.section-row {
+  display: flex;
+  flex-direction: row;
+}
+
 
 .avatar {
   height: 100px
-}
-
-.isNotJoined {
-  display: none
 }
 
