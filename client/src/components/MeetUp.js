@@ -9,14 +9,19 @@ const MeetUp = ({location}) => {
   const [meetUps, updateMeetUps] = useState([])
   const [formData, updateFormData] = useState({
     location: "",
-    date: '',
-    categories: []
+    date: new Date().toISOString().substr(0, 10),
+    category: 'All Categories'
   })
 
   useEffect(() => {
     async function getMeetUps() {
-      const {data} = await axios.get(`/api/meetUps/${search.location}/${search.date}`)
-      updateMeetUps(data)
+      if (search.category === "all categories") {
+        const {data} = await axios.get(`/api/meetUps/${search.location}/${search.date}`)
+        updateMeetUps(data)
+      } else {
+        const {data} = await axios.get(`/api/meetUps/${search.location}/${search.date}/${search.category}`)
+        updateMeetUps(data)
+      }    
     }
     getMeetUps()
   }, [])
@@ -28,16 +33,20 @@ const MeetUp = ({location}) => {
 
   async function handleSubmit(event) {
     event.preventDefault()
-    if (!formData.location || !formData.date) {
-      alert("Please enter a location and date for your search.")
+    if (!formData.location) {
+      alert("Please enter a location for your search.")
     } else {
-      
-      const {data} = await axios.get(`/api/meetUps/${formData.location}/${formData.date}`)
-      updateMeetUps(data)
-      updateFormData({location:'', date:'', categories: []})
+      if (formData.category === "All Categories") {
+        const {data} = await axios.get(`/api/meetUps/${formData.location}/${formData.date}`)
+        updateMeetUps(data)
+        updateFormData({location:'', date: new Date().toISOString().substr(0, 10), category: ''})
+      } else {
+        const {data} = await axios.get(`/api/meetUps/${formData.location}/${formData.date}/${formData.category.toLowerCase()}`)
+        updateMeetUps(data)
+        updateFormData({location:'', date: new Date().toISOString().substr(0, 10), category: ''})
+      }
     }
   }
-
   if (!meetUps) {
     return null
   }
@@ -48,7 +57,8 @@ const MeetUp = ({location}) => {
       <div id="meetUpsLeft">
         <form id="meetUpSearch" onSubmit={handleSubmit}>
           <h2>Update your search:</h2>
-          <input 
+          <input
+          className="input" 
           type="text"
           value={formData.location}
           onChange={handleChange}
@@ -56,12 +66,24 @@ const MeetUp = ({location}) => {
           placeholder="Location..."
           />
           <input 
+            className="input"
             type="date"
             value={formData.date}
             onChange={handleChange}
             name={"date"}
           />
-          <button>Search</button>
+          <div className="select">
+            <select value={formData.category}
+                    onChange={handleChange}
+                    name="category">
+              <option>All Categories</option>
+              <option>Restaurants</option>
+              <option>Culture</option>
+              <option>Tours</option>
+              <option>Walking</option>
+            </select>
+          </div>
+          <button className="button is-warning">Search</button>
         </form>
       </div>
 

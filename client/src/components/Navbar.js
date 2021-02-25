@@ -43,14 +43,21 @@ function Navbar({ history }) {
       <div className="navbar-start">
         <Link className="navbar-item" to={'/home'}>
           Home
-               </Link>
+        </Link>
         <Link className="navbar-item" to={'/meetUpSearch'}>
           MeetUps
-               </Link>
+        </Link>
         {loggedInUser._id &&
           <Link className="navbar-item" to={'/createMeetUp'}>
-            New MeetUp
-               </Link>}
+            Create MeetUp
+          </Link>}
+        <Link className="navbar-item" to={'/groups'}>
+          Groups
+        </Link>  
+        {loggedInUser._id &&
+          <Link className="navbar-item" to={'/groups/create-group'}>
+            Create Group
+          </Link>}
 
         <div className="navbar-item has-dropdown is-hoverable">
           <a className="navbar-link">

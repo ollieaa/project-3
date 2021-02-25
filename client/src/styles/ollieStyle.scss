@@ -1,14 +1,20 @@
-#meetUpSearchPage, #meetUpsPage {
+.meetUpSearchRow {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.meetUpSearchcolumn {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#meetUpsPage {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-}
-#searchForm {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 #meetUpCategories {
   width: 200px;
