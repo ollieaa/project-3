@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getLoggedInUserId } from '../lib/auth.js'
 import LooseForm from '././LooseForm.js'
+import ImageUpload from './ImageUpload.js'
 
 function updateProfile({ history }) {
 
@@ -54,12 +55,18 @@ function updateProfile({ history }) {
       console.log(err.response.data)
     }
   }
-  return <LooseForm
-    handleChange={handleChange}
-    handleTypeChange={(interests) => updateFormData({ ...formData, interests })}
-    handleSubmit={handleSubmit}
-    formData={formData}
-  />
+  return <div>
+    <ImageUpload
+      formData={formData}
+      updateFormData={updateFormData}
+    />
+    <LooseForm
+      handleChange={handleChange}
+      handleTypeChange={(interests) => updateFormData({ ...formData, interests })}
+      handleSubmit={handleSubmit}
+      formData={formData}
+    />
+  </div>
 }
 
 export default updateProfile

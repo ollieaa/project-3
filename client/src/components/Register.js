@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 import RegisterForm from '././RegisterForm.js'
+import ImageUploadRegister from './ImageUploadRegister.js'
 
 function Register({ history }) {
+
+  const logo = '././images/logo.png'
 
   const [formData, updateFormData] = useState({
     firstName: '',
@@ -38,11 +41,15 @@ function Register({ history }) {
   }
 
   const logoStyle = {
-    width: '300px'
+    width: '250px'
   }
 
   const rightStyle = {
     marginTop: '35%'
+  }
+
+  const titleStyle = {
+    color: '#FFB602'
   }
 
   return <div>
@@ -51,6 +58,10 @@ function Register({ history }) {
         <div>
           <h1 className="title has-text-centered is-size-1 mt-5">Join Our Family</h1>
         </div>
+        <ImageUploadRegister
+          formData={formData}
+          updateFormData={updateFormData}
+        />
         <RegisterForm
           handleChange={handleChange}
           handleTypeChange={(interests) => updateFormData({ ...formData, interests })}
@@ -60,8 +71,8 @@ function Register({ history }) {
       </div>
       <div className="column is-half">
         <div className="column has-text-centered" style={rightStyle}>
-          <h1 className="title is-size-1">Loose End</h1>
-          <img src="https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg" style={logoStyle} />
+          <h1 className="title is-size-1" style={titleStyle}>Loose End</h1>
+          <img src={logo} style={logoStyle} className="mb-5"/>
           <p className="subtitle">Loose End is a platform for finding and building local communities. People use Loose End to meet new people, explore new places, find local hot spots, and pursue their passions, together.</p>
         </div>
       </div>
