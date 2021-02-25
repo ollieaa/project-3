@@ -10,8 +10,6 @@ import RingLoader from 'react-spinners/RingLoader'
 
 
 const Poi = () => {
-  // return <h1>Activities</h1>
-
   const [poiData, updatePoi] = useState([])
   const [type, updateType] = useState('All')
   const [search, updateSearch] = useState('')
@@ -46,7 +44,7 @@ const Poi = () => {
   }
 
   return <div>
-    <section className="hero is-primary">
+    <section className="hero is-warning">
       <div className="hero-body">
         <p className="title">
           Points of interest
@@ -58,43 +56,65 @@ const Poi = () => {
     </section>
 
 
-    <div className="filter-container">
+    <div className="container">
 
-      <select onChange={(event) => updateType(event.target.value)} >
-        <option>All</option>
-        {poiTypes.map((poi, i) => {
-          return <option value={poi.value} key={i}>{poi.label}</option>
-        })}
-      </select>
+
+      <div className="select is-success">
+        <select onChange={(event) => updateType(event.target.value)} >
+          <option>All</option>
+          {poiTypes.map((poi, i) => {
+            return <option value={poi.value} key={i}>{poi.label}</option>
+          })}
+        </select>
+      </div>
+
+      {/* <input className="input is-success" onChange={(event) => updateSearch(event.target.value)} placeholder="Search..." /> */}
 
       <input onChange={(event) => updateSearch(event.target.value)} placeholder="Search..." />
-
       <div className="button is-success"><Link to='/createPoi'>Add somewhere new!</Link></div>
 
     </div>
 
-    <div className="card">
 
-      <div className="card">
+
+    <section className="section">
+
+      <div className="column">
         {filterPoi().map((poi, index) => {
-          return <div key={index}>
+          return <div key={index} className="column">
             <Link to={`/poi/${poi._id}`}>
-              <header className="card-header">
-                <p className="card-header-title is-centered">{poi.name}</p>
-              </header>
+              <div className="card horizontal-card">
+                <div className="horizontal-card-image" style={{
+                  backgroundImage: `url(${poi.image})`,
+                  backgroundSize: 'cover'
+                }}>
+                </div>
+                <div className="horizontal-card-content ml-4 my-2">
+                  <div className="media">
+                    <div className="media-content">
+                      <div className="horizontal-card-title">{poi.name}</div>
+                      <div className="horizontal-card-buttons">
+                        {poi.types.map((type, index) => {
+                          return <div className="button is-success is-light mr-2" key={index}>{type}</div>
+                        })}
+                      </div>
+                      <div className="horizontal-card-text is-size-7">{poi.description} </div>
+                      <div className="horizontal-card-content-bottom is-size-7">{'Nearest tube station: ' + poi.tube} </div>
 
-              <div className="card-content">
-                <img className="card-image" src={poi.image} alt={poi.name} />
-                <p className="card-content">{poi.description}</p>
-                <p>{'Nearest Tube station: ' + poi.tube}</p>
+
+                    </div>
+                  </div>
+                </div>
+
               </div>
-
             </Link>
+
+
           </div>
         })}
       </div>
 
-    </div>
+    </section>
 
   </div>
 }

@@ -39,6 +39,10 @@ const Home = () => {
     marginTop: '2%'
   }
 
+  const pinStyle = {
+    width: '50px'
+  }
+
   return <main>
     <div>
       <div className="columns" style={heroStyle}>
@@ -60,7 +64,7 @@ const Home = () => {
       </div>
     </div>
     <div className="has-text-centered mt-3">
-      <p><strong>Restaurants in London, GB</strong></p>
+      <p className="title"><strong>Restaurants in London, GB</strong></p>
     </div>
     <div className="columns m-5">
       <div className="column">
@@ -77,16 +81,19 @@ const Home = () => {
       </div>
     </div>
     <div style={backgroundStyle}>
-      <div className="columns has-text-centered pt-6 pb-4 m-0">
+      <div className="columns has-text-centered pt-3 pb-4 m-0">
         <div className="column">
+          <img src={'././images/pages.png'} style={pinStyle} />
           <h2 className="is-size-4"><strong>Sign Up</strong></h2>
           <h4>Sign up</h4>
         </div>
         <div className="column">
+          <img src={'././images/pin.png'} style={pinStyle} />
           <h2 className="is-size-4"><strong>Browse</strong></h2>
           <h4>Browers our great selection of meet ups, local hotspots, things to do</h4>
         </div>
         <div className="column">
+          <img src={'././images/edition.png'} style={pinStyle} />
           <h2 className="is-size-4"><strong>Create</strong></h2>
           <h4>Create you own meet ups and points of interest</h4>
         </div>
@@ -96,7 +103,7 @@ const Home = () => {
       </div>
     </div>
     <div className="has-text-centered mt-3">
-      <p><strong>Points on interest in London, GB</strong></p>
+      <p className="title"><strong>Points on interest in London, GB</strong></p>
     </div>
     <div className="columns m-5">
       <div className="column">

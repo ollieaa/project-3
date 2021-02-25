@@ -47,10 +47,6 @@ function RandomEvent() {
               <p className="subtitle is-6">{event[num1].tube}</p>
             </div>
           </div>
-
-          <div className="content">
-            <p className="subtitle is-6">{event[num1].phone}</p>
-          </div>
         </div>
       </div>
     </Link>

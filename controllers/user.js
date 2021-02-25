@@ -91,7 +91,7 @@ async function getSingleUser(req, res, next) {
   const id = req.params.id
 
   try {
-    const singleUser = await User.findById(id).populate('poiWishlist').populate('restaurantWishlist').populate('restaurantWishlist.creator').populate('eventsAttended').populate('eventsCreated').populate('upcomingEvents')
+    const singleUser = await User.findById(id).populate('poiWishlist').populate('restaurantWishlist').populate('restaurantWishlist.creator').populate('eventsAttended').populate('eventsCreated').populate('upcomingEvents').populate('userReviews.user')
     res.status(200).send(singleUser)
   } catch (err) {
     next(err)
@@ -109,6 +109,90 @@ async function getUserInbox(req, res, next) {
   }
 }
 
+//Comments
+
+async function makeComment(req, res, next) {
+  const commentData = req.body
+  const userId = req.params.userId
+  commentData.user = req.currentUser
+
+  try {
+    const user = await User.findById(userId).populate('userReviews.user').populate('user')
+    console.log(user)
+
+    if (!user) {
+      return res.status(404).send({ message: 'User not found' })
+    }
+
+    user.userReviews.push(commentData)
+
+    const savedUser = await user.save()
+
+    res.send(savedUser)
+
+  } catch (err) {
+    next(err)
+  }
+}
+
+async function updateComment(req, res, next) {
+  const commentData = req.body
+  const currentUser = req.currentUser
+  const { commentId, userId } = req.params
+
+  try {
+    const user = await User.findById(userId).populate('user').populate('userReviews.user')
+
+    if (!user) {
+      return res.status(404).send({ message: 'User not found' })
+    }
+
+    const comment = user.userReviews.id(commentId)
+
+    if (!comment.user.equals(currentUser._id)) {
+      return res.status(401).send({ message: 'Unauthorized, this is not your comment to change' })
+    }
+
+    comment.set(commentData)
+
+    const savedUser = await user.save()
+
+    res.send(savedUser)
+
+  } catch (err) {
+    next(err)
+  }
+}
+
+async function deleteComment(req, res, next) {
+  const commentData = req.body
+  const currentUser = req.currentUser
+  const { commentId, userId } = req.params
+
+  try {
+    const user = await User.findById(userId).populate('user').populate('userReviews.user')
+
+    if (!user) {
+      return res.status(404).send({ message: 'User not found' })
+    }
+
+    const comment = user.userReviews.id(commentId)
+
+    if (!comment.user.equals(currentUser._id)) {
+      return res.status(401).send({ message: 'Unauthorized, this is not your comment to change' })
+    }
+
+    comment.remove(commentData)
+
+    const removedUser = await user.save()
+
+    res.send(removedUser)
+
+  } catch (err) {
+    next(err)
+  }
+}
+
 export default {
   register,
   login,
@@ -116,5 +200,8 @@ export default {
   removeUser,
   updateUser,
   getUserInbox,
-  getSingleUser
+  getSingleUser,
+  makeComment,
+  updateComment,
+  deleteComment
 }

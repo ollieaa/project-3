@@ -59,11 +59,11 @@ const Restaurants = () => {
 
     <section className="hero is-warning is-small">
       <div className="hero-body">
-        <p className="title has-text-centered">
+        <p className="title">
           Food & Drink
         </p>
-        <p className="subtitle has-text-centered">
-          Meet and eat? Grab a drink? Look no further!
+        <p className="subtitle">
+          Browse below, filter by price, search by name or suggest your own!
         </p>
       </div>
     </section>
