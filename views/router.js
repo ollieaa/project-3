@@ -96,6 +96,8 @@ router.route('/meetUp/:meetUpId/comment/:commentId')
   .post(secureRoute)
   .put(secureRoute)
 
+// ENDPOINTS FOR USER 
+
 router.route('/register')
   .post(user.register)
 
@@ -118,6 +120,13 @@ router.route('/user/:id/inbox/:commentId')
   .post(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
+ 
+router.route('/user/:userId/comment')
+  .post(secureRoute, user.makeComment)
+
+router.route('/user/:userId/comment/:commentId')
+  .put(secureRoute, user.updateComment)
+  .delete(secureRoute, user.deleteComment)  
 
 
 export default router
