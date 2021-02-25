@@ -34,8 +34,8 @@ router.route('/singleMeetUp/:meetUpId')
   .put(secureRoute, meetUps.updateMeetUp)
   .delete(secureRoute, meetUps.deleteMeetUp)
  
-  
-
+router.route('/meetUps')
+  .post(secureRoute, meetUps.postMeetUp)
 
 // RESTAURANTS
 
@@ -113,7 +113,7 @@ router.route('/user/:id')
 router.route('/user/:id/inbox')
   .get(user.getUserInbox)
 
-router.route('/user/inbox/:commentId')
+router.route('/user/:id/inbox/:commentId')
   .get(secureRoute)
   .post(secureRoute)
   .put(secureRoute)
