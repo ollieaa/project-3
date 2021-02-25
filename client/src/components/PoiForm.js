@@ -3,7 +3,7 @@ import React from 'react'
 import poiTypes from '../data/poiTypes.js'
 import Select from 'react-select'
 
-const inputFields = ['category', 'name', 'tube', 'description', 'address', 'price', 'time', 'phone', 'funfact', 'image', 'link']
+const inputFields = ['name', 'tube', 'description', 'address', 'price', 'time', 'phone', 'funfact', 'link']
 
 function PoiForm({ formData, handleSubmit, handleChange, handleTypeChange }) {
   return <div className="section">

@@ -136,7 +136,7 @@ export default function getPoiData(users) {
       category: 'indoor',
       name: 'St. Paul\'s Cathedral',
       tube: 'St. Paul\'s',
-      description: 'For more than 1,400 years, a Cathedral dedicated to St Paul has stood at the highest point in the City. The present Cathedral, the masterpiece of Britain\'s most famous architect Sir Christopher Wren, is at least the fourth to have stood on the site. It was built between 1675 and 1710, after its predecessor was destroyed in the Great Fire of London, and services began in 1697. This was the first Cathedral to be built after the English Reformation in the sixteenth-century, when Henry VIII removed the Church of England from the jurisdiction of the Pope and the Crown took control of the life of the church.',
+      description: 'For more than 1,400 years, a Cathedral dedicated to St Paul has stood at the highest point in the City. The present Cathedral, the masterpiece of Britain\'s most famous architect Sir Christopher Wren, is at least the fourth to have stood on the site. It was built between 1675 and 1710, after its predecessor was destroyed in the Great Fire of London, and services began in 1697.',
       types: ['museum', 'religious', 'landmark'],
       user: users[3],
       latlng: [
@@ -158,7 +158,7 @@ export default function getPoiData(users) {
       category: 'indoor',
       name: 'Natural History Museum',
       tube: 'South Kensington',
-      description: 'The museum is home to life and earth science specimens comprising some 80 million items within five main collections: botany, entomology, mineralogy, palaeontology and zoology. The museum is a centre of research specialising in taxonomy, identification and conservation. Given the age of the institution, many of the collections have great historical as well as scientific value, such as specimens collected by Charles Darwin. The museum is particularly famous for its exhibition of dinosaur skeletons and ornate architecture—sometimes dubbed a cathedral of nature—both exemplified by the large Diplodocus cast that dominated the vaulted central hall before it was replaced in 2017 with the skeleton of a blue whale hanging from the ceiling.',
+      description: 'The museum is home to life and earth science specimens comprising some 80 million items within five main collections: botany, entomology, mineralogy, palaeontology and zoology. Given the age of the institution, many of the collections have great historical as well as scientific value, such as specimens collected by Charles Darwin. The museum is particularly famous for its exhibition of dinosaur skeletons and ornate architecture.',
       types: ['museum'],
       user: users[3],
       latlng: [

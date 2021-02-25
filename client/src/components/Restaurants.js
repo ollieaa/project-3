@@ -57,10 +57,13 @@ const Restaurants = () => {
     // * TITLE SECTION
     */}
 
-    <section className="hero is-success">
+    <section className="hero is-warning">
       <div className="hero-body">
-        <p className="title has-text-centered">
+        <p className="title">
           Food & Drink
+        </p>
+        <p className="subtitle">
+          Browse below, filter by price, search by name or suggest your own!
         </p>
       </div>
     </section>
@@ -76,7 +79,7 @@ const Restaurants = () => {
           <div className="level-item">
             <p className="subtitle is-5">
               <strong>{numberOfRestaurants}</strong> restaurants
-          </p>
+             </p>
           </div>
           <div className="level-item">
             <div className="field has-addons">
