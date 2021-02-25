@@ -22,6 +22,9 @@ const Footer = () => {
       <Link to={'/activities'}><h4 className="subtitle is-size-6 mb-1">Restaurants</h4></Link>
       <Link to={'/groups'}><h4 className="subtitle is-size-6 mb-1">Groups</h4></Link>
       <Link to={'/poi'}><h4 className="subtitle is-size-6 mb-1">Points of Interest</h4></Link>
+      <Link to ={'/map'}><h4 className="subtitle is-size-6 mb-1">Map</h4></Link>
+
+
     </div>
     <div className="column">
       <h2 className="title mt-5 mb-5">Visit</h2>
