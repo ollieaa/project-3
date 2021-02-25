@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
-//import mongooseHidden from 'mongoose-hidden'
+import mongooseHidden from 'mongoose-hidden'
 import uniqueValidator from 'mongoose-unique-validator'
 import CommentSchema from '../models/comment.js'
 
@@ -36,8 +36,6 @@ userSchema.methods.validatePassword = function validatePassword(password) {
 }
 
 userSchema.plugin(uniqueValidator)
-//userSchema.plugin(mongooseHidden({ defaultHidden: { password: true, email: true } }))
+userSchema.plugin(mongooseHidden({ defaultHidden: { password: true, email: true } }))
 
 export default mongoose.model('User', userSchema)
-
-//"password": "$2b$10$Ox98wR6L8ZGkeT5LVi1UzOJx464rdYijL6KpDrYd3UgTmcubxBYT.",
