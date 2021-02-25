@@ -51,7 +51,7 @@ const Restaurants = () => {
   }
 
 
-  return <div>
+  return <div className="main">
 
     {/*
     // * TITLE SECTION
@@ -129,7 +129,7 @@ const Restaurants = () => {
           {filterRestaurants().map((restaurant, index) => {
             return <div key={index} className="column">
               <Link to={`/activities/${restaurant._id}`}>
-                <div className=" card horizontal-card">
+                <div className="card horizontal-card">
                   <div className="horizontal-card-image" style={{
                     backgroundImage: `url(${restaurant.image})`,
                     backgroundSize: 'cover'

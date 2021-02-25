@@ -29,7 +29,7 @@ export default function ImageUpload({ formData, updateFormData }) {
   }
 
   function UploadedImage() {
-    return <div><img src={imageFormData.url}></img></div>
+    return <div className="image-upload"><img src={imageFormData.url}></img></div>
   }
 
   function updateImageUrl() {
@@ -57,7 +57,13 @@ export default function ImageUpload({ formData, updateFormData }) {
   return <>
     <div>
       <div className="container">
-        <button className="button" onClick={handleImageUpload}>Upload an image</button>
+        <button className="button mb-2" onClick={handleImageUpload}>Upload image</button>
+        {!imageFormData.url && <div className="image-holder">
+          <div className="icon">
+            <img src="https://i.imgur.com/qFTdxL6.png" alt="icon" height="20px"></img>
+          </div>
+          <div className="text">Your image</div>
+        </div>}
         {imageFormData.url && <UploadedImage />}
         {(!confirmImage && imageFormData.url) && <button
           className="button is-danger"

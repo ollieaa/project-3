@@ -23,7 +23,7 @@ export default function SingleRestaurant({ match, history }) {
         console.log(err)
       }
     }
-    fetchRestaurant()        
+    fetchRestaurant()
   }, [])
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function SingleRestaurant({ match, history }) {
     history.push('/activities')
   }
 
-  return <div>
+  return <div className="main">
 
     {/*
     // * HERO SECTION
@@ -70,7 +70,7 @@ export default function SingleRestaurant({ match, history }) {
         backgroundSize: 'cover'
       }}>
       <div className="hero-body restaurant-hero">
-        <p className="title is-1">
+        <p className="title is-1 restaurant-hero-text">
           {restaurant.name}
         </p>
       </div>
@@ -89,7 +89,7 @@ export default function SingleRestaurant({ match, history }) {
               <span className="tag is-success" style={{
                 fontSize: '20px'
               }}>🙋‍♀️</span>
-              <span className="tag is-light" style={{
+              <span className="tag is-light is-success" style={{
                 fontSize: '20px'
               }}>1</span>
             </div>
@@ -99,19 +99,33 @@ export default function SingleRestaurant({ match, history }) {
               <span className="tag is-success" style={{
                 fontSize: '20px'
               }}>⭐️</span>
-              <span className="tag is-light" style={{
+              <span className="tag is-light is-success" style={{
                 fontSize: '20px'
               }}>1</span>
             </div>
           </div>
         </div>
         <div className="level-right">
-          {loggedIn && <p className="level-item">
-            <button className="button is-success">Create meet-up at {restaurant.name}</button></p>}
-          {loggedIn && <p className="level-item">
-            <button className="button is-success" onClick={handleAddToWishlist}>Add {restaurant.name} to your wishlist</button></p>}
+          <div className="level-item">
+            {(isCreator(restaurant.creator._id) || user.admin)
+              && <button
+                className="button is-danger"
+                onClick={handleDelete}
+              >Delete {restaurant.name}</button>}
+          </div>
+          <div className="level-item">
+            {(isCreator(restaurant.creator._id) || user.admin)
+              && <Link
+                to={`/activities/update-restaurant/${restaurant._id}`}
+                className="button is-danger"
+              >Update {restaurant.name}</Link>}
+          </div>
         </div>
       </div>
+
+      {/*
+    // * BODY SECTION
+    */}
 
 
       <div className="columns">
@@ -119,19 +133,24 @@ export default function SingleRestaurant({ match, history }) {
           <div className="card">
             <div className="card-content">
               <div className="content">
-                <h2 className="title is-1">{restaurant.name}</h2>
-                <h2 className="subtitle is-3">{restaurant.address1}</h2>
-                <h2 className="subtitle is-3">{restaurant.address2}</h2>
-                <h2 className="subtitle is-3">{restaurant.zipcode}</h2>
-                <h2 className="title">{restaurant.category}</h2>
-                <h2 className="title">{restaurant.price}</h2>
-                <a href={restaurant.link} target="_blank" rel="noreferrer">Find out more!</a>
+                <h2 className="title is-3">{restaurant.name}</h2>
+                {restaurant.address1 && <p className="subtitle is-5 has-text-success mb-1">{restaurant.address1}</p>}
+                {restaurant.address2 && <p className="subtitle is-5 has-text-success">{restaurant.address2}</p>}
+                {restaurant.zipcode && <p className="subtitle is-5 has-text-success mt-1">{restaurant.zipcode}</p>}
+                <h2 className="title mt-2">{restaurant.price}</h2>
+                <div className="card-buttons">{restaurant.category.map((cat, index) => {
+                  return <div className="button is-success is-light mr-2" key={index}>{cat}</div>
+                })}</div>
+                <div className="subtitle is-5 mt-4"><a href={restaurant.link} target="_blank" rel="noreferrer">Find out more!</a></div>
               </div>
             </div>
             <footer className="card-footer">
-              <a href="#" className="card-footer-item">Add to Wishlist</a>
-              <a href="#" className="card-footer-item">Upvote</a>
-              <a href="#" className="card-footer-item">Create Meet-up</a>
+              <div className="card-footer-item">
+                <a className="is-link" onClick={handleAddToWishlist}>Add to Wishlist</a>
+              </div>
+              <div className="card-footer-item">
+                <a className="is-link">Upvote</a>
+              </div>
             </footer>
           </div>
         </div>
@@ -139,7 +158,7 @@ export default function SingleRestaurant({ match, history }) {
           <div className="card">
             <div className="card-content">
               <div className="content">
-                <div><h2 className="title">Map section</h2></div>
+                <div><h2 className="title is-3">Where are we?</h2></div>
                 <img src="https://www.kvc.org/wp-content/uploads/2014/09/dcmap-narrow-1038x475.png" alt="map" />
               </div>
             </div>
@@ -147,59 +166,68 @@ export default function SingleRestaurant({ match, history }) {
         </div>
 
       </div>
+    </div>
 
-      <section className="hero is-medium is-success is-large">
-        <div><h2 className="title">Come see us! </h2></div>
-        <h2 className="subtitle">Loose End meet-ups taking place at {restaurant.name}</h2>
-        <div className="scrolling-wrapper">
-          <div className="scrolling-card-small">Future event</div>
-          <div className="scrolling-card-small">Future event</div>
-          <div className="scrolling-card-small">Future event</div>
-          <div className="scrolling-card-small">Future event</div>
-          <div className="scrolling-card-small">Future event</div>
-          <div className="scrolling-card-small">Future event</div>
-          <div className="scrolling-card-small">Future event</div>
-          <div className="scrolling-card-small">Future event</div>
+    {/*
+    // * MEET-UP SECTION
+    */}
+
+    <section className="hero is-success my-4">
+      <div className="hero-body">
+        <div className="container">
+          <h2 className="title">Come see us! </h2>
+          <h2 className="subtitle">Loose End meet-ups taking place at {restaurant.name}</h2>
+          <div className="scrolling-wrapper">
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div className="container">
+
+      {/*
+    // * COMMENTS SECTION
+    */}
+
+      <section className="section">
+        <div className="card">
+          <div className="card-content">
+            <div className="content">
+              <h2 className="title is-3">Reviews</h2>
+              <p className="subtitle is-5">Been to {restaurant.name}? Tell us what you think!</p>
+            </div>
+            <div className="media-content">
+              <div className="field">
+                <p className="control">
+                  <textarea
+                    className="textarea"
+                    placeholder="Make a comment.."
+                  >
+                  </textarea>
+                </p>
+              </div>
+              <div className="field">
+                <p className="control">
+                  <button
+                    className="button is-success"
+                  >
+                    Submit
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section>
-        <div><h2 className="title">Comments section</h2></div>
-        <h2 className="subtitle">All comments on this restaurant are shown here</h2>
-        <div className="media-content">
-          <div className="field">
-            <p className="control">
-              <textarea
-                className="textarea"
-                placeholder="Make a comment.."
-              >
-              </textarea>
-            </p>
-          </div>
-          <div className="field">
-            <p className="control">
-              <button
-                className="button is-danger"
-              >
-                Submit
-              </button>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        {(isCreator(restaurant.creator._id) || user.admin)
-          && <button
-            className="button is-success"
-            onClick={handleDelete}
-          >Delete {restaurant.name}</button>}
-        {(isCreator(restaurant.creator._id) || user.admin)
-          && <Link
-            to={`/activities/update-restaurant/${restaurant._id}`}
-            className="button is-success"
-          >Update {restaurant.name}</Link>}
-      </section>
     </div>
   </div>
 }
