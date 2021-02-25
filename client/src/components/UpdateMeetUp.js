@@ -43,7 +43,7 @@ export default function UpdateMeetUp({history, match}) {
 
     const token = localStorage.getItem('token')
 
-    if (!formData.name || !formData.location || !formData.date || !formData.time || !formData.description) {
+    if (!formData.name || !formData.location || !formData.date || formData.time === "--:--" || !formData.time || !formData.description) {
 
       alert('Please complete all of the required fields.')
 

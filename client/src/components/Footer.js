@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const backgroundStyle = {
-  backgroundColor: 'black'
+  backgroundColor: '#191919'
 }
 
 const Footer = () => {

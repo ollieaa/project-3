@@ -4,6 +4,7 @@ import MeetUpForm from './MeetUpForm.js'
 import {getLoggedInUserId} from '../lib/auth.js'
 import { CreateSuggestion } from './Suggestion.js'
 
+
 export default function CreateMeetUp({history}) {
 
   const [loggedInUser, updateLoggedInUser] = useState([])
@@ -45,7 +46,7 @@ export default function CreateMeetUp({history}) {
 
     event.preventDefault()
 
-    if (!formData.name || !formData.location || !formData.date || !formData.time || !formData.description) {
+    if (!formData.name || !formData.location || !formData.date || formData.time === "--:--" || !formData.time || !formData.description) {
       alert('Please complete all of the required fields.')
     } else {
       const token = localStorage.getItem('token')
@@ -80,6 +81,7 @@ export default function CreateMeetUp({history}) {
           handleTagChange={(tags) => updateFormData({ ...formData, tags })}
           handleSubmit={handleSubmit}
           formData={formData}
+          updateFormData={updateFormData}
           button="Create MeetUp" 
         /> 
       </div>

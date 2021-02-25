@@ -12,14 +12,18 @@ const Profile = ({ match, history }) => {
 
   const [profile, updateProfile] = useState([])
   const [loading, updateLoading] = useState(true)
+  const [text, setText] = useState('')
+  const token = localStorage.getItem('token')
+
+  async function fetchData() {
+    const { data } = await axios.get(`/api/user/${profileId}`)
+    console.log('hello')
+    updateProfile(data)
+    updateLoading(false)
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      const { data } = await axios.get(`/api/user/${profileId}`)
-      updateProfile(data)
-      console.log(data)
-      updateLoading(false)
-    }
+
     fetchData()
   }, [])
 
@@ -30,15 +34,37 @@ const Profile = ({ match, history }) => {
   }
 
   async function handleDelete() {
-    const token = localStorage.getItem('token')
+    //const token = localStorage.getItem('token')
     await axios.delete(`/api/user/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     history.push('/home')
   }
 
+  function handleComment() {
+    axios.post(`/api/user/${profileId}/comment`, { text }, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(resp => {
+        setText('')
+        updateProfile(resp.data)
+        fetchData()
+      })
+  }
+
+  function handleDeleteComment(commentId) {
+    axios.delete(`/api/user/${profileId}/comment/${commentId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(resp => {
+        updateProfile(resp.data)
+        fetchData()
+      })
+  }
+
   const imageStyle = {
-    width: '200px'
+    width: '170px',
+    height: '128px'
   }
 
   const cardStyle = {
@@ -88,7 +114,7 @@ const Profile = ({ match, history }) => {
               >Update profile</Link>}
               {isCreator(profileId) && <button
                 className="button is-danger ml-2"
-                onClick={handleDelete}
+                onClick={() => handleDelete}
               >Delete profile</button>}
             </div>
           </div>
@@ -131,6 +157,30 @@ const Profile = ({ match, history }) => {
         </div>
       </div>
     </div>
+    {
+      // ! Create comments
+    }
+    {profile.userReviews && profile.userReviews.map(comment => {
+      return <article key={comment._id} className="media">
+        <div className="media-content">
+          <div className="content">
+            <p>
+              {comment.text}
+            </p>
+            <p className="subtitle is-size-7">{comment.user.firstName}</p>
+          </div>
+        </div>
+        {
+          // ! Only the person who created a comment should be able to delete a comment
+        }
+        {isCreator(comment.user._id) && <div className="media-right">
+          <button
+            className="delete"
+            onClick={() => handleDeleteComment(comment._id)}>
+          </button>
+        </div>}
+      </article>
+    })}
     <div className="card">
       <div className="m-3">
         <h2 className="subtitle">User Reviews</h2>
@@ -141,16 +191,17 @@ const Profile = ({ match, history }) => {
                 <textarea
                   className="textarea"
                   placeholder="Make a comment.."
-                //onChange={event => setText(event.target.value)}
-                //value={text}
+                  onChange={event => setText(event.target.value)}
+                  value={text}
                 >
+                  {text}
                 </textarea>
               </p>
             </div>
             <div className="field">
               <p className="control">
                 <button
-                  //onClick={handleComment}
+                  onClick={() => handleComment}
                   className="button is-info"
                 >
                   Submit

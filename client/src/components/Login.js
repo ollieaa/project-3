@@ -19,7 +19,6 @@ function Login({ history }) {
       const { data } = await axios.post('/api/login', formData)
       if (localStorage) {
         localStorage.setItem('token', data.token)
-        console.log(data.token)
       }
       history.push('/home')
     } catch (err) {
