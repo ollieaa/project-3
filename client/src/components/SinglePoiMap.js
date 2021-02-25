@@ -6,23 +6,20 @@ import { Link } from 'react-router-dom'
 import RingLoader from 'react-spinners/RingLoader'
 
 import Geography from '../components/Map.js'
+import MapGL, { Marker } from 'react-map-gl'
 
-export default function SinglePoi({ match, history }) {
+export default function SinglePoiMap({ match, history }) {
 
   const poiId = match.params.poiId
-  // const latitude = match.params.latitude
-  // const longitude = match.params.longitude
   let map
-
-
   const [poi, updatePoi] = useState({})
   const [loading, updateLoading] = useState(true)
   const [loggedInUser, updateLoggedInUser] = useState({})
 
   const [mapConfig, setMapConfig] = useState({
-    height: '20%',
-    width: '40%',
-    zoom: 20
+    height: '45vh',
+    width: '100vh',
+    zoom: 14.5
   })
 
 
@@ -34,7 +31,6 @@ export default function SinglePoi({ match, history }) {
         setMapConfig({ ...mapConfig, latitude: data.latlng[0], longitude: data.latlng[1] })
         updateLoading(false)
         console.log(data)
-        console.log(data.latlng[0], 'cathyyyyyyyyyy')
       } catch (err) {
         console.log(err)
       }
@@ -43,19 +39,11 @@ export default function SinglePoi({ match, history }) {
   }, [])
 
 
-  // useEffect(() => {
-  //   updatedMapConfig.latitude = data.latlng[0]
-  //   updatedMapConfig.longitude = data.latlng[2]
-  //   setMapConfig(updatedMapConfig)
-  //   // }, [poi])
-  // }, [])
-
-
-  // if (mapConfig.latitude) {
-  //   map = <div className='map-container'>
-  //     <Geography config={mapConfig} />
-  //   </div>
-  // }
+  if (mapConfig.latlng) {
+    map = <div className='container'>
+      <Geography config={mapConfig} />
+    </div>
+  }
 
   async function getLoggedInUser() {
     const userId = getLoggedInUserId()
@@ -94,59 +82,89 @@ export default function SinglePoi({ match, history }) {
     return null
   }
 
-  return <div className="individual-site-page">
-    <div className="column">
-      <header className="card-header">
-        <p className="card-header-title is-centered">{poi.name}</p>
-      </header>
-
-      <div className="card-content">
-        <img className="card-image" src={poi.image} alt={poi.name} />
-        <p className="card-content">{poi.description}</p>
-        <p className="card-content">{'Fun Fact! ' + poi.funfact}</p>
-
-        {map}
-
-        <p>Practical Information:</p>
-
-        <footer className="card-footer">
-          {/* <p className="card-content">{'Nearest Tube station: ' + poi.tube}</p>
-          <p className="card-content">{'Price: ' + poi.price}</p>
-          <p className="card-content">{'Opening times: ' + poi.time}</p>
-          <p className="card-content">{'Contact information: ' + poi.phone}</p>
-          <p className="card-content">{'Website: ' + poi.link}</p> */}
-          <p className="card-footer-item">{'Address: ' + poi.address}</p>
-          <p className="card-footer-item">{'Nearest Tube station: ' + poi.tube}</p>
-          <p className="card-footer-item">{'Price: ' + poi.price}</p>
-          <p className="card-footer-item">{'Opening times: ' + poi.time}</p>
-          {/* <p className="card-footer-item">{'Contact information: ' + poi.phone}</p> */}
-          <p className="card-footer-item">
-            <span>
-            Check our their <a href={poi.link} target="_blank" rel="noreferrer">website</a>
-            </span>
-          </p>
-        </footer>
-
+  // DISPLAY
+  return <div>
+    <section className="hero is-medium is-warning">
+      <div className="hero-body">
+        <p className="title is-1">
+          {poi.name}
+        </p>
       </div>
+    </section>
+
+    <div className="columns is-centered">
+      <div className="column has-text-centered">
+        <div className="poi-buttons">
+          {isCreator(poi.user._id) && <Link
+            to={`/updatePoi/${poiId}`}
+            className="button is-secondary"
+          >Update Point of Interest</Link>}
+          {isCreator(poi.user._id) && <button
+            className="button is-danger"
+            onClick={handleDelete}
+          >Delete Point of Interest</button>}
+          <button className="button is-secondary" onClick={handleWishlistAdd}>Add to your wishlist!</button>
+          {/* {!loggedInUser.poiWishList.contains(poi._id) && <button className="button is-secondary" onClick={handleWishlistAdd}>Add to your wishlist!</button>} */}
+        </div>
+
+        <div className="individual-site-page">
+          <div className="column">
 
 
+            <div className="card-content">
+              <p className="subtitle">{poi.description}</p>
 
-      <h2>{`Posted by: ${poi.user.firstName}`}</h2>
-      {isCreator(poi.user._id) && <Link
-        to={`/updatePoi/${poiId}`}
-        className="button is-secondary"
-      >Update Point of Interest</Link>}
-      {isCreator(poi.user._id) && <button
-        className="button is-danger"
-        onClick={handleDelete}
-      >Delete Point of Interest</button>}
-      <button className="button is-secondary" onClick={handleWishlistAdd}>Add to your wishlist!</button>
-      {/* {!loggedInUser.poiWishList.contains(poi._id) && <button className="button is-secondary" onClick={handleWishlistAdd}>Add to your wishlist!</button>} */}
+              <img className="card-image is-centered" src={poi.image} alt={poi.name} />
 
-      <div className='map-container'>
-        <Geography config={mapConfig} />
+              <p className="title">Fun Fact!</p>
+              <p className="subtitle">{poi.funfact}</p>
+
+              {map}
+
+              <p className="subtitle">Practical Information:</p>
+
+              <footer className="card-footer">
+
+                <p className="card-footer-item">{'Address: ' + poi.address}</p>
+                <p className="card-footer-item">{'Nearest Tube station: ' + poi.tube}</p>
+                <p className="card-footer-item">{'Price: ' + poi.price}</p>
+                <p className="card-footer-item">{'Opening times: ' + poi.time}</p>
+                <p className="card-footer-item">{'Contact information: ' + poi.phone}</p>
+                <p className="card-footer-item">
+                  <span>
+                    Check our their <a href={poi.link} target="_blank" rel="noreferrer">website</a>
+                  </span>
+                </p>
+              </footer>
+
+              <div className='container is-half'>
+                {/* <Geography config={mapConfig} /> */}
+                <MapGL
+                  {...mapConfig}
+                  onViewportChange={(mapConfig) => setMapConfig(mapConfig)}
+                  mapboxApiAccessToken={'pk.eyJ1Ijoia2toZXJiIiwiYSI6ImNrbDVjanIycDI2M24yb21zbGYzMGpnM3QifQ.VwrolxjnRnyw3T9JdycZfw'}
+                >
+                  <Marker
+                    latitude={poi.latlng[0]}
+                    longitude={poi.latlng[1]}
+                  >
+                    <h5 className="map-label">{poi.name}</h5>
+
+                  </Marker>
+                </MapGL>
+              </div>
+            </div>
+
+
+            <Link to={`/profile/${poi.user._id}`}><h2>{`Posted by: ${poi.user.firstName}`}</h2></Link>
+          </div>
+        </div>
       </div>
-
     </div>
+
+
+
   </div>
 }
+
+

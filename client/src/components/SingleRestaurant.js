@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { getLoggedInUserId, isCreator } from '../lib/auth'
+import Geography from '../components/Map.js'
+import MapGL, { Marker } from 'react-map-gl'
+import RingLoader from 'react-spinners/RingLoader'
+
 
 export default function SingleRestaurant({ match, history }) {
   const restaurantId = match.params.restaurantId
@@ -10,7 +14,12 @@ export default function SingleRestaurant({ match, history }) {
   const [loading, updateLoading] = useState(true)
   const token = localStorage.getItem('token')
   const loggedIn = getLoggedInUserId()
-
+  const [mapConfig, setMapConfig] = useState({
+    height: '45vh',
+    width: '100vh',
+    zoom: 16
+  })
+  let map
 
   useEffect(() => {
     async function fetchRestaurant() {
@@ -18,13 +27,21 @@ export default function SingleRestaurant({ match, history }) {
         const { data } = await axios.get(`/api/restaurants/${restaurantId}`)
         console.log(data.creator._id)
         updateRestaurant(data)
+        setMapConfig({ ...mapConfig, latitude: data.lat, longitude: data.long })
+
         updateLoading(false)
       } catch (err) {
         console.log(err)
       }
     }
-    fetchRestaurant()        
+    fetchRestaurant()
   }, [])
+
+  if (mapConfig.lat) {
+    map = <div className='map-container'>
+      <Geography config={mapConfig} />
+    </div>
+  }
 
   useEffect(() => {
     async function fetchCurrentUser() {
@@ -47,7 +64,9 @@ export default function SingleRestaurant({ match, history }) {
   }
 
   if (loading) {
-    return <h1>Loading</h1>
+    return <div className="container has-text-centered mt-6">
+      <RingLoader loading={loading} size={80} color={'#fbbc04'} />
+    </div>
   }
 
 
@@ -139,8 +158,21 @@ export default function SingleRestaurant({ match, history }) {
           <div className="card">
             <div className="card-content">
               <div className="content">
-                <div><h2 className="title">Map section</h2></div>
-                <img src="https://www.kvc.org/wp-content/uploads/2014/09/dcmap-narrow-1038x475.png" alt="map" />
+                <div className='map-container'>
+                  <MapGL
+                    {...mapConfig}
+                    onViewportChange={(mapConfig) => setMapConfig(mapConfig)}
+                    mapboxApiAccessToken={'pk.eyJ1Ijoia2toZXJiIiwiYSI6ImNrbDVjanIycDI2M24yb21zbGYzMGpnM3QifQ.VwrolxjnRnyw3T9JdycZfw'}
+                  >
+                    <Marker
+                      latitude={restaurant.lat}
+                      longitude={restaurant.long}
+                    >
+                      <h5 className="map-label">{restaurant.name}</h5>
+
+                    </Marker>
+                  </MapGL>
+                </div>
               </div>
             </div>
           </div>
