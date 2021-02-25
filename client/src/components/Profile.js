@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import RingLoader from 'react-spinners/RingLoader'
 import { Link } from 'react-router-dom'
-import { getLoggedInUserId, isCreator } from '../lib/auth.js'
+import { isCreator } from '../lib/auth.js'
 
 const Profile = ({ match, history }) => {
 
   const profileId = match.params.profileId
-
-  const id = getLoggedInUserId()
 
   const [profile, updateProfile] = useState([])
   const [loading, updateLoading] = useState(true)
@@ -32,10 +30,11 @@ const Profile = ({ match, history }) => {
   }
 
   async function handleDelete() {
-    await axios.delete(`/api/user/${id}`, {
+    await axios.delete(`/api/user/${profileId}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     history.push('/home')
+    localStorage.removeItem('token')
   }
 
   function handleComment() {
@@ -61,7 +60,8 @@ const Profile = ({ match, history }) => {
 
   const imageStyle = {
     width: '170px',
-    height: '128px'
+    height: '128px',
+    borderRadius: '5px'
   }
 
   const cardStyle = {
@@ -70,7 +70,7 @@ const Profile = ({ match, history }) => {
 
   return <div className="m-4">
     <div className="title is-size-1 m-6">
-      <h1>Welcome back {profile.firstName}</h1>
+      <h1>{`${profile.firstName}'s profile`}</h1>
     </div>
     <div className="columns has-text-centered">
       <div className="column is-one-third p-0 mt-3 mb-3 ml-3">
@@ -111,7 +111,7 @@ const Profile = ({ match, history }) => {
               >Update profile</Link>}
               {isCreator(profileId) && <button
                 className="button is-danger ml-2"
-                onClick={() => handleDelete}
+                onClick={handleDelete}
               >Delete profile</button>}
             </div>
           </div>
@@ -119,7 +119,7 @@ const Profile = ({ match, history }) => {
       </div>
       <div className="column is-two-thirds p-0 mt-3 mb-3 ml-2">
         <div className="card mb-2">
-          <h2 className="subtitle mt-3">Restaurants Wishlist</h2>
+          <h2 className="subtitle mt-3 pt-2">Restaurants Wishlist</h2>
           <div className="columns m-2">
             {profile.restaurantWishlist.map((restaurant) => {
               return <Link key={restaurant._id} to={`/activities/${restaurant._id}`}>
@@ -133,7 +133,7 @@ const Profile = ({ match, history }) => {
           </div>
         </div>
         <div className="card">
-          <h2 className="subtitle mt-3">Points of Interest Wishlist</h2>
+          <h2 className="subtitle mt-3 pt-2">Points of Interest Wishlist</h2>
           <div className="columns m-2">
             {profile.poiWishlist.map((poi) => {
               return <Link key={poi._id} to={`/poi/${poi._id}`}>
@@ -147,7 +147,7 @@ const Profile = ({ match, history }) => {
           </div>
         </div>
         <div className="card mt-2 mb-2">
-          <h2 className="subtitle mt-3">Attended Events</h2>
+          <h2 className="subtitle mt-3 pt-2">Attended Events</h2>
           <div className="columns m-2">
 
           </div>

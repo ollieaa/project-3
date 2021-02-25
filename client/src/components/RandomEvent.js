@@ -42,7 +42,7 @@ function RandomRestaurant() {
         <div className="media">
           <div className="media-content">
             <p className="title is-4">{event[num1].name}</p>
-            <p className="subtitle is-6">{event[num1].location}</p>
+            <p className="subtitle is-6">{event[num1].city}</p>
           </div>
         </div>
       </div>

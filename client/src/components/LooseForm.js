@@ -3,7 +3,7 @@ import React from 'react'
 import interestTypes from '../data/interestTypes.js'
 import Select from 'react-select'
 
-const inputFields = ['firstName', 'lastName', 'image', 'age', 'homeTown']
+const inputFields = ['firstName', 'lastName', 'age', 'homeTown']
 
 function LooseForm({ formData, handleSubmit, handleChange, handleTypeChange }) {
   return <div className="section">

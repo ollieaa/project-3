@@ -3,6 +3,8 @@ import axios from 'axios'
 
 function Login({ history }) {
 
+  const logo = '././images/logo.png'
+
   const [formData, updateFormData] = useState({
     email: '',
     password: ''
@@ -27,7 +29,7 @@ function Login({ history }) {
   }
 
   const logoStyle = {
-    width: '300px'
+    width: '200px'
   }
 
   const inputStyle = {
@@ -41,10 +43,14 @@ function Login({ history }) {
     display: 'block'
   }
 
+  const titleStyle = {
+    color: '#FFB602'
+  }
+
   return <div>
     <div className="column has-text-centered">
-      <img src="https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg" style={logoStyle} />
-      <h1 className="title is-size-3">Loose End</h1>
+      <img src={logo} style={logoStyle} />
+      <h1 className="title is-size-3" style={titleStyle}>Loose End</h1>
     </div>
     <div className="section pt-3">
       <div className="container">
