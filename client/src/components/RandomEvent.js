@@ -45,10 +45,6 @@ function RandomRestaurant() {
             <p className="subtitle is-6">{event[num1].location}</p>
           </div>
         </div>
-
-        <div className="content">
-          <p className="subtitle is-6">{event[num1].phone}</p>
-        </div>
       </div>
     </div>
   </Link >

@@ -66,20 +66,17 @@ export default function SinglePoi({ match, history }) {
   if (!poi.user) {
     return null
   }
-  
+
   return <div className="individual-site-page">
     <div className="column">
       <header className="card-header">
         <p className="card-header-title is-centered">{poi.name}</p>
-        <p className="card-content">{poi.types}</p>
       </header>
 
       <div className="card-content">
         <img className="card-image" src={poi.image} alt={poi.name} />
         <p className="card-content">{poi.description}</p>
         <p className="card-content">{'Fun Fact! ' + poi.funfact}</p>
-        {/* {!loggedInUser.poiWishList.includes(poiId) && <button onClick={handleWishlistAdd}>Add to your wishlist!</button>} */}
-        <button onClick={handleWishlistAdd}>Add to your wishlist!</button>
 
         <p>Practical Information:</p>
 
@@ -96,7 +93,7 @@ export default function SinglePoi({ match, history }) {
           {/* <p className="card-footer-item">{'Contact information: ' + poi.phone}</p> */}
           <p className="card-footer-item">
             <span>
-              Check our their website: <a href="#" target="_blank">{poi.link}</a>
+              Check our their <a href={poi.link} target="_blank" rel="noreferrer"> website</a>
             </span>
           </p>
         </footer>
@@ -109,20 +106,14 @@ export default function SinglePoi({ match, history }) {
       {isCreator(poi.user._id) && <Link
         to={`/updatePoi/${poiId}`}
         className="button is-secondary"
-      >Update point of interest</Link>}
+      >Update Point of Interest</Link>}
       {isCreator(poi.user._id) && <button
         className="button is-danger"
         onClick={handleDelete}
       >Delete Point of Interest</button>}
+      <button className="button is-secondary" onClick={handleWishlistAdd}>Add to your wishlist!</button>
+      {/* {!loggedInUser.poiWishList.contains(poi._id) && <button className="button is-secondary" onClick={handleWishlistAdd}>Add to your wishlist!</button>} */}
+
     </div>
   </div>
 }
-
-// import React from 'react'
-
-// const SingleActivity = () => {
-//   return <h1>WHY WONT YOU WORK YOU MOTHER FUCKER</h1>
-
-// }
-
-// export default SingleActivity

@@ -1,9 +1,9 @@
 import React from 'react'
 import Select from 'react-select'
-import {times} from '../lib/times'
+import {times} from '../data/times'
 import interestTypes from '../data/interestTypes'
 
-export default function MeetUpForm({ formData, handleSubmit, handleChange, handleTagChange }) {
+export default function MeetUpForm({ formData, handleSubmit, handleChange, handleTagChange, button }) {
 
 
   return <div className="section">
@@ -11,7 +11,7 @@ export default function MeetUpForm({ formData, handleSubmit, handleChange, handl
       <form onSubmit={handleSubmit}>
           <div className="field">
             <label className="label">
-              MeetUp Title:
+              MeetUp Title*:
             </label>
             <div className="control">
               <input
@@ -25,7 +25,7 @@ export default function MeetUpForm({ formData, handleSubmit, handleChange, handl
           </div>
           <div className="field">
             <label className="label">
-              Location:
+              Location*:
             </label>
             <div className="control">
               <input
@@ -39,16 +39,18 @@ export default function MeetUpForm({ formData, handleSubmit, handleChange, handl
           </div>
           <div className="field">
             <label className="label">
-              Date:
+              Date*:
             </label>
             <div className="control">
-            <input type="date" value={formData.date} onChange={handleChange} name="date"/>
-           
+            <input type="date" 
+                   value={new Date(formData.date).toISOString().substr(0, 10)} 
+                   onChange={handleChange} 
+                   name="date"/>          
             </div>
           </div>
           <div className="field">
             <label className="label">
-              Time:
+              Time*:
             </label>
             <div className="control">
               <div className="select">              
@@ -65,7 +67,7 @@ export default function MeetUpForm({ formData, handleSubmit, handleChange, handl
           </div>
           <div className="field">
             <label className="label">
-              Description:
+              Description*:
             </label>
             <div className="control">
               <textarea
@@ -79,7 +81,7 @@ export default function MeetUpForm({ formData, handleSubmit, handleChange, handl
           </div>
           <div className="field">
             <label className="label">
-              Image URL:
+              Image:
             </label>
             <div className="control">
               <input
@@ -106,7 +108,7 @@ export default function MeetUpForm({ formData, handleSubmit, handleChange, handl
                 value={formData.tags}
               />
             </div>
-        <button className="button mt-5 is-success">Create MeetUp</button>
+        <button className="button mt-5 is-success">{button}</button>
       </form>
     </div>
   </div>

@@ -21,7 +21,7 @@ function Navbar({ history }) {
     } else {
       updateLoggedInUser([])
     }
-  }, 500)
+  }, 1000)
 
   function logout() {
     history.push('/home')
@@ -72,7 +72,8 @@ function Navbar({ history }) {
 
       <div className="navbar-end">
 
-        {loggedInUser._id && <div className="navbar-item">
+        {loggedInUser._id && 
+        <div className="navbar-item">
           <div className="navbar-item has-dropdown is-hoverable">
             <figure className="image is-32x32">
               <img className="is-rounded" src={loggedInUser.image} />
@@ -96,15 +97,15 @@ function Navbar({ history }) {
         <div className="navbar-item">
           <div className="buttons">
             {loggedInUser.length === 0 &&
-              <Link className="button is-primary" to={'/register'}>
-                <strong>Sign up</strong>
-              </Link>}
-            {loggedInUser.length === 0 &&
-              <Link className="button is-light" to={'/login'}>
+              <Link className="button is-primary" to={'/login'}>
                 Log in
                    </Link>}
+            {loggedInUser.length === 0 &&
+              <Link className="button is-light" to={'/register'}>
+                <strong>Sign up</strong>
+              </Link>}           
             {loggedInUser._id &&
-              <button className="button is-primary" onClick={logout}>Sign Out</button>}
+            <button className="button is-primary" onClick={logout}>Sign Out</button>}
           </div>
         </div>
       </div>

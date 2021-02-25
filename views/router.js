@@ -34,8 +34,8 @@ router.route('/singleMeetUp/:meetUpId')
   .put(secureRoute, meetUps.updateMeetUp)
   .delete(secureRoute, meetUps.deleteMeetUp)
  
-  
-
+router.route('/meetUps')
+  .post(secureRoute, meetUps.postMeetUp)
 
 // RESTAURANTS
 
@@ -96,6 +96,8 @@ router.route('/meetUp/:meetUpId/comment/:commentId')
   .post(secureRoute)
   .put(secureRoute)
 
+// ENDPOINTS FOR USER 
+
 router.route('/register')
   .post(user.register)
 
@@ -113,11 +115,18 @@ router.route('/user/:id')
 router.route('/user/:id/inbox')
   .get(user.getUserInbox)
 
-router.route('/user/inbox/:commentId')
+router.route('/user/:id/inbox/:commentId')
   .get(secureRoute)
   .post(secureRoute)
   .put(secureRoute)
   .delete(secureRoute)
+ 
+router.route('/user/:userId/comment')
+  .post(secureRoute, user.makeComment)
+
+router.route('/user/:userId/comment/:commentId')
+  .put(secureRoute, user.updateComment)
+  .delete(secureRoute, user.deleteComment)  
 
 
 export default router

@@ -8,7 +8,7 @@ const MeetUpSearch = () => {
 
   const [formData, updateFormData] = useState({
     location: "",
-    date: '',
+    date: new Date().toISOString().substr(0, 10),
     categories: []
   })
 

@@ -31,6 +31,8 @@ import Footer from './components/Footer.js'
 import MeetUpSearch from './components/MeetUpSearch.js'
 import ImageUpload from './components/ImageUpload.js'
 import Geography from './components/Map.js'
+import Geography2 from './components/MapFD.js'
+
 import './styles/ollieStyle.scss'
 import 'bulma'
 import './styles/style.scss'
@@ -69,6 +71,8 @@ const App = () => {
       <Route exact path="/meetUpSearch" component={MeetUpSearch}/>
       <Route exact path="/upload-image" component={ImageUpload}/>
       <Route exact path="/map" component={Geography}/>
+      <Route exact path="/map/fd" component={Geography2}/>
+
     </Switch>
     <Footer />
   </BrowserRouter>
