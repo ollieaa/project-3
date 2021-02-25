@@ -17,13 +17,11 @@ const Profile = ({ match, history }) => {
 
   async function fetchData() {
     const { data } = await axios.get(`/api/user/${profileId}`)
-    console.log('hello')
     updateProfile(data)
     updateLoading(false)
   }
 
   useEffect(() => {
-
     fetchData()
   }, [])
 
@@ -34,7 +32,6 @@ const Profile = ({ match, history }) => {
   }
 
   async function handleDelete() {
-    //const token = localStorage.getItem('token')
     await axios.delete(`/api/user/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -201,7 +198,7 @@ const Profile = ({ match, history }) => {
             <div className="field">
               <p className="control">
                 <button
-                  onClick={() => handleComment}
+                  onClick={handleComment}
                   className="button is-info"
                 >
                   Submit
