@@ -68,11 +68,25 @@ async function updateGroup(req, res, next) {
 
 }
 
+async function joinGroup(req, res, next) {
+  const id = req.params.groupId
+  const body = req.body
+  try {
+    const updatedGroup = await Group.findById(id)
+    await updatedGroup.updateOne(body, { new: true })
+    res.send(updatedGroup)
+  } catch (err) {
+    next(err)
+  }
+
+}
+
 
 export default {
   getGroup,
   getSingleGroup,
   postGroup,
   updateGroup,
-  deleteGroup
+  deleteGroup,
+  joinGroup
 }

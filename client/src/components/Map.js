@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import 'bulma'
 import poiTypes from '../data/poiTypes'
-// import RingLoader from 'react-spinners/RingLoader'
+import RingLoader from 'react-spinners/RingLoader'
 
 
 
@@ -15,7 +15,7 @@ const Geography = () => {
   const [poiData, updatePoi] = useState([])
   const [type, updateType] = useState('All')
   const [search, updateSearch] = useState('')
-  // const [loading, updateLoading] = useState(true)
+  const [loading, updateLoading] = useState(true)
 
 
   // ? The library requires some starting state, which I'm defining here
@@ -60,15 +60,16 @@ const Geography = () => {
         })
         // ? Get data out of response, set in state.
         updatePoi(filteredPoi)
+        updateLoading(false)
       })
 
   }, [])
 
-  // if (loading) {
-  //   return <div className="container has-text-centered mt-6">
-  //     <RingLoader loading={loading} size={80} color={'#fbbc04'} />
-  //   </div>
-  // }
+  if (loading) {
+    return <div className="container has-text-centered mt-6">
+      <RingLoader loading={loading} size={80} color={'#fbbc04'} />
+    </div>
+  }
 
   function filterPoi() {
     return poiData.filter(poi => {
@@ -77,7 +78,7 @@ const Geography = () => {
     })
   }
 
-  console.log(poiData, 'weeeeeeeeeeee')
+  // console.log(poiData, 'weeeeeeeeeeee')
 
   return <MapGL
     // ? Spread out all my viewport properties into the MapGL component
@@ -90,7 +91,7 @@ const Geography = () => {
     <div className="filter-container">
 
       <select onChange={(event) => updateType(event.target.value)} >
-        <option>All</option>
+        <option>All Points of Interest</option>
         {poiTypes.map((poi, i) => {
           return <option value={poi.value} key={i}>{poi.label}</option>
         })}
@@ -127,8 +128,6 @@ export default Geography
 
 
 
-
-// export default Map
 
 // BARS
 // import React, { useEffect, useState } from 'react'

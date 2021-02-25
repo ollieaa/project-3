@@ -1,17 +1,29 @@
 // NO Map
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { isCreator } from '../lib/auth'
+import { isCreator, getLoggedInUserId } from '../lib/auth'
 import { Link } from 'react-router-dom'
 import RingLoader from 'react-spinners/RingLoader'
 
-
+import Geography from '../components/Map.js'
 
 export default function SinglePoi({ match, history }) {
 
   const poiId = match.params.poiId
+  // const latitude = match.params.latitude
+  // const longitude = match.params.longitude
+  let map
+
+
   const [poi, updatePoi] = useState({})
   const [loading, updateLoading] = useState(true)
+  const [loggedInUser, updateLoggedInUser] = useState({})
+
+  const [mapConfig, setMapConfig] = useState({
+    height: '20%',
+    width: '40%',
+    zoom: 20
+  })
 
 
   useEffect(() => {
@@ -19,7 +31,10 @@ export default function SinglePoi({ match, history }) {
       try {
         const { data } = await axios.get(`/api/poi/${poiId}`)
         updatePoi(data)
+        setMapConfig({ ...mapConfig, latitude: data.latlng[0], longitude: data.latlng[1] })
         updateLoading(false)
+        console.log(data)
+        console.log(data.latlng[0], 'cathyyyyyyyyyy')
       } catch (err) {
         console.log(err)
       }
@@ -27,10 +42,41 @@ export default function SinglePoi({ match, history }) {
     fetchPoi()
   }, [])
 
+
+  // useEffect(() => {
+  //   updatedMapConfig.latitude = data.latlng[0]
+  //   updatedMapConfig.longitude = data.latlng[2]
+  //   setMapConfig(updatedMapConfig)
+  //   // }, [poi])
+  // }, [])
+
+
+  // if (mapConfig.latitude) {
+  //   map = <div className='map-container'>
+  //     <Geography config={mapConfig} />
+  //   </div>
+  // }
+
+  async function getLoggedInUser() {
+    const userId = getLoggedInUserId()
+    const { data } = await axios.get(`/api/user/${userId}`)
+    updateLoggedInUser(data)
+  }
+
   if (loading) {
     return <div className="container has-text-centered mt-6">
       <RingLoader loading={loading} size={80} color={'#fbbc04'} />
     </div>
+  }
+
+  async function handleWishlistAdd() {
+    const token = localStorage.getItem('token')
+    const userId = getLoggedInUserId()
+
+    const newWishlist = loggedInUser.poiWishlist.concat(poiId)
+    await axios.put(`/api/user/${userId}`, { poiWishlist: newWishlist }, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
   }
 
 
@@ -42,6 +88,8 @@ export default function SinglePoi({ match, history }) {
     history.push('/poi')
   }
 
+  getLoggedInUser()
+
   if (!poi.user) {
     return null
   }
@@ -50,13 +98,14 @@ export default function SinglePoi({ match, history }) {
     <div className="column">
       <header className="card-header">
         <p className="card-header-title is-centered">{poi.name}</p>
-        <p className="card-content">{poi.types}</p>
       </header>
 
       <div className="card-content">
         <img className="card-image" src={poi.image} alt={poi.name} />
         <p className="card-content">{poi.description}</p>
         <p className="card-content">{'Fun Fact! ' + poi.funfact}</p>
+
+        {map}
 
         <p>Practical Information:</p>
 
@@ -66,13 +115,14 @@ export default function SinglePoi({ match, history }) {
           <p className="card-content">{'Opening times: ' + poi.time}</p>
           <p className="card-content">{'Contact information: ' + poi.phone}</p>
           <p className="card-content">{'Website: ' + poi.link}</p> */}
+          <p className="card-footer-item">{'Address: ' + poi.address}</p>
           <p className="card-footer-item">{'Nearest Tube station: ' + poi.tube}</p>
           <p className="card-footer-item">{'Price: ' + poi.price}</p>
           <p className="card-footer-item">{'Opening times: ' + poi.time}</p>
-          <p className="card-footer-item">{'Contact information: ' + poi.phone}</p>
+          {/* <p className="card-footer-item">{'Contact information: ' + poi.phone}</p> */}
           <p className="card-footer-item">
             <span>
-              Check our their website: <a href="#" target="_blank">{poi.link}</a>
+            Check our their <a href={poi.link} target="_blank" rel="noreferrer">website</a>
             </span>
           </p>
         </footer>
@@ -85,11 +135,18 @@ export default function SinglePoi({ match, history }) {
       {isCreator(poi.user._id) && <Link
         to={`/updatePoi/${poiId}`}
         className="button is-secondary"
-      >Update point of interest</Link>}
+      >Update Point of Interest</Link>}
       {isCreator(poi.user._id) && <button
         className="button is-danger"
         onClick={handleDelete}
       >Delete Point of Interest</button>}
+      <button className="button is-secondary" onClick={handleWishlistAdd}>Add to your wishlist!</button>
+      {/* {!loggedInUser.poiWishList.contains(poi._id) && <button className="button is-secondary" onClick={handleWishlistAdd}>Add to your wishlist!</button>} */}
+
+      <div className='map-container'>
+        <Geography config={mapConfig} />
+      </div>
+
     </div>
   </div>
 }

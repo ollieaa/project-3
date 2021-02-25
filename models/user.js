@@ -24,13 +24,15 @@ const userSchema = new mongoose.Schema({
   inbox: [ CommentSchema ]
 })
 
-userSchema.pre('save', function encryptPassword(next){
-  this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync())
-  next()
-})
-
-userSchema.methods.validatePassword = function validatePassword(inputPassword) {
-  return bcrypt.compareSync(inputPassword, this.password)
+userSchema
+  .pre('save', function hashPassword(next) {
+    if (this.isModified('password')) {
+      this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync())
+    }
+    next()
+  })
+userSchema.methods.validatePassword = function validatePassword(password) {
+  return bcrypt.compareSync(password, this.password)
 }
 
 userSchema.plugin(uniqueValidator)

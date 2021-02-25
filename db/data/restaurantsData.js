@@ -61,8 +61,11 @@ export default function getRestaurantData(users) {
                 price: data.businesses[0].price,
                 lat: data.businesses[0].coordinates.latitude,
                 long: data.businesses[0].coordinates.longitude,
-                location: data.businesses[0].location.city,
-                address: data.businesses[0].location.display_address,
+                city: data.businesses[0].location.city,
+                address1: data.businesses[0].location.address1,
+                address2: data.businesses[0].location.address2,
+                zipcode: data.businesses[0].location.zip_code,
+                country: data.businesses[0].location.country,
                 phone: data.businesses[0].phone,
                 creator: users[0]
               }
