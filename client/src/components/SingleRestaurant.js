@@ -86,20 +86,20 @@ export default function SingleRestaurant({ match, history }) {
         <div className="level-left">
           <div className="level-item">
             <div className="tags has-addons">
-              <span className="tag is-success" style={{
+              <span className="tag is-light" style={{
                 fontSize: '20px'
               }}>🙋‍♀️</span>
-              <span className="tag is-light is-success" style={{
+              <span className="tag is-light is-warning" style={{
                 fontSize: '20px'
               }}>1</span>
             </div>
           </div>
           <div className="level-item">
             <div className="tags has-addons">
-              <span className="tag is-success" style={{
+              <span className="tag is-light" style={{
                 fontSize: '20px'
               }}>⭐️</span>
-              <span className="tag is-light is-success" style={{
+              <span className="tag is-light is-warning" style={{
                 fontSize: '20px'
               }}>1</span>
             </div>
@@ -134,12 +134,12 @@ export default function SingleRestaurant({ match, history }) {
             <div className="card-content">
               <div className="content">
                 <h2 className="title is-3">{restaurant.name}</h2>
-                {restaurant.address1 && <p className="subtitle is-5 has-text-success mb-1">{restaurant.address1}</p>}
-                {restaurant.address2 && <p className="subtitle is-5 has-text-success">{restaurant.address2}</p>}
-                {restaurant.zipcode && <p className="subtitle is-5 has-text-success mt-1">{restaurant.zipcode}</p>}
+                {restaurant.address1 && <p className="subtitle is-5 has-text-warning mb-1">{restaurant.address1}</p>}
+                {restaurant.address2 && <p className="subtitle is-5 has-text-warning">{restaurant.address2}</p>}
+                {restaurant.zipcode && <p className="subtitle is-5 has-text-warning mt-1">{restaurant.zipcode}</p>}
                 <h2 className="title mt-2">{restaurant.price}</h2>
                 <div className="card-buttons">{restaurant.category.map((cat, index) => {
-                  return <div className="button is-success is-light mr-2" key={index}>{cat}</div>
+                  return <div className="button is-warning is-light mr-2" key={index}>{cat}</div>
                 })}</div>
                 <div className="subtitle is-5 mt-4"><a href={restaurant.link} target="_blank" rel="noreferrer">Find out more!</a></div>
               </div>
@@ -172,7 +172,7 @@ export default function SingleRestaurant({ match, history }) {
     // * MEET-UP SECTION
     */}
 
-    <section className="hero is-success my-4">
+    <section className="hero is-warning my-4">
       <div className="hero-body">
         <div className="container">
           <h2 className="title">Come see us! </h2>
@@ -217,7 +217,7 @@ export default function SingleRestaurant({ match, history }) {
               <div className="field">
                 <p className="control">
                   <button
-                    className="button is-success"
+                    className="button is-warning"
                   >
                     Submit
                   </button>

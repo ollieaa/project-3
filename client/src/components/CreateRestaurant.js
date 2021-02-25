@@ -68,6 +68,7 @@ export default function CreateRestaurant({ history }) {
     */}
 
     <div className="container mb-4">
+
       <div className="level mt-2">
         <div className="level-left"></div>
         <div className="level-right">
@@ -76,6 +77,7 @@ export default function CreateRestaurant({ history }) {
           </div>
         </div>
       </div>
+
 
 
       {/*
@@ -115,11 +117,7 @@ export default function CreateRestaurant({ history }) {
           </div>
         </div>
 
-
-
-
       </div>
-
     </div>
   </div>
 

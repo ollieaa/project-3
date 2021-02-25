@@ -103,93 +103,218 @@ export default function SingleGroup({ match, history }) {
   console.log(group.members)
   console.log(user)
 
-  return <div className="container">
+  return <div className="main">
 
-    <article>
-      <h1 className="title">{group.name}</h1>
-      {!group.members.includes(user) && <button className="button is-danger" onClick={handleUserJoin, handleGroupJoin}>Join group</button>}
-      {!group.members.includes(user) && <button className="button is-danger" onClick={handleGroupLeave, handleUserLeave}>Leave group</button>}
-      <div className={isNotJoined}>You are member</div>
-      <img src={group.image} alt={group.name} />
-    </article>
+    {/*
+    // * HERO SECTION
+    */}
 
-    <article>
-      <h2 className="subtitle">{`Creator: ${group.creator.firstName} ${group.creator.lastName}`}</h2>
-      <img src={group.creator.image} className="avatar"></img>
-      <button className="button is-danger">Contact {group.creator.firstName}</button>
-      <h2 className="subtitle">{`Description: ${group.description}`}</h2>
-    </article>
+    <section className="hero is-medium is-link restaurant-hero"
+      style={{
+        backgroundImage: `url(${group.image})`,
+        backgroundSize: 'cover'
+      }}>
+      <div className="hero-body restaurant-hero">
+        <p className="title is-1 restaurant-hero-text">
+          {group.name}
+        </p>
+      </div>
+    </section>
 
-    <article>
-      <button className="button is-danger">Create meet-up for {group.name}</button>
-      <button className="button is-danger">Add member to {group.name}</button>
-      {(isCreator(group.creator._id) || user.admin)
-        && <div>Your password is {group.passcode}</div>}
-    </article>
+    <div className="container">
 
-    <article>
-      <div><h2 className="title">Members section</h2></div>
-      <h2 className="subtitle">Group members are listed here with name and avatar - link to profile</h2>
-      {group.members.map((member) => {
-        return <div className="card" key={member._id}>{member.firstName}</div>
-      })}
-    </article>
+      {/*
+    // * LEVEL SECTION
+    */}
 
-    <article>
-      <div><h2 className="title">Up-coming events section</h2></div>
-      <h2 className="subtitle">All future events are listed here</h2>
-      <div className="card">Future event</div>
-      <div className="card">Future event</div>
-      <div className="card">Future event</div>
-      <div className="card">Future event</div>
-    </article>
-
-    <article>
-      <div><h2 className="title">Previous events section</h2></div>
-      <h2 className="subtitle">All previous events are listed here</h2>
-      <div className="card">Previous event</div>
-      <div className="card">Previous event</div>
-      <div className="card">Previous event</div>
-      <div className="card">Previous event</div>
-    </article>
-
-    <article>
-      <div><h2 className="title">Comments section</h2></div>
-      <h2 className="subtitle">All member comments are shown here</h2>
-      <div className="media-content">
-        <div className="field">
-          <p className="control">
-            <textarea
-              className="textarea"
-              placeholder="Make a comment.."
-            >
-            </textarea>
-          </p>
+      <div className="level mt-2">
+        <div className="level-left">
+          <div className="level-item">
+            {!group.members.includes(user) && <button className="button is-warning" onClick={handleUserJoin, handleGroupJoin}>Join group</button>}
+          </div>
+          <div className="level-item">
+            {group.members.includes(user) && <button className="button is-warning" onClick={handleGroupLeave, handleUserLeave}>Leave group</button>}
+          </div>
         </div>
-        <div className="field">
-          <p className="control">
-            <button
-              className="button is-danger"
-            >
-              Submit
-            </button>
-          </p>
+        <div className="level-right">
+          <div className="level-item">
+            {(isCreator(group.creator._id) || user.admin)
+              && <button
+                className="button is-danger"
+                onClick={handleDelete}
+              >Delete {group.name}</button>}
+          </div>
+          <div className="level-item">
+            {(isCreator(group.creator._id) || user.admin)
+              && <Link
+                to={`/groups/update-group/${group._id}`}
+                className="button is-danger"
+              >Update {group.name}</Link>}
+          </div>
         </div>
       </div>
-    </article>
 
+      {/*
+    // * BODY SECTION
+    */}
 
-    <article>
-      {(isCreator(group.creator._id) || user.admin)
-        && <button
-          className="button is-success"
-          onClick={handleDelete}
-        >Delete Group</button>}
-      {(isCreator(group.creator._id) || user.admin)
-        && <Link
-          to={`/groups/update-group/${group._id}`}
-          className="button is-success"
-        >Update Group</Link>}
-    </article>
+      <div className="columns">
+
+        <div className="column">
+
+          <div className="card group-image"
+            style={{
+              backgroundImage: `url(${group.image})`,
+              backgroundSize: 'cover'
+            }}>
+            <div className="card-content">
+              <div className="content">
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-content">
+              <div className="content">
+                <p className="is-size-4">Your group host is
+                  <span className="title is-3"> {group.creator.firstName} {group.creator.lastName}</span></p>
+              </div>
+              <div className="content">
+                <div className="section-row">
+                  <div>
+                    <img src={group.creator.image} height="100px"
+                      style={{
+                        height: '100px'
+                      }}></img>
+                  </div>
+                  <div className="creator-description ml-2">
+                    <p className="is-size-5 my-1">
+                      <span className="has-text-weight-semibold">Hometown:</span> {group.creator.homeTown}</p>
+                    <p className="is-size-5 my-1">
+                      <span className="has-text-weight-semibold">Age:</span> {group.creator.age}</p>
+                    <p className="is-size-5 my-1">
+                      <span className="has-text-weight-semibold">Interests:</span> {group.creator.interests}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="content">
+                <button className="button is-warning">Contact {group.creator.firstName}</button>
+              </div>
+              <div className="content">
+                {(isCreator(group.creator._id) || user.admin)
+                  && <div className="is-size-4">Hello, {group.creator.firstName}! Your group passcode is: <span className="has-text-danger"> {group.passcode}</span></div>}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="column is-two-thirds">
+
+          <div className="card">
+            <div className="card-content">
+              <div className="content">
+                <h2 className="title is-3">About {group.name}</h2>
+                <p className="is-size-4">{group.description}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="card mt-4">
+            <div className="card-content">
+              <div className="content">
+                <h2 className="title is-3">Group Members</h2>
+
+                <div className="columns is-multiline">
+                  {group.members.map((member) => {
+                    return <div className="column is-one-quarter" key={member._id}>
+                      <Link key={member.name} to={{
+                        pathname: `/profile/${member._id}`
+                      }}>
+                        <div className="card">
+                          <div className="card-image">
+                            <figure className="image is-4by3">
+                              <img src={member.image} />
+                            </figure>
+                          </div>
+                          <div className="card-content">
+                            <div className="content">
+                              <h2 className="title is-3">{member.firstName}</h2>
+                              <h2 className="subtitle">{member.lastName}</h2>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/*
+    // * MEET-UP SECTION
+    */}
+
+    <section className="hero is-warning my-4">
+      <div className="hero-body">
+        <div className="container">
+          <h2 className="title">Get together!</h2>
+          <h2 className="subtitle">Loose End meet-ups organised by {group.name}</h2>
+          <div className="scrolling-wrapper">
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+            <div className="scrolling-card-small">Future event</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div className="container">
+
+      {/*
+        // * COMMENTS SECTION
+      */}
+
+      <section className="section">
+        <div className="card">
+          <div className="card-content">
+            <div className="content">
+              <h2 className="title is-3">{group.name} Message Board</h2>
+              <p className="subtitle is-5">Start the conversation!</p>
+            </div>
+            <div className="media-content">
+              <div className="field">
+                <p className="control">
+                  <textarea
+                    className="textarea"
+                    placeholder="Make a comment.."
+                  >
+                  </textarea>
+                </p>
+              </div>
+              <div className="field">
+                <p className="control">
+                  <button
+                    className="button is-warning"
+                  >
+                    Submit
+            </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
   </div>
 }
