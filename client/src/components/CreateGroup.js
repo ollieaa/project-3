@@ -68,7 +68,7 @@ export default function CreateGroup({ history }) {
         <div className="level-left"></div>
         <div className="level-right">
           <div className="level-item">
-            <div className="button is-warning"><Link to={'/groups'}>Back to groups</Link></div>
+            <div className="button is-warning is-light"><Link to={'/groups'}>Back to groups</Link></div>
           </div>
         </div>
       </div>

@@ -79,7 +79,7 @@ const Restaurants = () => {
           <div className="level-item">
             <p className="subtitle is-5">
               <strong>{numberOfRestaurants}</strong> restaurants
-          </p>
+            </p>
           </div>
           <div className="level-item">
             <div className="field has-addons">
@@ -110,17 +110,21 @@ const Restaurants = () => {
             <div className="button is-warning is-light">
               <span className="icon is-small">
                 🧭
-            </span>
+              </span>
               <span className="subtitle"><Link to='/activities/create-restaurant'>See on a map</Link></span>
             </div>
           </div>
         </div>
-        <div className="level-right">
+
+        {loggedIn && <div className="level-right">
           <div className="level-item">
             <div className="subtitle">Have we missed somewhere?</div>
           </div>
-          {loggedIn && <div className="level-item"><div className="is-link is-warning is-light subtitle"><Link to='/activities/create-restaurant'>Add somewhere new!</Link></div></div>}
-        </div>
+          <div className="level-item">
+            <div className="is-link is-warning is-light subtitle"><Link to='/activities/create-restaurant'>Add somewhere new!</Link></div>
+          </div>
+        </div>}
+
       </div>
 
       {/*
@@ -128,57 +132,61 @@ const Restaurants = () => {
     */}
 
       <section className="section">
-        <div className="column">
-          {filterRestaurants().map((restaurant, index) => {
-            return <div key={index} className="column">
-              <Link to={`/activities/${restaurant._id}`}>
-                <div className="card horizontal-card">
-                  <div className="horizontal-card-image" style={{
-                    backgroundImage: `url(${restaurant.image})`,
-                    backgroundSize: 'cover'
-                  }}>
-                  </div>
-                  <div className="horizontal-card-content ml-4 my-2">
-                    <div className="media">
-                      <div className="media-content">
-                        <div className="horizontal-card-title">{restaurant.name}</div>
-                        <div className="horizontal-card-buttons">
-                          {restaurant.category.map((cat, index) => {
-                            return <div className="button is-warning is-light mr-2" key={index}>{cat}</div>
-                          })}
-                        </div>
-                        <div className="horizontal-card-text">{restaurant.price} </div>
-                        <div className="control-row">
-                          <div className="control">
-                            <div className="tags has-addons">
-                              <span className="tag is-light" style={{
-                                fontSize: '20px'
-                              }}>🙋‍♀️</span>
-                              <span className="tag is-warning is-light" style={{
-                                fontSize: '20px'
-                              }}>1</span>
-                            </div>
+        <div className="columns">
+          <div className="column"></div>
+          <div className="column is-two-thirds">
+            {filterRestaurants().map((restaurant, index) => {
+              return <div key={index} className="column">
+                <Link to={`/activities/${restaurant._id}`}>
+                  <div className="card horizontal-card">
+                    <div className="horizontal-card-image" style={{
+                      backgroundImage: `url(${restaurant.image})`,
+                      backgroundSize: 'cover'
+                    }}>
+                    </div>
+                    <div className="horizontal-card-content ml-4 my-2">
+                      <div className="media">
+                        <div className="media-content">
+                          <div className="horizontal-card-title">{restaurant.name}</div>
+                          <div className="horizontal-card-buttons">
+                            {restaurant.category.map((cat, index) => {
+                              return <div className="button is-warning is-light mr-2" key={index}>{cat}</div>
+                            })}
                           </div>
-                          <div className="control ml-4">
-                            <div className="tags has-addons">
-                              <span className="tag is-light" style={{
-                                fontSize: '20px'
-                              }}>⭐️</span>
-                              <span className="tag is-warning is-light" style={{
-                                fontSize: '20px'
-                              }}>1</span>
+                          <div className="horizontal-card-text">{restaurant.price} </div>
+                          <div className="control-row">
+                            <div className="control">
+                              <div className="tags has-addons">
+                                <span className="tag is-light" style={{
+                                  fontSize: '20px'
+                                }}>🙋‍♀️</span>
+                                <span className="tag is-warning is-light" style={{
+                                  fontSize: '20px'
+                                }}>1</span>
+                              </div>
+                            </div>
+                            <div className="control ml-4">
+                              <div className="tags has-addons">
+                                <span className="tag is-light" style={{
+                                  fontSize: '20px'
+                                }}>⭐️</span>
+                                <span className="tag is-warning is-light" style={{
+                                  fontSize: '20px'
+                                }}>1</span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                </div>
-              </Link>
-            </div>
-          })}
-          <NoRestaurants />
+                  </div>
+                </Link>
+              </div>
+            })}
+            <NoRestaurants />
+          </div>
+          <div className="column"></div>
         </div>
       </section>
 

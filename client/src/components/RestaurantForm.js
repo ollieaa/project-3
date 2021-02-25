@@ -55,7 +55,7 @@ export default function RestaurantForm({ formData, handleSubmit, handleChange, h
         value={formData.price}
       />
 
-      <button className="button mt-5 is-success">Submit</button>
+      <button className="button mt-5 is-warning">Submit</button>
     </form>
   </div>
 }

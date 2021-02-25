@@ -303,10 +303,7 @@ export default function SingleGroup({ match, history }) {
               <div className="field">
                 <p className="control">
                   <button
-                    className="button is-warning"
-                  >
-                    Submit
-            </button>
+                    className="button is-warning">Submit</button>
                 </p>
               </div>
             </div>

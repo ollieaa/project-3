@@ -146,10 +146,10 @@ export default function SingleRestaurant({ match, history }) {
             </div>
             <footer className="card-footer">
               <div className="card-footer-item">
-                <a className="is-link" onClick={handleAddToWishlist}>Add to Wishlist</a>
+                <a className="is-link is-size-5" onClick={handleAddToWishlist}>🧞‍♀️ Add to Wishlist</a>
               </div>
               <div className="card-footer-item">
-                <a className="is-link">Upvote</a>
+                <a className="is-link is-size-5">⭐️ Upvote</a>
               </div>
             </footer>
           </div>

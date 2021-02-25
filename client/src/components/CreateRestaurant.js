@@ -73,7 +73,7 @@ export default function CreateRestaurant({ history }) {
         <div className="level-left"></div>
         <div className="level-right">
           <div className="level-item">
-            <div className="button is-success"><Link to={'/activities/food-and-drink'}>Back to food and drink</Link></div>
+            <div className="button is-warning is-light"><Link to={'/activities/food-and-drink'}>Back to food and drink</Link></div>
           </div>
         </div>
       </div>
