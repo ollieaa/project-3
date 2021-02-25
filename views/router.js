@@ -26,8 +26,8 @@ router.route('/images/:imageId')
 router.route('/meetUps/:location/:date')
   .get(meetUps.getMeetUpsByLD)
 
-router.route('/meetUps/:location/:category/:date')
-  .get(meetUps.getMeetUpsByLCD)
+router.route('/meetUps/:location/:date/:category')
+  .get(meetUps.getMeetUpsByLDC)
 
 router.route('/singleMeetUp/:meetUpId')
   .get(meetUps.getSingleMeetUp)

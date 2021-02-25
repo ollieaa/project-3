@@ -2,26 +2,6 @@ import MeetUps from '../models/meetUps.js'
 import Restaurant from '../models/restaurants.js'
 import mongoose from 'mongoose'
 
-async function getMeetUpsByL(req, res, next) {
-  const location = req.params.location
-  try {
-    const meetUpsList = await MeetUps.find({location: location}).populate('creator')
-    res.send(meetUpsList)
-  } catch (err) {
-    next(err)
-  }
-}
-
-async function getMeetUpsByLC(req, res, next) {
-  const {location, category} = req.params
-  try {
-    const meetUpsList = await MeetUps.find({location: location, category: category}).populate('creator')
-    res.send(meetUpsList)
-  } catch (err) {
-    next(err)
-  }
-}
-
 async function getMeetUpsByLD(req, res, next) {
   const location = req.params.location
   const date = req.params.date
@@ -33,10 +13,10 @@ async function getMeetUpsByLD(req, res, next) {
   }
 }
 
-async function getMeetUpsByLCD(req, res, next) {
+async function getMeetUpsByLDC(req, res, next) {
   const {location, category, date} = req.params
   try {
-    const meetUpsList = await MeetUps.find({location: location, category: category, date: date}).populate('creator')
+    const meetUpsList = await MeetUps.find({location: location, tags: category, date: date}).populate('creator')
     res.send(meetUpsList)
   } catch (err) {
     next(err)
@@ -100,10 +80,9 @@ async function updateMeetUp(req, res, next) {
 }
 
 export default {
-  getMeetUpsByL,
-  getMeetUpsByLC,
+  
   getMeetUpsByLD,
-  getMeetUpsByLCD,
+  getMeetUpsByLDC,
   postMeetUp,
   getSingleMeetUp,
   deleteMeetUp,
