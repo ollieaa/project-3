@@ -6,14 +6,11 @@ import { CreateSuggestion } from './Suggestion.js'
 
 export default function CreateMeetUp({history}) {
 
-  let restaurantSuggestions = []
-  let poiSuggestions = []
-
   const [loggedInUser, updateLoggedInUser] = useState([])
   const [formData, updateFormData] = useState({
     name: '',
     location: '',
-    date: '',
+    date: new Date().toISOString().substr(0, 10),
     time: '',
     description: '',
     tags: [],
@@ -36,31 +33,35 @@ export default function CreateMeetUp({history}) {
   function handleSelect(id, suggestionType) {
     if (suggestionType.includes(id)) {
       const itemToRemove = suggestionType.findIndex(item => item === id)
-      suggestionType.splice(itemToRemove, 1)
+      updateFormData({...formData, [suggestionType]: suggestionType.splice(itemToRemove, 1)})
+      console.log(suggestionType)
     } else {
-      suggestionType.push(id)
+      updateFormData({...formData, [suggestionType]: suggestionType.push(id)})
       console.log(suggestionType)
     }
   }
 
   async function handleSubmit(event) {
-    
-    event.preventDefault()
-    const token = localStorage.getItem('token')
 
-    const newFormData = {
-      ...formData,
-      tags: formData.tags.map(tag => tag.value),
-      restaurantSuggestions: restaurantSuggestions,
-      poiSuggestions: poiSuggestions
-    }
-    try {
-      const { data } = await axios.post('/api/meetUps', newFormData, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      history.push(`/meetUp/${data._id}`)
-    } catch (err) {
-      console.log(err.response.data)
+    event.preventDefault()
+
+    if (!formData.name || !formData.location || !formData.date || !formData.time || !formData.description) {
+      alert('Please complete all of the required fields.')
+    } else {
+      const token = localStorage.getItem('token')
+      const newFormData = {
+        ...formData,
+        tags: formData.tags.map(tag => tag.value),
+      }
+      try {
+        const { data } = await axios.post('/api/meetUps',   newFormData, {
+          headers: { Authorization: `Bearer ${token}` }
+        })
+        console.log(newFormData)
+        history.push(`/meetUp/${data._id}`)
+      } catch (err) {
+        console.log(err.response.data)
+      }
     }
   }
   getLoggedInUser()
@@ -78,7 +79,8 @@ export default function CreateMeetUp({history}) {
           handleChange={handleChange}
           handleTagChange={(tags) => updateFormData({ ...formData, tags })}
           handleSubmit={handleSubmit}
-          formData={formData} 
+          formData={formData}
+          button="Create MeetUp" 
         /> 
       </div>
       <div id="createMeetUpRight">
@@ -90,13 +92,13 @@ export default function CreateMeetUp({history}) {
             <div className="content" id="createSuggestionsArea">
               {loggedInUser.restaurantWishlist.map((item) => {
 
-                return <a key={item._id} onClick={handleSelect(item._id, restaurantSuggestions)}>
+                return <a key={item._id} onClick={() => handleSelect(item._id, formData.restaurantSuggestions)}>
                   <CreateSuggestion item={item}/>
                 </a>
               })}
               {loggedInUser.poiWishlist.map((item) => {
 
-                return <a key={item._id} onClick={handleSelect(item._id, poiSuggestions)}>
+                return <a key={item._id} onClick={() => handleSelect(item._id, formData.poiSuggestions)}>
                   <CreateSuggestion item={item}/>
                 </a>
               })}

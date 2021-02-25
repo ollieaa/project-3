@@ -46,12 +46,8 @@ export function CreateSuggestion({item}) {
               <figure className="image is-4by3">
                 <img src={item.image} alt={item.name}/>
               </figure>
-            </div>
-            <div className="card-content">
-              <div className="content">
-                {item.name}
-              </div>
-            </div>
+            </div>              
+              <p>{item.name}</p>  
           </div>
 }
 

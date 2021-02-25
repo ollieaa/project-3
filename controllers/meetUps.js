@@ -2,22 +2,6 @@ import MeetUps from '../models/meetUps.js'
 import Restaurant from '../models/restaurants.js'
 import mongoose from 'mongoose'
 
-function convertToYYYYMMDD(d) {
-  date = new Date(d);
-  year = date.getFullYear();
-  month = date.getMonth()+1;
-  dt = date.getDate();
-
-  if (dt < 10) {
-      dt = '0' + dt;
-  }
-  if (month < 10) {
-      month = '0' + month;
-  }
-  return (year+'-' + month + '-'+dt);
-}
-
-
 async function getMeetUpsByL(req, res, next) {
   const location = req.params.location
   try {
@@ -73,7 +57,7 @@ async function postMeetUp(req, res, next) {
 async function getSingleMeetUp(req, res, next) {
   const id = req.params.meetUpId
   try {
-    const meetUp = await MeetUps.findById(id).populate('creator').populate('restaurantSuggestions').populate('poiSuggestions')                                         
+    const meetUp = await MeetUps.findById(id).populate('creator').populate('restaurantSuggestions').populate('poiSuggestions') .populate('comments.user')                                        
     res.send(meetUp)
   } catch (err) {
     next(err)
@@ -84,8 +68,8 @@ async function deleteMeetUp(req, res, next) {
   const id = req.params.meetUpId
   const currentUser = req.currentUser
   try {
-    const meetUpToDelete = await MeetUps.findById(id).populate('creator')
-    if (!currentUser._id.equals(meetUpToDelete.creator._id)) {
+    const meetUpToDelete = await MeetUps.findById(id)
+    if (!currentUser._id.equals(meetUpToDelete.creator)) {
       return res.status(401).send({message: 'Unauthorized Access'})
     }
     await meetUpToDelete.deleteOne()
@@ -97,18 +81,19 @@ async function deleteMeetUp(req, res, next) {
 
 async function updateMeetUp(req, res, next) {
   const id = req.params.meetUpId
-  const currentUser = req.currentUser
   const body = req.body
+  const currentUser = req.currentUser
   try {
     const meetUpToUpdate = await MeetUps.findById(id)
     if (!meetUpToUpdate) {
       return res.status(404).send({message: 'MeetUp Not Found'})
     }
-    if (!currentUser._id.equals(meetUpToUpdate.creator_id)) {
+    if (!currentUser._id.equals(meetUpToUpdate.creator)) {
       return res.status(401).send({message: 'Unauthorized Access'})
     }
     meetUpToUpdate.set(body)
     meetUpToUpdate.save()
+    res.send(meetUpToUpdate)
   } catch (err) {
     next(err)
   }
