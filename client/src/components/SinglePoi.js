@@ -74,7 +74,7 @@ export default function SinglePoi({ match, history }) {
       </header>
 
       <div className="card-content">
-        <img className="card-image" src={poi.image} alt={poi.name} />
+        <img className="card-image" src={poi.image} alt={poi.name}/>
         <p className="card-content">{poi.description}</p>
         <p className="card-content">{'Fun Fact! ' + poi.funfact}</p>
 

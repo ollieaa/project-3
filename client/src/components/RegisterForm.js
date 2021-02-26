@@ -3,7 +3,7 @@ import React from 'react'
 import interestTypes from '../data/interestTypes.js'
 import Select from 'react-select'
 
-const inputFields = ['firstName', 'lastName', 'email', 'password', 'age', 'homeTown']
+const inputFields = ['firstName', 'lastName', 'email', 'password', 'image', 'age', 'homeTown']
 
 function RegisterForm({ formData, handleSubmit, handleChange, handleTypeChange }) {
   return <div className="section">

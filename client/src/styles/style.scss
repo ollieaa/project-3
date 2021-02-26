@@ -121,6 +121,37 @@
   height: 100px
 }
 
+
+
+
+
+
+
+
+
+// POI 
+.poi {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-label {
+  background-color: black;
+  color: white;
+  padding: 1%;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.card-footer {
+  margin: 2%;
+}
+
+.fun-fact {
+  margin: 5px;
+}
 // * GROUP PAGE
 
 .group-image {

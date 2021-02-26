@@ -16,9 +16,6 @@ router.route('/images')
   .get(image.getImage)
   .post(secureRoute, image.postImage)
 
-router.route('./imagesRegister') 
-  .post(image.postImageRegister)
-
 router.route('/images/:imageId')
   .put(secureRoute, image.updateImage)
   .get(image.getSingleImage)

@@ -30,18 +30,6 @@ async function postImage(req, res, next) {
   }
 }
 
-async function postImageRegister(req, res, next) {
-  const body = req.body
-  console.log(body)
-  body.creator = req.currentUser
-  try {
-    const newImage = await Image.create(body)
-    res.status(201).send(newImage)
-  } catch (err) {
-    next(err)
-  }
-}
-
 async function updateImage(req, res, next) {
   const id = req.params.imageId
   const body = req.body
@@ -65,6 +53,5 @@ export default {
   postImage,
   getImage,
   updateImage,
-  getSingleImage,
-  postImageRegister
+  getSingleImage
 }
