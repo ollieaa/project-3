@@ -48,7 +48,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "vhttps://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
     },
     {
       name: "Evening to spare in London",

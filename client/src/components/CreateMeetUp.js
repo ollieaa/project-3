@@ -4,7 +4,6 @@ import MeetUpForm from './MeetUpForm.js'
 import {getLoggedInUserId} from '../lib/auth.js'
 import { CreateSuggestion } from './Suggestion.js'
 
-
 export default function CreateMeetUp({history}) {
 
   const [loggedInUser, updateLoggedInUser] = useState([])
@@ -32,6 +31,7 @@ export default function CreateMeetUp({history}) {
   }
 
   function handleSelect(id, suggestionType) {
+
     if (suggestionType.includes(id)) {
       const itemToRemove = suggestionType.findIndex(item => item === id)
       updateFormData({...formData, [suggestionType]: suggestionType.splice(itemToRemove, 1)})
@@ -72,44 +72,56 @@ export default function CreateMeetUp({history}) {
   }
 
   return <div id="createMeetUpPage">
-    <h1>Create Meet Up</h1>
-
-    <div id="createMeetUpSections">
-      <div id="createMeetUpLeft">
-        <MeetUpForm
-          handleChange={handleChange}
-          handleTagChange={(tags) => updateFormData({ ...formData, tags })}
-          handleSubmit={handleSubmit}
-          formData={formData}
-          updateFormData={updateFormData}
-          button="Create MeetUp" 
-        /> 
+    <section className="hero is-info is-small">
+      <div className="hero-body">
+        <p className="title">
+          Create a MeetUp
+        </p>
+        <p className="subtitle">
+          Fill out this form with details about your MeetUp
+        </p>
       </div>
-      <div id="createMeetUpRight">
-        <div className="card" id="createSuggestions">
-          <header className="card-header">
-            <h2><strong>Suggest Activities from your WishList</strong></h2>
-          </header>
-          <div className="card-content">
-            <div className="content" id="createSuggestionsArea">
-              {loggedInUser.restaurantWishlist.map((item) => {
+    </section>
 
-                return <a key={item._id} onClick={() => handleSelect(item._id, formData.restaurantSuggestions)}>
-                  <CreateSuggestion item={item}/>
-                </a>
-              })}
-              {loggedInUser.poiWishlist.map((item) => {
+    <div id="createMeetUpMain">
 
-                return <a key={item._id} onClick={() => handleSelect(item._id, formData.poiSuggestions)}>
-                  <CreateSuggestion item={item}/>
-                </a>
-              })}
+      <div id="createMeetUpColumns">
+        <div id="createMeetUpLeft">
+          <MeetUpForm
+            handleChange={handleChange}
+            handleTagChange={(tags) => updateFormData({ ...formData, tags })}
+            handleSubmit={handleSubmit}
+            formData={formData}
+            button="Create MeetUp" 
+          /> 
+        </div>
 
-            </div>
-          </div>
-        </div>        
-      </div> 
-    </div>
-    
+        <div id="createMeetUpRight">
+          <div id="createSuggestionsBox">
+            <h2>Suggest Activities from your WishList</h2>
+            <div className="card" id="createSuggestions">           
+                  {loggedInUser.restaurantWishlist.map((item) => {
+
+                    return <CreateSuggestion item={item} 
+                                             handleSelect={handleSelect}
+                                             formData={formData}
+                                             key={item._id}
+                                             suggestionType={formData.restaurantSuggestions} 
+                      />
+                  })}
+                  {loggedInUser.poiWishlist.map((item) => {
+
+                    return <CreateSuggestion item={item} 
+                                             handleSelect={handleSelect}
+                                             formData={formData}
+                                             key={item._id}
+                                             suggestionType={formData.poiSuggestions} 
+                    />
+                  })}
+            </div> 
+          </div>                
+        </div> 
+      </div>
+    </div>  
   </div>
 }

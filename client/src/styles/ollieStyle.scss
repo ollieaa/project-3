@@ -12,87 +12,113 @@
 #meetUpsPage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
 }
 #meetUpCategories {
   width: 200px;
 }
-#meetUpsColumns{
-  display: flex;
-  flex-direction: row;
-}
-#meetUpsLeft {
+#meetUpsMain {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  border: 1px solid black;
+  align-items: center;
 }
 #meetUpSearch {
   display: flex;
-  flex-direction: column;
-  border: 1px solid black;
+  flex-direction: row;
+  align-items: center;
+  width: 850px;
+  margin-top: 30px;
 }
-#meetUpsRight {
+#searchText {
+  margin-right: 10px;
+}
+#meetUpsResults {
   display: flex;
   flex-flow: row wrap;
-  flex: 3;
-  border: 1px solid black;
+  width: 960px;
+  min-height: 500px;
+  margin-top: 30px;
+  border: 1px solid rgb(222, 222, 222);
+  border-radius: 3px;
 }
 .meetUpCard {
-  width: 25%;
-  margin: 20px;
+  width: 30%;
+  margin: 15px;
+}
+.meetUpCardTag {
+  margin-left: 10px;
+}
+#meetUpCardSuggested {
+  margin-top: 10px;
 }
 #singleMeetUpPage {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-#singleMeetUpTop {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  flex: 1;
-}
+
 #singleMeetUpMain {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
-  flex: 4;
+  justify-content: center;
+  margin-top: 30px;
+}
+#singleMeetUpColumns {
+  display: flex;
+  flex-direction: row;
+  width: 1000px;
 }
 #singleMeetUpColumnLeft{
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex: 2;
-  border: 1px solid black;
+  margin-right: 30px;
+}
+#meetUpImageAndDescription {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
 }
 #description {
   width: 60%;
 }
+#meetUpImage {
+  width: 40%;
+  border-radius: 3px;
+}
+
 #singleMeetUpColumnRight{
   display: flex;
   flex-direction: column;
   flex: 1;
-  border: 1px solid black;
 }
 #postedByBox, #suggestionsBox {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  // border: 1px solid black;
+  margin-bottom: 30px;
 }
 #postedByBottom {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: 10px;
 }
 #suggestions {
   display: flex;
   flex-flow: row wrap;
 }
-.suggestion {
-  width: 33%;
+.meetUpSuggestion, .createSuggestion {
+  width: 30%;
+  margin: 5px;
+}
+.suggestionImage {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 #dateAndLocation {
   display: flex;
@@ -107,12 +133,15 @@
   display: flex;
   flex-direction: row;
 }
-#createMeetUpPage {
-
-}
-#createMeetUpSections {
+#createMeetUpMain {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+#createMeetUpColumns {
+  display: flex;
+  flex-direction: row;
+  width: 1000px;
 }
 #createMeetUpLeft {
   display: flex;
@@ -122,14 +151,12 @@
 #createMeetUpRight {
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex: 1;
 }
-#createSuggestions {
-  width: 80%;
+#createSuggestionsBox {
   margin-top: 100px; 
 }
-#createSuggestionsArea {
+#createSuggestions {
   display: flex;
   flex-flow: row wrap;
 }

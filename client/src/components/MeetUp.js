@@ -47,54 +47,64 @@ const MeetUp = ({location}) => {
       }
     }
   }
-  if (!meetUps) {
-    return null
-  }
-
+  
   return <div id="meetUpsPage">
-    <h1>MeetUps</h1>
-    <div id="meetUpsColumns">
-      <div id="meetUpsLeft">
-        <form id="meetUpSearch" onSubmit={handleSubmit}>
-          <h2>Update your search:</h2>
-          <input
-          className="input" 
-          type="text"
-          value={formData.location}
-          onChange={handleChange}
-          name={"location"}
-          placeholder="Location..."
-          />
-          <input 
-            className="input"
-            type="date"
-            value={formData.date}
-            onChange={handleChange}
-            name={"date"}
-          />
-          <div className="select">
-            <select value={formData.category}
-                    onChange={handleChange}
-                    name="category">
-              <option>All Categories</option>
-              <option>Restaurants</option>
-              <option>Culture</option>
-              <option>Tours</option>
-              <option>Walking</option>
-            </select>
-          </div>
-          <button className="button is-warning">Search</button>
-        </form>
+    <section className="hero is-warning">
+      <div className="hero-body">
+        <p className="title">
+          MeetUps
+        </p>
+        <p className="subtitle">
+          Search for MeetUps at your location.
+        </p>
       </div>
+    </section>
+    
+    <div id="meetUpsMain">
 
-      <div id="meetUpsRight">
-        {meetUps.map((meetUp) => {
+      <form id="meetUpSearch" onSubmit={handleSubmit}>      
+        <h2 id="searchText">Search:</h2> 
+        <input
+        className="input is-primary" 
+        type="text"
+        value={formData.location}
+        onChange={handleChange}
+        name={"location"}
+        placeholder="Location..."
+        />            
+        <input 
+          className="input is-primary"
+          type="date"
+          value={formData.date}
+          onChange={handleChange}
+          name={"date"}
+        />             
+        <div className="select is-primary">
+          <select value={formData.category}
+                  onChange={handleChange}
+                  name="category"
+                  >
+            <option>All Categories</option>
+            <option>Restaurants</option>
+            <option>Culture</option>
+            <option>Tours</option>
+            <option>Walking</option>
+          </select>
+        </div>              
+        <button className="button is-warning">Search</button>           
+      </form>
+      <div id="meetUpsResults">
+        {meetUps.length === 0 && 
+        <p>Sorry, no meetUps found for your particular search.</p>}
+        {meetUps.length > 0 &&
+        meetUps.map((meetUp) => {
           return <Link key={meetUp._id} className="meetUpCard" to={`/meetUp/${meetUp._id}`}>
             <div className="card">
               <div className="card-image">
-                <figure className="image is-4by3">
-                  <img src={meetUp.creator.image} 
-                       alt={meetUp.creator.firstName + ' ' + meetUp.creator.lastName}/>
+                <figure className="image is-4by3" style={{
+                    backgroundImage: `url(${meetUp.image})`,
+                    backgroundSize: 'cover'
+                  }}>
                 </figure>
               </div>
               <div className="card-content">
@@ -106,18 +116,17 @@ const MeetUp = ({location}) => {
                   </figure>
                   </div>
                   <div className="media-content">
-                    <h2>{meetUp.name}</h2>
-                    <span>{meetUp.location}</span>
-                    <span>{dateOnly(meetUp.date)}</span>
+                    <h2><strong>{meetUp.name}</strong></h2>
+                    <p>{meetUp.creator.firstName + ' ' + meetUp.creator.lastName} </p>
                   </div>
                 </div>
                 <div className="content">
                   {meetUp.tags.map((tag) => {
-                    return <div key={tag} className="tag">
+                    return <div key={tag} className="meetUpCardTag tag">
                       {tag}
                     </div>
                   })}
-                  <p>{meetUp.restaurantSuggestions.length + meetUp.poiSuggestions.length} suggested activities..</p>
+                  <p id="meetUpCardSuggested"><strong>{meetUp.restaurantSuggestions.length + meetUp.poiSuggestions.length}</strong> suggested activities..</p>
                 </div>
               </div>
             </div>
