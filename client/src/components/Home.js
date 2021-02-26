@@ -32,7 +32,7 @@ const Home = () => {
   }
 
   const heroStyle = {
-    height: '70vh'
+    height: '50vh'
   }
 
   const rightStyle = {

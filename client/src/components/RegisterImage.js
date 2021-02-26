@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-import RegisterForm from '././RegisterForm.js'
+import ImageUpload from './ImageUpload.js'
 
 function Register({ history }) {
+
+  const id = getLoggedInUserId()
 
   const logo = '././images/logo.png'
 
@@ -18,9 +20,7 @@ function Register({ history }) {
     interests: []
   })
 
-  function handleChange(event) {
-    updateFormData({ ...formData, [event.target.name]: event.target.value })
-  }
+
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -31,7 +31,7 @@ function Register({ history }) {
     }
 
     try {
-      const { data } = await axios.post('/api/register', newFormData,)
+      const { data } = await axios.put(`/api/user/${id}`, newFormData,)
       console.log(data._id)
       history.push('/login')
     } catch (err) {
@@ -44,7 +44,8 @@ function Register({ history }) {
   }
 
   const rightStyle = {
-    marginTop: '35%'
+    marginTop: '15%',
+    marginBottom: '5%'
   }
 
   const titleStyle = {
@@ -55,13 +56,12 @@ function Register({ history }) {
     <div className="columns has-text-centered">
       <div className="column is-half">
         <div>
-          <h1 className="title has-text-centered is-size-1 mt-5">Join Our Family</h1>
+          <h1 className="title has-text-centered is-size-1 mt-5">Upload Your Photo</h1>
         </div>
-        <RegisterForm
-          handleChange={handleChange}
-          handleTypeChange={(interests) => updateFormData({ ...formData, interests })}
-          handleSubmit={handleSubmit}
+        <ImageUpload
           formData={formData}
+          updateFormData={updateFormData}
+          handleSubmit={handleSubmit}
         />
       </div>
       <div className="column is-half">
