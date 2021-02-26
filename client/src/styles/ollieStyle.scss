@@ -1,3 +1,17 @@
+#meetUpSearchHero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#meetUpHeroBackground {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 78%), url("https://blog.citypop.com/sites/default/files/styles/article_full/public/2019-11/City%20Pop%20How%20To%20Meet%20New%20People-2.jpg?itok=K0sPSEci");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#meetUpSearchTitle {
+  color: white;
+}
 .meetUpSearchRow {
   display:flex;
   flex-direction: row;
@@ -12,124 +26,161 @@
 #meetUpsPage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
 }
 #meetUpCategories {
   width: 200px;
 }
-#meetUpsColumns{
-  display: flex;
-  flex-direction: row;
-}
-#meetUpsLeft {
+#meetUpsMain {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  border: 1px solid black;
+  align-items: center;
 }
 #meetUpSearch {
   display: flex;
-  flex-direction: column;
-  border: 1px solid black;
+  flex-direction: row;
+  align-items: center;
+  width: 850px;
+  margin-top: 30px;
 }
-#meetUpsRight {
+#searchText {
+  margin-right: 10px;
+}
+#meetUpsResults {
   display: flex;
   flex-flow: row wrap;
-  flex: 3;
-  border: 1px solid black;
+  width: 960px;
+  min-height: 500px;
+  margin-top: 30px;
+  border: 1px solid rgb(222, 222, 222);
+  border-radius: 3px;
 }
 .meetUpCard {
-  width: 25%;
-  margin: 20px;
+  width: 30%;
+  margin: 15px;
+}
+.meetUpCardTag {
+  margin-left: 10px;
+}
+#meetUpCardSuggested {
+  margin-top: 10px;
 }
 #singleMeetUpPage {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-#singleMeetUpTop {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  flex: 1;
+.singleMeetUpTag {
+  margin-right: 10px;
+}
+#buttons {
+  align-self: flex-end;
+}
+#meetUpDeleteButton {
+  margin-left: 10px;
 }
 #singleMeetUpMain {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
-  flex: 4;
+  justify-content: center;
+  margin-top: 30px;
+}
+#singleMeetUpColumns {
+  display: flex;
+  flex-direction: row;
+  width: 1000px;
 }
 #singleMeetUpColumnLeft{
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex: 2;
-  border: 1px solid black;
+  margin-right: 30px;
+}
+#meetUpImageAndDescription {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
 }
 #description {
   width: 60%;
+}
+#meetUpImage {
+  width: 250px;
+  border-radius: 3px;
+}
+.meetUpComment {
+  display: flex;
+  flex-direction: row;
 }
 #singleMeetUpColumnRight{
   display: flex;
   flex-direction: column;
   flex: 1;
-  border: 1px solid black;
 }
 #postedByBox, #suggestionsBox {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  // border: 1px solid black;
+  margin-bottom: 30px;
+}
+#commentsTitle {
+  margin-bottom: 30px;
 }
 #postedByBottom {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: 10px;
 }
 #suggestions {
   display: flex;
   flex-flow: row wrap;
 }
-.suggestion {
-  width: 33%;
+.meetUpSuggestion, .createSuggestion {
+  width: 30%;
+  margin: 5px;
+}
+.suggestionImage {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 #dateAndLocation {
   display: flex;
   flex-direction: row;
 }
-#tagsAndButtons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 #meetUpTags {
   display: flex;
   flex-direction: row;
 }
-#createMeetUpPage {
-
-}
-#createMeetUpSections {
+#createMeetUpMain, #updateMeetUpMain {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
-#createMeetUpLeft {
+#createMeetUpColumns, #updateMeetUpColumns {
+  display: flex;
+  flex-direction: row;
+  width: 1000px;
+}
+#createMeetUpLeft, #updateMeetUpLeft {
   display: flex;
   flex-direction: column;
   flex: 2;
 }
-#createMeetUpRight {
+#createMeetUpRight, #updateMeetUpRight {
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex: 1;
 }
-#createSuggestions {
-  width: 80%;
+#createSuggestionsBox,
+#updateSuggestionsBox {
   margin-top: 100px; 
 }
-#createSuggestionsArea {
+#createSuggestions, #updateSuggestions {
   display: flex;
   flex-flow: row wrap;
 }
