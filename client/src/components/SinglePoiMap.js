@@ -109,20 +109,37 @@ export default function SinglePoiMap({ match, history }) {
 
 
         <div className="card-content">
-          <p className="subtitle">{poi.description}</p>
 
-          <div className="poi-image">
-            <img className="poi card-image" src={poi.image} alt={poi.name} />
+          <div className="content">
+            <div className="control">
+              <p className="subtitle">{poi.description}</p>
+            </div>
+          </div>
 
+          <div className="content">
+            <div className="columns">
+              <div className="column"></div>
+              <div className="column">
+                <div className="control poi-image-holder">
+                  <img className="image" src={poi.image} alt={poi.name} />
+                </div>
+              </div>
+              <div className="column"></div>
+            </div>
+          </div>
+
+          <div className="content">
+            <div className="control">
+              <p className="title">Fun Fact!</p>
+              <p className="subtitle">{poi.funfact}</p>
+            </div>
           </div>
 
 
-          <p className="title fun-fact">Fun Fact!</p>
-          <p className="subtitle">{poi.funfact}</p>
-
           {map}
 
-          <p className="title">Practical Information:</p>
+
+          <p className="subtitle">Practical Information:</p>
 
           <footer className="card-footer">
 
@@ -139,6 +156,7 @@ export default function SinglePoiMap({ match, history }) {
           </footer>
 
           <div className='container is-half'>
+            {/* <Geography config={mapConfig} /> */}
             <MapGL
               {...mapConfig}
               onViewportChange={(mapConfig) => setMapConfig(mapConfig)}
@@ -154,6 +172,11 @@ export default function SinglePoiMap({ match, history }) {
             </MapGL>
           </div>
         </div>
+
+
+
+
+
 
 
         <Link to={`/profile/${poi.user._id}`}><h2>{`Posted by: ${poi.user.firstName}`}</h2></Link>

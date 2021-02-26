@@ -23,7 +23,6 @@
   width: 200px;
   height: 300px;
   margin: 10px;
-  border: 1px solid gray;
 }
 
 // * IMAGE UPLOAD
@@ -137,6 +136,12 @@
   display: flex;
   // position: absolute;
   
+}
+
+.poi-image-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .map-label {

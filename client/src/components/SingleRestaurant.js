@@ -16,7 +16,7 @@ export default function SingleRestaurant({ match, history }) {
   const loggedIn = getLoggedInUserId()
   const [mapConfig, setMapConfig] = useState({
     height: '45vh',
-    width: '100vh',
+    width: '82vh',
     zoom: 16
   })
   let map
@@ -158,7 +158,7 @@ export default function SingleRestaurant({ match, history }) {
                 {restaurant.zipcode && <p className="subtitle is-5 has-text-warning mt-1">{restaurant.zipcode}</p>}
                 <h2 className="title mt-2">{restaurant.price}</h2>
                 <div className="card-buttons">{restaurant.category.map((cat, index) => {
-                  return <div className="button is-warning is-light mr-2" key={index}>{cat}</div>
+                  return <div className="button is-success is-light mr-2" key={index}>{cat}</div>
                 })}</div>
                 <div className="subtitle is-5 mt-4"><a href={restaurant.link} target="_blank" rel="noreferrer">Find out more!</a></div>
               </div>
@@ -177,6 +177,9 @@ export default function SingleRestaurant({ match, history }) {
           <div className="card">
             <div className="card-content">
               <div className="content">
+                <h2 className="title">Find us here!</h2>
+              </div>
+              <div className="content">
                 <div className='map-container'>
                   <MapGL
                     {...mapConfig}
@@ -187,7 +190,7 @@ export default function SingleRestaurant({ match, history }) {
                       latitude={restaurant.lat}
                       longitude={restaurant.long}
                     >
-                      <h5 className="map-label">{restaurant.name}</h5>
+                      <h1 className="map-label">👉</h1>
 
                     </Marker>
                   </MapGL>

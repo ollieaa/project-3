@@ -263,15 +263,49 @@ export default function SingleGroup({ match, history }) {
         <div className="container">
           <h2 className="title">Get together!</h2>
           <h2 className="subtitle">Loose End meet-ups organised by {group.name}</h2>
+          <div className="button is-danger">Create meetup for {group.name}</div>
+          
           <div className="scrolling-wrapper">
-            <div className="scrolling-card-small">Future event</div>
-            <div className="scrolling-card-small">Future event</div>
-            <div className="scrolling-card-small">Future event</div>
-            <div className="scrolling-card-small">Future event</div>
-            <div className="scrolling-card-small">Future event</div>
-            <div className="scrolling-card-small">Future event</div>
-            <div className="scrolling-card-small">Future event</div>
-            <div className="scrolling-card-small">Future event</div>
+
+            <div className="scrolling-card-small card">
+              <div className="card-image">
+                <figure className="image is-4by3">
+                  <img src={group.image} />
+                </figure>
+              </div>
+              <div className="card-content">
+                <div className="content">
+                  <h2 className="title is-3">{group.name}</h2>
+                  <h2 className="subtitle">Meet-up</h2>
+                </div>
+              </div>
+            </div>
+            <div className="scrolling-card-small card">
+              <div className="card-image">
+                <figure className="image is-4by3">
+                  <img src={group.image} />
+                </figure>
+              </div>
+              <div className="card-content">
+                <div className="content">
+                  <h2 className="title is-3">{group.name}</h2>
+                  <h2 className="subtitle">Meet-up</h2>
+                </div>
+              </div>
+            </div>
+            <div className="scrolling-card-small card">
+              <div className="card-image">
+                <figure className="image is-4by3">
+                  <img src={group.image} />
+                </figure>
+              </div>
+              <div className="card-content">
+                <div className="content">
+                  <h2 className="title is-3">{group.name}</h2>
+                  <h2 className="subtitle">Meet-up</h2>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

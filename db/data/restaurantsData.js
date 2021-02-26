@@ -38,11 +38,11 @@ export default function getRestaurantData(users) {
   ]
 
 
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 2; i++) {
     const offset = i + 1
 
     for (let i = 1; i <= foodArray.length - 1; i++) {
-      const timeout = (3000 * i) + 3000
+      const timeout = (2000 * i) + 2000
       
       console.log(foodArray[i])
 

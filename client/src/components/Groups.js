@@ -54,12 +54,12 @@ const Groups = ({ history }) => {
     // * TITLE SECTION
     */}
 
-    <section className="hero is-small is-warning">
+    <section className="hero is-warning">
       <div className="hero-body">
-        <p className="title has-text-centered">
+        <p className="title">
           Groups
         </p>
-        <p className="subtitle has-text-centered">
+        <p className="subtitle">
           Explore new places, together!
         </p>
       </div>

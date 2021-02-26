@@ -52,12 +52,12 @@ export default function CreateRestaurant({ history }) {
     // * TITLE SECTION
     */}
 
-    <section className="hero is-small is-warning">
+    <section className="hero is-warning">
       <div className="hero-body">
-        <p className="title has-text-centered">
+        <p className="title">
           Know a great place?
         </p>
-        <p className="subtitle has-text-centered">
+        <p className="subtitle">
           What are you waiting for? Add it!
         </p>
       </div>
