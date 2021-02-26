@@ -1,16 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { getLoggedInUserId } from '../lib/auth.js'
-
 import RandomRestaurant from './RandomEvent.js'
 import RandomPoi from './RandomPoi.js'
+
+const logo = '././images/logo.png'
 
 const Home = () => {
 
   const loggedIn = getLoggedInUserId()
+  const pages = '././images/pages.png'
+  const pin = '././images/pin.png'
+  const edition = '././images/edition.png'
 
   const logoStyle = {
-    width: '500px'
+    width: '300px'
   }
 
   const backgroundStyle = {
@@ -28,7 +32,7 @@ const Home = () => {
   }
 
   const heroStyle = {
-    height: '70vh'
+    height: '50vh'
   }
 
   const rightStyle = {
@@ -43,16 +47,21 @@ const Home = () => {
     width: '50px'
   }
 
+  const titleStyle = {
+    marginRight: '9%',
+    color: '#FFB602'
+  }
+
   return <main>
     <div>
       <div className="columns" style={heroStyle}>
         <div className="column has-text-right" style={leftStyle}>
-          <img src="https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg" style={logoStyle} />
-          <h1 className="title"></h1>
+          <img src={logo} style={logoStyle} />
+          <h1 className="title is-size-1" style={titleStyle}>Loose End</h1>
         </div>
         <div className="column has-text-left pl-6" style={rightStyle}>
-          <h2 className="title is-size-1">New Places.</h2>
-          <h2 className="title is-size-1">New People.</h2>
+          <h2 className="title is-size-2">New Places.</h2>
+          <h2 className="title is-size-2">New People.</h2>
           {!loggedIn && <Link className="button is-warning" to={'/register'}>Sign Up</Link>}
         </div>
       </div>
@@ -83,19 +92,19 @@ const Home = () => {
     <div style={backgroundStyle}>
       <div className="columns has-text-centered pt-3 pb-4 m-0">
         <div className="column">
-          <img src={'././images/pages.png'} style={pinStyle} />
+          <img src={pages} style={pinStyle} />
           <h2 className="is-size-4"><strong>Sign Up</strong></h2>
-          <h4>Sign up</h4>
+          <h4>A Loose End account is your passport to what’s happening in the world. Sign up to find local hidden gems and meet great people along the way</h4>
         </div>
         <div className="column">
-          <img src={'././images/pin.png'} style={pinStyle} />
+          <img src={pin} style={pinStyle} />
           <h2 className="is-size-4"><strong>Browse</strong></h2>
-          <h4>Browers our great selection of meet ups, local hotspots, things to do</h4>
+          <h4>Browse the great selection of already existing meetups, local hotspots, things to do and groups. Your only one click away from your next adventure</h4>
         </div>
         <div className="column">
-          <img src={'././images/edition.png'} style={pinStyle} />
+          <img src={edition} style={pinStyle} />
           <h2 className="is-size-4"><strong>Create</strong></h2>
-          <h4>Create you own meet ups and points of interest</h4>
+          <h4>Feeling at a Loose End, create your own meet ups, points of interests and groups. </h4>
         </div>
       </div>
       <div className="pb-3">
