@@ -62,62 +62,27 @@ export default function Update({ history, match }) {
     }
   }
 
-  return <PoiForm
-    handleChange={handleChange}
-    handleTypeChange={(types) => updateFormData({ ...formData, types })}
-    handleSubmit={handleSubmit}
-    onChange={handleChange}
-    formData={formData}
-  />
-  // return <div className="section">
-  //   <div className="container">
-  //     <form onSubmit={handleSubmit}>
-  //       {inputFields.map(field => {
-  //         return <div key={field} className="field">
-  //           <label className="label">
-  //             {field[0].toUpperCase() + field.slice(1)}
-  //           </label>
-  //           <div className="control">
-  //             <input
-  //               className="input"
-  //               type="text"
-  //               value={formData[field]}
-  //               onChange={handleChange}
-  //               name={field}
-  //             />
-  //           </div>
-  //         </div>
-  //       })}
-  //       <select name="types" onChange={handleTypesChange}>
-  //         <option value="gallery">Gallery</option>
-  //         <option value="gardens">Gardens</option>
-  //         <option value="historic">Historic Site</option>
-  //         <option value="landmark">Landmark</option>
-  //         <option value="market">Market</option>
-  //         <option value="Monument">Monument</option>
-  //         <option value="museum">Museum</option>
-  //         <option value="Palace">Palace</option>
-  //         <option value="park">Park</option>
-  //         <option value="Planetarium">Planetarium</option>
-  //         <option value="art">Public Art</option>
-  //         <option value="religious">Religious Building</option>
-  //         <option value="square">Square</option>
-  //         <option value="statue">Statue</option>
-  //         <option value="Other">Other</option>
+  return <div>
+    <section className="hero is-info is-small">
+      <div className="hero-body">
+        <p className="title">
+          Add your own Point of Interest!
+        </p>
+        <p className="subtitle">
+          Stumble across something interesting during your time in London? Fill out the form below to share with your fellow travelers!
+        </p>
+      </div>
+    </section>
+    <PoiForm
+      handleChange={handleChange}
+      handleTypeChange={(types) => updateFormData({ ...formData, types })}
+      handleSubmit={handleSubmit}
+      onChange={handleChange}
+      formData={formData}
+    />
+  </div>
 
 
-  //       </select>
-  //       <button className="button">Submit</button>
-  //     </form>
-  //   </div>
-  // </div>
+
 }
 
-
-// import React from 'react'
-
-// const UpdateActivity = () => {
-//   return <h1>Update Activity</h1>
-// }
-
-// export default UpdateActivity
