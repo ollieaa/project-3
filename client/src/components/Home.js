@@ -4,14 +4,16 @@ import { getLoggedInUserId } from '../lib/auth.js'
 import RandomRestaurant from './RandomEvent.js'
 import RandomPoi from './RandomPoi.js'
 
-const logo = '././images/logo.png'
+import logo from '../images/logo.png'
+import pin from '../images/pin.png'
+import edition from  '../images/edition.png'
+import pages from '../images/pages.png'
 
 const Home = () => {
 
   const loggedIn = getLoggedInUserId()
-  const pages = '././images/pages.png'
-  const pin = '././images/pin.png'
-  const edition = '././images/edition.png'
+ 
+  
 
   const logoStyle = {
     width: '300px'

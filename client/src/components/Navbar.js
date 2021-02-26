@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import { getLoggedInUserId } from '../lib/auth.js'
 import axios from 'axios'
+import logo from '../images/logo.png'
 
 function Navbar({ history }) {
-
-  const logo = '././images/logo.png'
 
   const [loggedInUser, updateLoggedInUser] = useState([])
 

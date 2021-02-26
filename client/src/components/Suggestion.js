@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import tick from '../images/tick.png'
 
 export function RestaurantSuggestion({suggestions}) {
   return suggestions.map((suggestion) => {
@@ -35,7 +36,6 @@ export function PoiSuggestion({suggestions}) {
 
 export function CreateSuggestion({item, handleSelect, formData, suggestionType}) {
 
-  const tick = '../images/tick.png'
 
   return <a className="card createSuggestion" 
             onClick={() => handleSelect(item._id, suggestionType)}>
