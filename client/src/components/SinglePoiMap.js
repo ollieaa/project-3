@@ -93,7 +93,7 @@ export default function SinglePoiMap({ match, history }) {
     </section>
 
     <div className="columns is-vcentered">
-      <div className="column has-text-centered is-vcentered">
+      <div className="column has-text-centered is-centered">
         <div className="poi-buttons">
           {isCreator(poi.user._id) && <Link
             to={`/updatePoi/${poiId}`}
@@ -111,8 +111,10 @@ export default function SinglePoiMap({ match, history }) {
         <div className="card-content">
           <p className="subtitle">{poi.description}</p>
 
+          <div className="poi-image">
+            <img className="poi card-image" src={poi.image} alt={poi.name} />
 
-          <img className="poi card-image" src={poi.image} alt={poi.name} />
+          </div>
 
 
           <p className="title fun-fact">Fun Fact!</p>
@@ -159,5 +161,3 @@ export default function SinglePoiMap({ match, history }) {
     </div>
   </div>
 }
-
-
