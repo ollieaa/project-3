@@ -3,7 +3,7 @@ import uniqueValidator from 'mongoose-unique-validator'
 import Comment from '../models/comment.js'
 
 const poiSchema = new mongoose.Schema({
-  category: { type: String, required: true },
+  category: { type: String },
   name: { type: String, required: true, unique: true },
   tube: { type: String, required: true },
   description: { type: String, required: true },

@@ -44,10 +44,11 @@ function CreatePoi({ history }) {
   }
 
   return <div className="container">
-    <section className="hero is-warning">
+
+    <section className="hero is-info is-small">
       <div className="hero-body">
         <p className="title">
-          Add your own Point of Interest!
+        Add your own Point of Interest!
         </p>
         <p className="subtitle">
         Stumble across something interesting during your time in London? Fill out the form below to share with your fellow travelers!
