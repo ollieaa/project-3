@@ -6,6 +6,8 @@ import { CreateSuggestion } from './Suggestion.js'
 
 export default function CreateMeetUp({history}) {
 
+  
+
   const [loggedInUser, updateLoggedInUser] = useState([])
   const [formData, updateFormData] = useState({
     name: '',
@@ -99,21 +101,21 @@ export default function CreateMeetUp({history}) {
           <div id="createSuggestionsBox">
             <h2>Suggest Activities from your WishList</h2>
             <div className="card" id="createSuggestions">           
-                  {loggedInUser.restaurantWishlist.map((item) => {
+                  {loggedInUser.restaurantWishlist.map((item, i) => {
 
                     return <CreateSuggestion item={item} 
                                              handleSelect={handleSelect}
                                              formData={formData}
-                                             key={item._id}
+                                             key={i}
                                              suggestionType={formData.restaurantSuggestions} 
                       />
                   })}
-                  {loggedInUser.poiWishlist.map((item) => {
+                  {loggedInUser.poiWishlist.map((item, i) => {
 
                     return <CreateSuggestion item={item} 
                                              handleSelect={handleSelect}
                                              formData={formData}
-                                             key={item._id}
+                                             key={i}
                                              suggestionType={formData.poiSuggestions} 
                     />
                   })}

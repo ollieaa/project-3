@@ -65,7 +65,7 @@ const MeetUp = ({location}) => {
       <form id="meetUpSearch" onSubmit={handleSubmit}>      
         <h2 id="searchText">Search:</h2> 
         <input
-        className="input is-primary" 
+        className="input" 
         type="text"
         value={formData.location}
         onChange={handleChange}
@@ -73,13 +73,13 @@ const MeetUp = ({location}) => {
         placeholder="Location..."
         />            
         <input 
-          className="input is-primary"
+          className="input"
           type="date"
           value={formData.date}
           onChange={handleChange}
           name={"date"}
         />             
-        <div className="select is-primary">
+        <div className="select">
           <select value={formData.category}
                   onChange={handleChange}
                   name="category"
@@ -103,7 +103,8 @@ const MeetUp = ({location}) => {
               <div className="card-image">
                 <figure className="image is-4by3" style={{
                     backgroundImage: `url(${meetUp.image})`,
-                    backgroundSize: 'cover'
+                    backgroundSize: 'cover',
+                    borderRadius: '3px'
                   }}>
                 </figure>
               </div>

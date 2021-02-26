@@ -54,7 +54,7 @@ const SingleMeetUp = ({match, history}) => {
   }
 
   return <div id="singleMeetUpPage">
-    <section className="hero is-info is-small">
+    <section className="hero is-warning is-small">
       <div className="hero-body">
         <p className="subtitle">
           {dateOnly(meetUp.date)}
@@ -68,7 +68,7 @@ const SingleMeetUp = ({match, history}) => {
         
         <div id="meetUpTags">
           {meetUp.tags.map((tag) => {
-            return <div key={tag} className="tag singleMeetUpTag">
+            return <div key={tag} className="tag is-success is-light singleMeetUpTag">
               {tag[0].toUpperCase() + tag.slice(1)}
             </div>
           })}
@@ -78,7 +78,7 @@ const SingleMeetUp = ({match, history}) => {
     <div id="buttons">
             {isCreator(meetUp.creator._id) && <Link
             to={`/updateMeetUp/${meetUp._id}`}
-            className="button is-warning"
+            className="button is-danger is-light"
             >Update MeetUp</Link>}
             {isCreator(meetUp.creator._id) && <button
             className="button is-danger"

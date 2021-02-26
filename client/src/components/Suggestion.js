@@ -35,6 +35,7 @@ export function PoiSuggestion({suggestions}) {
 
 export function CreateSuggestion({item, handleSelect, formData, suggestionType}) {
 
+  const tick = '../images/tick.png'
 
   return <a className="card createSuggestion" 
             onClick={() => handleSelect(item._id, suggestionType)}>
@@ -42,7 +43,7 @@ export function CreateSuggestion({item, handleSelect, formData, suggestionType})
                 backgroundImage: `url(${item.image})`,
                 backgroundSize: 'cover'
               }}>
-          {suggestionType.includes(item._id) && <img src={'../images/tick.png'}/>}
+          {suggestionType.includes(item._id) && <img src={tick}/>}
         </div>              
         <p>{item.name.substr(0,22)}</p>
       </a>
