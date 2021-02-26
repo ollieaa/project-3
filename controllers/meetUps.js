@@ -44,6 +44,16 @@ async function getSingleMeetUp(req, res, next) {
   }
 }
 
+async function getSingleMeetUpUpdate(req, res, next) {
+  const id = req.params.meetUpId
+  try {
+    const meetUp = await MeetUps.findById(id).populate('creator').populate('comments.user')                                        
+    res.send(meetUp)
+  } catch (err) {
+    next(err)
+  }
+}
+
 async function deleteMeetUp(req, res, next) {
   const id = req.params.meetUpId
   const currentUser = req.currentUser
@@ -79,12 +89,66 @@ async function updateMeetUp(req, res, next) {
   }
 }
 
+async function makeComment(req, res, next) {
+  const commentData = req.body
+  const meetUpId = req.params.meetUpId
+  commentData.user = req.currentUser
+
+  try {
+    const meetUp = await MeetUps.findById(meetUpId).populate('creator').populate('restaurantSuggestions').populate('poiSuggestions') .populate('comments.user')
+    if (!meetUp) {
+      return res.status(404).send({ message: 'MeetUp not found' })
+    }
+
+    meetUp.comments.push(commentData)
+
+    const savedMeetUp = await meetUp.save()
+
+    res.send(savedMeetUp)
+
+  } catch (err) {
+    next(err)
+  }
+}
+
+async function deleteComment(req, res, next) {
+  const commentData = req.body
+  const currentUser = req.currentUser
+  const { commentId, meetUpId } = req.params
+
+  try {
+    const meetUp = await MeetUps.findById(meetUpId).populate('creator').populate('restaurantSuggestions').populate('poiSuggestions') .populate('comments.user')
+
+    if (!meetUp) {
+      return res.status(404).send({ message: 'MeetUp not found' })
+    }
+
+    const comment = meetUp.comments.id(commentId)
+
+    if (!comment.user.equals(currentUser._id)) {
+      return res.status(401).send({ message: 'Unauthorized, this is not your comment to change' })
+    }
+
+    comment.remove(commentData)
+
+    const removedMeetUp = await meetUp.save()
+
+    res.send(removedMeetUp)
+
+  } catch (err) {
+    next(err)
+  }
+}
+
 export default {
   
   getMeetUpsByLD,
   getMeetUpsByLDC,
   postMeetUp,
   getSingleMeetUp,
+  getSingleMeetUpUpdate,
   deleteMeetUp,
-  updateMeetUp
+  updateMeetUp,
+  makeComment,
+  deleteComment
 }

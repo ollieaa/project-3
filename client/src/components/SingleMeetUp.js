@@ -35,18 +35,18 @@ const SingleMeetUp = ({match, history}) => {
 
   async function handleComment() {
 
-    await axios.post(`/api/meetUp/${meetUpId}/comment`, {text}, {
+    const {data} = await axios.post(`/api/meetUp/${meetUpId}/comment`, {text}, {
       headers: { Authorization: `Bearer ${token}`}
     })
     updateText('')
-    updateMeetUp(response.data)
+    updateMeetUp(data)
   }
   async function handleDeleteComment(commentId) {
 
-    await axios.delete(`/api/meetUp/${meetUpId}/comment/${commentId}`, {
+    const {data} = await axios.delete(`/api/meetUp/${meetUpId}/comment/${commentId}`, {
       headers: { Authorization: `Bearer ${token}`}
     })
-    updateMeetUp(response.data)
+    updateMeetUp(data)
   }    
 
   if (!meetUp.date) {
@@ -63,35 +63,38 @@ const SingleMeetUp = ({match, history}) => {
         <strong>{meetUp.name}</strong>
         </p>
         <p className="subtitle">
-        {meetUp.location[0].toUpperCase() + meetUp.location.slice(1)}
+        {meetUp.location[0].toUpperCase() + meetUp.location.slice(1) + ",  " + meetUp.time}
         </p>
-        <div id="tagsAndButtons">
-          <div id="meetUpTags">
-            {meetUp.tags.map((tag) => {
-              return <div key={tag} className="tag">
-                {tag[0].toUpperCase() + tag.slice(1)}
-              </div>
-            })}
-          </div>
-          <div id="buttons">
+        
+        <div id="meetUpTags">
+          {meetUp.tags.map((tag) => {
+            return <div key={tag} className="tag singleMeetUpTag">
+              {tag[0].toUpperCase() + tag.slice(1)}
+            </div>
+          })}
+        </div>
+      </div>
+    </section>
+    <div id="buttons">
+            {isCreator(meetUp.creator._id) && <Link
+            to={`/updateMeetUp/${meetUp._id}`}
+            className="button is-warning"
+            >Update MeetUp</Link>}
             {isCreator(meetUp.creator._id) && <button
             className="button is-danger"
             onClick={handleDelete}
-            >Delete MeetUp</button>}
-            {isCreator(meetUp.creator._id) && <Link
-            to={`/updateMeetUp/${meetUp._id}`}
-            className="button is-secondary"
-            >Update MeetUp</Link>}
+            id="meetUpDeleteButton"
+            >Delete MeetUp</button>}           
           </div>
-        </div> 
-      </div>
-    </section>
 
     <div id="singleMeetUpMain">
       <div id="singleMeetUpColumns">
         <div id="singleMeetUpColumnLeft">
           <div id="meetUpImageAndDescription">
-            <img src={meetUp.image} id="meetUpImage"/>  
+            <div id="meetUpImage" style={{
+                    backgroundImage: `url(${meetUp.image})`,
+                    backgroundSize: 'cover'
+                  }}></div>  
             <div className="card" id="description">
               <div className="card-content">
                 <div className="content">
@@ -103,15 +106,20 @@ const SingleMeetUp = ({match, history}) => {
           </div>
             
           <div id="comments">
-            <h2><strong>Comments</strong></h2>
+            <h2 id="commentsTitle"><strong>Comments</strong></h2>
             {meetUp.comments && meetUp.comments.map(comment => {
               return <article key={comment._id} className="media">
                 <div className="media-content">
-                  <div className="content">
-                    <p className="subtitle">
-                      {comment.user.username}
-                    </p>
-                    <p>{comment.text}</p>
+                  <div className="content meetUpComment">
+                    <div className="commentLeft">
+                      <figure class="image is-48x48">
+                        <img class="is-rounded" src={comment.user.image}/>
+                      </figure>
+                    </div>
+                    <div className="commentRight">
+                      <p>{comment.text}</p>
+                      <p><strong>{comment.user.firstName + ' ' + comment.user.lastName}</strong></p>    
+                    </div>                                         
                   </div>
                 </div>
                 {isCreator(comment.user._id) &&
@@ -142,8 +150,8 @@ const SingleMeetUp = ({match, history}) => {
                   <div className="control">
                     <button
                       onClick={handleComment}
-                      className="button is-info"
-                    > Submit </button>
+                      className="button is-warning"
+                    > Send </button>
                   </div>
                 </div>
               </div>
@@ -165,7 +173,7 @@ const SingleMeetUp = ({match, history}) => {
                       </div>
                       <div className="media-content">
                         <p className="title is-4">{meetUp.creator.firstName + " " + meetUp.creator.lastName}</p>
-                        <p className="subtitle is-6">{meetUp.creator.age + " "  + meetUp.creator.homeTown}</p>
+                        <p className="subtitle is-6">{meetUp.creator.age + ", "  + meetUp.creator.homeTown}</p>
                       </div>
                     </div>
                   </Link>  

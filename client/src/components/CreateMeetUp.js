@@ -58,7 +58,6 @@ export default function CreateMeetUp({history}) {
         const { data } = await axios.post('/api/meetUps',   newFormData, {
           headers: { Authorization: `Bearer ${token}` }
         })
-        console.log(newFormData)
         history.push(`/meetUp/${data._id}`)
       } catch (err) {
         console.log(err.response.data)

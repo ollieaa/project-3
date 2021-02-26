@@ -1,3 +1,17 @@
+#meetUpSearchHero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#meetUpHeroBackground {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 78%), url("https://blog.citypop.com/sites/default/files/styles/article_full/public/2019-11/City%20Pop%20How%20To%20Meet%20New%20People-2.jpg?itok=K0sPSEci");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#meetUpSearchTitle {
+  color: white;
+}
 .meetUpSearchRow {
   display:flex;
   flex-direction: row;
@@ -56,7 +70,15 @@
   flex-direction: column;
   min-height: 100vh;
 }
-
+.singleMeetUpTag {
+  margin-right: 10px;
+}
+#buttons {
+  align-self: flex-end;
+}
+#meetUpDeleteButton {
+  margin-left: 10px;
+}
 #singleMeetUpMain {
   display: flex;
   flex-direction: row;
@@ -83,10 +105,13 @@
   width: 60%;
 }
 #meetUpImage {
-  width: 40%;
+  width: 250px;
   border-radius: 3px;
 }
-
+.meetUpComment {
+  display: flex;
+  flex-direction: row;
+}
 #singleMeetUpColumnRight{
   display: flex;
   flex-direction: column;
@@ -96,6 +121,9 @@
   display: flex;
   flex-direction: column;
   // border: 1px solid black;
+  margin-bottom: 30px;
+}
+#commentsTitle {
   margin-bottom: 30px;
 }
 #postedByBottom {
@@ -124,39 +152,35 @@
   display: flex;
   flex-direction: row;
 }
-#tagsAndButtons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 #meetUpTags {
   display: flex;
   flex-direction: row;
 }
-#createMeetUpMain {
+#createMeetUpMain, #updateMeetUpMain {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-#createMeetUpColumns {
+#createMeetUpColumns, #updateMeetUpColumns {
   display: flex;
   flex-direction: row;
   width: 1000px;
 }
-#createMeetUpLeft {
+#createMeetUpLeft, #updateMeetUpLeft {
   display: flex;
   flex-direction: column;
   flex: 2;
 }
-#createMeetUpRight {
+#createMeetUpRight, #updateMeetUpRight {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
-#createSuggestionsBox {
+#createSuggestionsBox,
+#updateSuggestionsBox {
   margin-top: 100px; 
 }
-#createSuggestions {
+#createSuggestions, #updateSuggestions {
   display: flex;
   flex-flow: row wrap;
 }

@@ -44,21 +44,42 @@ function Navbar({ history }) {
         <Link className="navbar-item" to={'/home'}>
           Home
         </Link>
+        {!loggedInUser._id &&
         <Link className="navbar-item" to={'/meetUpSearch'}>
           MeetUps
-        </Link>
+        </Link>}
         {loggedInUser._id &&
-          <Link className="navbar-item" to={'/createMeetUp'}>
+        <div className="navbar-item has-dropdown is-hoverable">
+          <a className="navbar-link">
+            MeetUps
+          </a>
+          <div className="navbar-dropdown">
+            <Link className="navbar-item" to={'/meetUpSearch'}>
+              Search MeetUps
+            </Link>
+            <Link className="navbar-item" to={'/createMeetUp'}>
             Create MeetUp
-          </Link>}
+            </Link>
+          </div>
+        </div>}
+        {!loggedInUser._id &&
         <Link className="navbar-item" to={'/groups'}>
           Groups
-        </Link>  
+        </Link>} 
         {loggedInUser._id &&
-          <Link className="navbar-item" to={'/groups/create-group'}>
-            Create Group
-          </Link>}
-
+        <div className="navbar-item has-dropdown is-hoverable">
+          <a className="navbar-link">
+            Groups
+                 </a>
+          <div className="navbar-dropdown">
+            <Link className="navbar-item" to={'/groups'}>
+              Find Group
+            </Link> 
+            <Link className="navbar-item" to={'/groups/create-group'}>
+              Create Group
+            </Link>
+          </div>
+        </div>} 
         <div className="navbar-item has-dropdown is-hoverable">
           <a className="navbar-link">
             Activities
@@ -75,6 +96,9 @@ function Navbar({ history }) {
                    </Link>
           </div>
         </div>
+        <Link className="navbar-item" to={'/about'}>
+          About
+        </Link>
       </div>
 
       <div className="navbar-end">
@@ -94,9 +118,6 @@ function Navbar({ history }) {
                      </Link>
               <Link className="navbar-item" to={`/inbox/${loggedInUser._id}`}>
                 Messages
-                     </Link>
-              <Link className="navbar-item" to={'/poi'}>
-                Your MeetUps
                      </Link>
             </div>
           </div>

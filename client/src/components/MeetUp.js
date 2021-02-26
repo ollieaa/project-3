@@ -126,7 +126,7 @@ const MeetUp = ({location}) => {
                       {tag}
                     </div>
                   })}
-                  <p id="meetUpCardSuggested"><strong>{meetUp.restaurantSuggestions.length + meetUp.poiSuggestions.length}</strong> suggested activities..</p>
+                  <p id="meetUpCardSuggested"><strong>{meetUp.restaurantSuggestions.length + meetUp.poiSuggestions.length}</strong> suggested activities...</p>
                 </div>
               </div>
             </div>
