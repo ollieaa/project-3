@@ -100,8 +100,7 @@ export default function SingleGroup({ match, history }) {
   }
 
 
-  console.log(group.members)
-  console.log(user)
+  
 
   return <div className="main">
 

@@ -25,7 +25,7 @@ export default function SingleRestaurant({ match, history }) {
     async function fetchRestaurant() {
       try {
         const { data } = await axios.get(`/api/restaurants/${restaurantId}`)
-        console.log(data.creator._id)
+        
         updateRestaurant(data)
         setMapConfig({ ...mapConfig, latitude: data.lat, longitude: data.long })
 

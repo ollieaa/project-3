@@ -24,7 +24,6 @@ const Geography2 = () => {
     axios.get('/api/restaurants')
       .then(resp => {
         const filteredBars = resp.data.filter(bar => {
-          console.log(bar.lat, 'wooooooooo')
           // return poi.latlng && poi.latlng.length === 2
           return bar.lat && bar.long
         })
@@ -40,7 +39,6 @@ const Geography2 = () => {
     </div>
   }
 
-  console.log(bars, 'weeeeeeeeeeee')
   return <MapGL
     {...viewPort}
     onViewportChange={(viewPort) => updateViewPort(viewPort)}
@@ -51,7 +49,6 @@ const Geography2 = () => {
         latitude={bar.lat}
         longitude={bar.long}
       >
-        {/* <img width={20} key={i} src={bar.image} /> */}
         <p className="map-label">{bar.name}</p>
       </Marker>
     }
@@ -61,15 +58,3 @@ const Geography2 = () => {
 }
 
 export default Geography2
-
-
-
-
-// import React from 'react'
-
-// const Map = () => {
-//   return <h1>testest</h1>
-
-// }
-
-// export default Map

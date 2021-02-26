@@ -20,11 +20,9 @@ const Groups = ({ history }) => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(inputValue)
     updatePasscodeSubmit(true)
     try {
       groupsData.map((group) => {
-        console.log(inputValue)
         if (group.passcode === inputValue) {
           updatePasscodeMatch(true)
           history.push(`/groups/${group._id}`)

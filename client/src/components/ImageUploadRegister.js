@@ -42,10 +42,7 @@ function ImageUploadRegister({ formData, updateFormData }) {
   async function handleImageSubmit(event) {
     event.preventDefault()
     try {
-      console.log('hello')
       const { data } = await axios.post('/api/imagesRegister', imageFormData)
-      console.log('bye')
-      console.log(data.url)
       updateImageUrl()
       updateConfirmImage(true)
     } catch (err) {

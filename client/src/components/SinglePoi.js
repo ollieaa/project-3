@@ -28,7 +28,7 @@ export default function SinglePoi({ match, history }) {
     fetchPoi()
   }, [])
 
-  console.log(poi._id, 'wooooooooooo')
+ 
 
   async function getLoggedInUser() {
     const userId = getLoggedInUserId()

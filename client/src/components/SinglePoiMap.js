@@ -30,7 +30,7 @@ export default function SinglePoiMap({ match, history }) {
         updatePoi(data)
         setMapConfig({ ...mapConfig, latitude: data.latlng[0], longitude: data.latlng[1] })
         updateLoading(false)
-        console.log(data)
+       
       } catch (err) {
         console.log(err)
       }

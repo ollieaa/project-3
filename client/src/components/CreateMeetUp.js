@@ -37,10 +37,8 @@ export default function CreateMeetUp({history}) {
     if (suggestionType.includes(id)) {
       const itemToRemove = suggestionType.findIndex(item => item === id)
       updateFormData({...formData, [suggestionType]: suggestionType.splice(itemToRemove, 1)})
-      console.log(suggestionType)
     } else {
       updateFormData({...formData, [suggestionType]: suggestionType.push(id)})
-      console.log(suggestionType)
     }
   }
 

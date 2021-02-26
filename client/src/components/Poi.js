@@ -17,7 +17,7 @@ const Poi = () => {
   const [loading, updateLoading] = useState(true)
 
 
-  console.log(poiData, 'heyyyyyyy')
+
 
   useEffect(() => {
     async function fetchData() {
@@ -68,7 +68,7 @@ const Poi = () => {
         </select>
       </div>
 
-      {/* <input className="input is-success" onChange={(event) => updateSearch(event.target.value)} placeholder="Search..." /> */}
+      
 
       <input onChange={(event) => updateSearch(event.target.value)} placeholder="Search..." />
       <div className="button is-success"><Link to='/createPoi'>Add somewhere new!</Link></div>

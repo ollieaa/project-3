@@ -28,7 +28,6 @@ export default function CreateGroup({ history }) {
         numbers: true
       })
     }
-    console.log(formData.passcode)
     try {
       const { data } = await axios.post('/api/groups', newFormData, {
         headers: { Authorization: `Bearer ${token}` }

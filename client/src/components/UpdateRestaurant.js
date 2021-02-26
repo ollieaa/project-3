@@ -23,7 +23,7 @@ export default function UpdateRestaurant({ history, match }) {
   useEffect(() => {
     axios.get(`/api/restaurants/${restaurantId}`)
       .then(({ data }) => {
-        console.log(data.price)
+        
         const mappedFormData = {
           ...data,
           category: data.category.map(cat => {

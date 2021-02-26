@@ -31,7 +31,7 @@ export default function UpdateMeetUp({history, match}) {
             return { value: tag, label: tag[0].toUpperCase() + tag.slice(1) }
           })
         }
-        console.log(data)
+        
         updateFormData(mappedFormData)
         updateLoading(false)
       })
@@ -52,10 +52,10 @@ export default function UpdateMeetUp({history, match}) {
     if (suggestionType.includes(id)) {
       const itemToRemove = suggestionType.findIndex(item => item === id)
       updateFormData({...formData, [suggestionType]: suggestionType.splice(itemToRemove, 1)})
-      console.log(suggestionType)
+      
     } else {
       updateFormData({...formData, [suggestionType]: suggestionType.push(id)})
-      console.log(suggestionType)
+      
     }
   }
 

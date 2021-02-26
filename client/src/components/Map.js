@@ -29,22 +29,6 @@ const Geography = () => {
     longitude: -0.078
   })
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const { data } = await axios.get('/api/poi')
-  //     console.log(data, 'hiiiiiiiiii')
-  //       .then(resp => {
-  //         const filteredPoi = resp.data.filter(poi => {
-  //           return poi.latlng && poi.latlng.length === 2
-  //         })
-  //         updatePoi(filteredPoi)
-  //         updateLoading(false)
-  //       })
-
-  //   }
-  //   fetchData()
-  // }, [])
-
   useEffect(() => {
     // ? axios.get will do a GET request, and it has similar verbs
     // ? for everything else.
@@ -77,8 +61,6 @@ const Geography = () => {
         && poi.name.toLowerCase().includes(search.toLowerCase())
     })
   }
-
-  // console.log(poiData, 'weeeeeeeeeeee')
 
   return <MapGL
     // ? Spread out all my viewport properties into the MapGL component

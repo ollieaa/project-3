@@ -36,7 +36,6 @@ function CreatePoi({ history }) {
       const { data } = await axios.post('/api/poi', newFormData, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      console.log(data._id)
       history.push('/poi')
     } catch (err) {
       console.log(err.response.data)

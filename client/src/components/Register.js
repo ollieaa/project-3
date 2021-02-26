@@ -32,7 +32,7 @@ function Register({ history }) {
 
     try {
       const { data } = await axios.post('/api/register', newFormData,)
-      console.log(data._id)
+      
       history.push('/login')
     } catch (err) {
       console.log(err.response.data)

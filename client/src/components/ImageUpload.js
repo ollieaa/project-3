@@ -46,7 +46,6 @@ export default function ImageUpload({ formData, updateFormData }) {
       const { data } = await axios.post('/api/images', imageFormData, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      console.log(data.url)
       updateImageUrl()
       updateConfirmImage(true)
     } catch (err) {

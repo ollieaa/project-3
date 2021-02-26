@@ -55,7 +55,7 @@ export default function Update({ history, match }) {
       const { data } = await axios.put(`/api/poi/${poiId}`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      console.log(data._id)
+      
       history.push(`/poi/${data._id}`)
     } catch (err) {
       console.log(err.response.data)
