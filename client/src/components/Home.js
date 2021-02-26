@@ -112,7 +112,7 @@ const Home = () => {
       </div>
     </div>
     <div className="has-text-centered mt-3">
-      <p className="title"><strong>Points on interest in London, GB</strong></p>
+      <p className="title"><strong>Points of interest in London, GB</strong></p>
     </div>
     <div className="columns m-5">
       <div className="column">
