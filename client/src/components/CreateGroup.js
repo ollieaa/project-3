@@ -47,7 +47,7 @@ export default function CreateGroup({ history }) {
     // * TITLE SECTION
     */}
 
-    <section className="hero is-warning">
+    <section className="hero is-info">
       <div className="hero-body">
         <p className="title">
           Create a new group

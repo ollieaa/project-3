@@ -16,7 +16,7 @@ export default function CreateMeetUp({history}) {
     time: '',
     description: '',
     tags: [],
-    image: '',
+    image: 'https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg',
     restaurantSuggestions: [],
     poiSuggestions: [],
     isActive: true,

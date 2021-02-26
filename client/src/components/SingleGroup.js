@@ -91,7 +91,7 @@ export default function SingleGroup({ match, history }) {
     await axios.delete(`/api/groups/${groupId}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    history.push('/home')
+    history.push('/')
   }
 
 

@@ -22,7 +22,7 @@ function Login({ history }) {
       if (localStorage) {
         localStorage.setItem('token', data.token)
       }
-      history.push('/home')
+      history.push('/')
     } catch (err) {
       console.log(err.response.data)
     }

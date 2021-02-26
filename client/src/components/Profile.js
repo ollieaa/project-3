@@ -33,7 +33,7 @@ const Profile = ({ match, history }) => {
     await axios.delete(`/api/user/${profileId}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    history.push('/home')
+    history.push('/')
     localStorage.removeItem('token')
   }
 

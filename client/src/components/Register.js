@@ -12,7 +12,7 @@ function Register({ history }) {
     lastName: '',
     email: '',
     password: '',
-    image: '',
+    image: 'https://image.freepik.com/free-vector/woman-avatar-profile-round-icon_24640-14042.jpg',
     age: '',
     homeTown: '',
     interests: []

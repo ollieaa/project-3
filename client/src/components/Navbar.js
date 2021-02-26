@@ -25,7 +25,7 @@ function Navbar({ history }) {
   }, 1000)
 
   function logout() {
-    history.push('/home')
+    history.push('/')
     localStorage.removeItem('token')
   }
 
@@ -126,7 +126,7 @@ function Navbar({ history }) {
         <div className="navbar-item">
           <div className="buttons">
             {loggedInUser.length === 0 &&
-              <Link className="button is-primary" to={'/login'}>
+              <Link className="button is-warning" to={'/login'}>
                 Log in
                    </Link>}
             {loggedInUser.length === 0 &&
@@ -134,7 +134,7 @@ function Navbar({ history }) {
                 <strong>Sign up</strong>
               </Link>}           
             {loggedInUser._id &&
-            <button className="button is-primary" onClick={logout}>Sign Out</button>}
+            <button className="button is-warning" onClick={logout}>Sign Out</button>}
           </div>
         </div>
       </div>

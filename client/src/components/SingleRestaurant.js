@@ -60,7 +60,7 @@ export default function SingleRestaurant({ match, history }) {
     await axios.put(`/api/user/${user._id}`, { restaurantWishlist: newWishlist }, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    console.log('That worked!')
+    alert('Added to your wishlist!')
   }
 
   if (loading) {

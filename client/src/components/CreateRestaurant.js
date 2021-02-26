@@ -33,8 +33,8 @@ export default function CreateRestaurant({ history }) {
       ...formData,
       category: formData.category.map(cat => cat.value),
       price: formData.price.value,
-      lat: 0,
-      long: 0
+      lat: 51.5704,
+      long: -0.1277
     }
     try {
       const { data } = await axios.post('/api/restaurants', newFormData, {
@@ -52,7 +52,7 @@ export default function CreateRestaurant({ history }) {
     // * TITLE SECTION
     */}
 
-    <section className="hero is-warning">
+    <section className="hero is-info">
       <div className="hero-body">
         <p className="title">
           Know a great place?

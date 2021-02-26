@@ -50,6 +50,7 @@ export default function SinglePoi({ match, history }) {
     await axios.put(`/api/user/${userId}`, { poiWishlist: newWishlist }, {
       headers: { Authorization: `Bearer ${token}` }
     })
+    alert('Added to your wishlist!')
   }
 
 
