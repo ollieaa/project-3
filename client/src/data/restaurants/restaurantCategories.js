@@ -25,5 +25,5 @@ export default [
   { value: 'Thai', label: 'Thai' },
   { value: 'Vegan', label: 'Vegan' },
   { value: 'Vegetarian', label: 'Vegetarian' },
-  { value: 'Wineries', label: 'Wineries' },
+  { value: 'Wineries', label: 'Wineries' }
 ]

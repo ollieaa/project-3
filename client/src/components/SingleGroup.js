@@ -10,7 +10,6 @@ export default function SingleGroup({ match, history }) {
   const [user, updateUser] = useState({})
   const [members, updateMembers] = useState([])
   const [loading, updateLoading] = useState(true)
-  const [isNotJoined, updateIsNotJoined] = useState(true)
   //const [commentText, setCommentText] = useState('')
   const token = localStorage.getItem('token')
 

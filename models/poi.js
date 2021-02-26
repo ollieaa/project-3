@@ -17,7 +17,7 @@ const poiSchema = new mongoose.Schema({
   // user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
   latlng: { 
-    type: [Number],
+    type: [Number]
     // validate: (latlngArray) => {
     //   return latlngArray.length > 0
     // }
