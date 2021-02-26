@@ -158,7 +158,7 @@ export default function SingleRestaurant({ match, history }) {
                 {restaurant.zipcode && <p className="subtitle is-5 has-text-warning mt-1">{restaurant.zipcode}</p>}
                 <h2 className="title mt-2">{restaurant.price}</h2>
                 <div className="card-buttons">{restaurant.category.map((cat, index) => {
-                  return <div className="button is-warning is-light mr-2" key={index}>{cat}</div>
+                  return <div className="button is-success is-light mr-2" key={index}>{cat}</div>
                 })}</div>
                 <div className="subtitle is-5 mt-4"><a href={restaurant.link} target="_blank" rel="noreferrer">Find out more!</a></div>
               </div>
