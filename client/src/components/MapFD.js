@@ -14,9 +14,9 @@ const Geography2 = () => {
   const [viewPort, updateViewPort] = useState({
     height: '100vh',
     width: '100vw',
-    zoom: 10.1,
-    latitude: 51.515,
-    longitude: -0.078
+    zoom: 12,
+    latitude: 51.5080,
+    longitude: -0.1281
   })
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Geography2 = () => {
         longitude={bar.long}
       >
         {/* <img width={20} key={i} src={bar.image} /> */}
-        <p>{bar.name}</p>
+        <p className="map-label">{bar.name}</p>
       </Marker>
     }
 

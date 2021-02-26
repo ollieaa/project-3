@@ -120,6 +120,46 @@
   height: 100px
 }
 
+
+
+
+.about-page {
+  text-align: center;
+}
+
+
+
+
+// POI 
+.poi {
+  width: 40%;
+  display: flex;
+  // position: absolute;
+  
+}
+
+.poi-image-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.map-label {
+  background-color: black;
+  color: white;
+  padding: 1%;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.card-footer {
+  margin: 2%;
+}
+
+.fun-fact {
+  margin: 5px;
+}
+
 // * GROUP PAGE
 
 .group-image {

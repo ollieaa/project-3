@@ -2,9 +2,8 @@ import React from 'react'
 import Select from 'react-select'
 import {times} from '../data/times'
 import interestTypes from '../data/interestTypes'
-import ImageUpload from './ImageUpload.js'
 
-export default function MeetUpForm({ formData, updateFormData, handleSubmit, handleChange, handleTagChange, button }) {
+export default function MeetUpForm({ formData, handleSubmit, handleChange, handleTagChange, button }) {
 
 
   return <div className="section">
@@ -82,9 +81,9 @@ export default function MeetUpForm({ formData, updateFormData, handleSubmit, han
           </div>
           <div className="field">
             <label className="label">
-              Image:
+              Image URL:
             </label>
-            {/* <div className="control">
+            <div className="control">
               <input
                 className="input"
                 type="text"
@@ -92,11 +91,7 @@ export default function MeetUpForm({ formData, updateFormData, handleSubmit, han
                 onChange={handleChange}
                 name="image"
               />
-            </div> */}
-            <ImageUpload
-              formData={formData}
-              updateFormData={updateFormData}
-            />
+            </div>
           </div>
             <label className="label">
               Tags:

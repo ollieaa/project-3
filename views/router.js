@@ -16,16 +16,13 @@ router.route('/images')
   .get(image.getImage)
   .post(secureRoute, image.postImage)
 
-router.route('./imagesRegister') 
-  .post(image.postImageRegister)
-
 router.route('/images/:imageId')
   .put(secureRoute, image.updateImage)
   .get(image.getSingleImage)
   
 //* MEET-UPS
-
-
+router.route('/singleMeetUp/update/:meetUpId')
+  .get(meetUps.getSingleMeetUpUpdate)
 router.route('/meetUps/:location/:date')
   .get(meetUps.getMeetUpsByLD)
 
@@ -93,11 +90,11 @@ router.route('/poi/:poiId/comment/:commentId')
 // END OF POINTS OF INTEREST
 
 router.route('/meetUp/:meetUpId/comment')
-  .post(secureRoute)
+  .post(secureRoute, meetUps.makeComment)
 
 router.route('/meetUp/:meetUpId/comment/:commentId')
-  .post(secureRoute)
-  .put(secureRoute)
+  .delete(secureRoute, meetUps.deleteComment)
+
 
 // ENDPOINTS FOR USER 
 

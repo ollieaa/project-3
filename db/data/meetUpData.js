@@ -12,7 +12,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: restaurants[0]._id,
       isActive: true,
       creator: users[0]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Evening to spare in London",
@@ -24,7 +24,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Evening to spare in London",
@@ -36,7 +36,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Evening to spare in London",
@@ -48,7 +48,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "vhttps://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Evening to spare in London",
@@ -60,7 +60,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Evening to spare in London",
@@ -72,7 +72,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Evening to spare in London",
@@ -84,7 +84,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Evening to spare in London",
@@ -96,7 +96,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Evening to spare in London",
@@ -108,7 +108,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[0]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Share a walk along the river?",
@@ -120,7 +120,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       poiSuggestions: [poi[0]._id, poi[1]._id],
       isActive: true,
       creator: users[1]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Looking for a foodie to try out Dishoom with next weekend",
@@ -132,7 +132,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       restaurantSuggestions: [restaurants[1]._id],
       isActive: true,
       creator: users[2]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "Is anyone else dying to see the new exhibition at the V&A???",
@@ -144,7 +144,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       poiSuggestions: [poi[1]._id],
       isActive: true,
       creator: users[3]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     },
     {
       name: "At a loose end for a few hours next week, up for suggestions",
@@ -157,7 +157,7 @@ export default function getMeetUpData(users, poi, restaurants) {
       poiSuggestions: [poi[0]._id, poi[1]._id],
       isActive: true,
       creator: users[0]._id,
-      image: "https://assets.gqindia.com/photos/5df9b7df2538cf000881f3a3/master/pass/7-ways-to-make-a-first-date-go-right.jpg"
+      image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b7/0e/51/relaxed-and-enjoyable.jpg"
     }
   ]
 }

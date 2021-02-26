@@ -199,7 +199,7 @@ const Profile = ({ match, history }) => {
               <p className="control">
                 <button
                   onClick={handleComment}
-                  className="button is-info"
+                  className="button is-warning"
                 >
                   Submit
                 </button>

@@ -10,7 +10,14 @@ const MeetUpSearch = () => {
   })
 
   return <div id="meetUpSearchPage">
-    <MeetUpSearchForm orientation="meetUpSearchRow" formData={formData} updateFormData={updateFormData}/>
+    <section className="hero is-fullheight-with-navbar" id="meetUpHeroBackground">
+      <div className="hero-body" id="meetUpSearchHero">
+        <p className="title" id="meetUpSearchTitle">
+          Search MeetUps
+        </p>
+        <MeetUpSearchForm orientation="meetUpSearchRow" formData={formData} updateFormData={updateFormData}/>
+      </div>
+    </section>
   </div>
 }
 

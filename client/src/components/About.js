@@ -10,24 +10,30 @@ const About = () => {
       </div>
     </section>
 
-    <section className="card">
+    <section className="card about-page">
       <div className="card-header is-size-2">
         Who we are
       </div>
       <h3 className="subtitle">We are students in the Software Engineering Immersive course taught by General Assembly</h3>
       <ul className="subtitle">Check out our GitHubs!</ul>
-      <a href="https://github.com/kkherbert" target="_blank" rel="noreferrer">Katherine</a>
-      <a href="https://github.com/ketka82uk" target="_blank" rel="noreferrer">Cathy</a>
-      <a href="https://github.com/ollieaa" target="_blank" rel="noreferrer">Ollie</a>
-      <a href="https://github.com/ollieaa" target="_blank" rel="noreferrer">Jake</a>
+      <li>
+        <a href="https://github.com/ketka82uk" target="_blank" rel="noreferrer">Cathy</a>
+      </li>
+      <li>
+        <a href="https://github.com/jacobaston" target="_blank" rel="noreferrer">Jake</a>
 
+      </li>
+      <li>
+        <a href="https://github.com/kkherbert" target="_blank" rel="noreferrer">Katherine</a>
+      </li>
 
+      <li>
+        <a href="https://github.com/ollieaa" target="_blank" rel="noreferrer">Ollie</a>
 
-
-      
+      </li>
     </section>
 
-    <section className="card">
+    <section className="card about-page">
       <div className="card-header is-size-2">
         What is this project?
       </div>
