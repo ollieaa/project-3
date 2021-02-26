@@ -6,7 +6,7 @@ import Home from './components/Home.js'
 import About from './components/About.js'
 import Profile from './components/Profile.js'
 import UpdateProfile from './components/UpdateProfile.js'
-import Inbox from './components/Inbox.js'
+// import Inbox from './components/Inbox.js'
 import MeetUp from './components/MeetUp.js'
 import SingleMeetUp from './components/SingleMeetUp.js'
 import CreateMeetUp from './components/CreateMeetUp.js'
@@ -47,7 +47,7 @@ const App = () => {
       <Route exact path="/login" component={Login}/>
       <Route exact path="/profile/:profileId" component={Profile}/>
       <Route exact path="/updateProfile/:profileId" component={UpdateProfile}/>
-      <Route exact path="/inbox" component={Inbox}/>
+      {/* <Route exact path="/inbox" component={Inbox}/> */}
       <Route exact path="/meetUp" component={MeetUp}/>
       <Route exact path="/meetUp/:meetUpId" component={SingleMeetUp}/>
       <Route exact path="/createMeetUp" component={CreateMeetUp}/>
