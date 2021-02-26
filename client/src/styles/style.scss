@@ -26,6 +26,24 @@
   border: 1px solid gray;
 }
 
+// * IMAGE UPLOAD
+
+.image-holder {
+  height: 300px;
+  width: 80%;
+  border: 2px solid gray;
+  border-radius: 5px;
+  background: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.image-upload {
+  margin: 10px;
+}
+
 // * RESTAURANT PAGE
 
 .horizontal-card {
@@ -79,6 +97,7 @@
   align-items: center;
 }
 
+
 // * SINGLE RESTAURANT PAGE
 
 .restaurant-hero {
@@ -86,6 +105,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
+}
+
+.restaurant-hero-text {
+  text-shadow: 2px 1px 1px rgba(50, 50, 50, 0.8);
 }
 
 .section-row {
@@ -96,5 +119,12 @@
 
 .avatar {
   height: 100px
+}
+
+// * GROUP PAGE
+
+.group-image {
+ height: 300px;
+ margin-bottom: 15px;
 }
 

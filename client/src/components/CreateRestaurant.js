@@ -13,8 +13,10 @@ export default function CreateRestaurant({ history }) {
     image: '',
     lat: '',
     long: '',
-    location: '',
-    address: '',
+    city: '',
+    address1: '',
+    address2: '',
+    zipcode: '',
     phone: '',
     category: [],
     price: []
@@ -30,7 +32,9 @@ export default function CreateRestaurant({ history }) {
     const newFormData = {
       ...formData,
       category: formData.category.map(cat => cat.value),
-      price: formData.price.value
+      price: formData.price.value,
+      lat: 0,
+      long: 0
     }
     try {
       const { data } = await axios.post('/api/restaurants', newFormData, {
@@ -42,22 +46,82 @@ export default function CreateRestaurant({ history }) {
     }
   }
 
-  return <div className="container">
-    <h1 className="title">Add a restaurant</h1>
-    <ImageUpload
-      formData={formData}
-      updateFormData={updateFormData}
-    />
-    <RestaurantForm
-      handleChange={handleChange}
-      handleCategoryChange={(category) => updateFormData({ ...formData, category })}
-      handlePriceChange={(price) => updateFormData({ ...formData, price })}
-      handleSubmit={handleSubmit}
-      formData={formData}
-    />
+  return <div>
 
-    <div className="button is-success"><Link to={'/activities/food-and-drink'}>Back to food and drink</Link></div>
+    {/*
+    // * TITLE SECTION
+    */}
+
+    <section className="hero is-small is-warning">
+      <div className="hero-body">
+        <p className="title has-text-centered">
+          Know a great place?
+        </p>
+        <p className="subtitle has-text-centered">
+          What are you waiting for? Add it!
+        </p>
+      </div>
+    </section>
+
+    {/*
+    // * LEVEL SECTION
+    */}
+
+    <div className="container mb-4">
+
+      <div className="level mt-2">
+        <div className="level-left"></div>
+        <div className="level-right">
+          <div className="level-item">
+            <div className="button is-warning is-light"><Link to={'/activities/food-and-drink'}>Back to food and drink</Link></div>
+          </div>
+        </div>
+      </div>
+
+
+
+      {/*
+    // * FORM SECTION
+    */}
+
+
+      <div className="columns">
+        <div className="column">
+          <div className="card">
+            <div className="card-content">
+              <div className="content">
+                <h2 className="title">Add a picture</h2>
+                <ImageUpload
+                  formData={formData}
+                  updateFormData={updateFormData}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="column">
+          <div className="card">
+            <div className="card-content">
+              <div className="content">
+                <h2 className="title">Venue details</h2>
+                <RestaurantForm
+                  handleChange={handleChange}
+                  handleCategoryChange={(category) => updateFormData({ ...formData, category })}
+                  handlePriceChange={(price) => updateFormData({ ...formData, price })}
+                  handleSubmit={handleSubmit}
+                  formData={formData}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
+
+
 
 
 }

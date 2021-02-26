@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 
-export default function ImageUpload({ formData, updateFormData }) {
+function ImageUploadRegister({ formData, updateFormData }) {
   const [confirmImage, updateConfirmImage] = useState(false)
   const [imageFormData, updateImageFormData] = useState({
     url: ''
@@ -29,7 +29,7 @@ export default function ImageUpload({ formData, updateFormData }) {
   }
 
   function UploadedImage() {
-    return <div className="image-upload"><img src={imageFormData.url}></img></div>
+    return <div><img src={imageFormData.url}></img></div>
   }
 
   function updateImageUrl() {
@@ -41,11 +41,10 @@ export default function ImageUpload({ formData, updateFormData }) {
 
   async function handleImageSubmit(event) {
     event.preventDefault()
-    const token = localStorage.getItem('token')
     try {
-      const { data } = await axios.post('/api/images', imageFormData, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      console.log('hello')
+      const { data } = await axios.post('/api/imagesRegister', imageFormData)
+      console.log('bye')
       console.log(data.url)
       updateImageUrl()
       updateConfirmImage(true)
@@ -56,14 +55,8 @@ export default function ImageUpload({ formData, updateFormData }) {
 
   return <>
     <div>
-      <div className="container">
-        <button className="button mb-2" onClick={handleImageUpload}>Upload image</button>
-        {!imageFormData.url && <div className="image-holder">
-          <div className="icon">
-            <img src="https://i.imgur.com/qFTdxL6.png" alt="icon" height="20px"></img>
-          </div>
-          <div className="text">Your image</div>
-        </div>}
+      <div className="container mt-5">
+        <button className="button" onClick={handleImageUpload}>Upload an image</button>
         {imageFormData.url && <UploadedImage />}
         {(!confirmImage && imageFormData.url) && <button
           className="button is-danger"
@@ -72,3 +65,5 @@ export default function ImageUpload({ formData, updateFormData }) {
     </div>
   </>
 }
+
+export default ImageUploadRegister
