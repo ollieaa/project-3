@@ -16,7 +16,7 @@ export default function SingleRestaurant({ match, history }) {
   const loggedIn = getLoggedInUserId()
   const [mapConfig, setMapConfig] = useState({
     height: '45vh',
-    width: '100vh',
+    width: '82vh',
     zoom: 16
   })
   let map
@@ -177,6 +177,9 @@ export default function SingleRestaurant({ match, history }) {
           <div className="card">
             <div className="card-content">
               <div className="content">
+                <h2 className="title">Find us here!</h2>
+              </div>
+              <div className="content">
                 <div className='map-container'>
                   <MapGL
                     {...mapConfig}
@@ -187,7 +190,7 @@ export default function SingleRestaurant({ match, history }) {
                       latitude={restaurant.lat}
                       longitude={restaurant.long}
                     >
-                      <h5 className="map-label">{restaurant.name}</h5>
+                      <h1 className="map-label">👉</h1>
 
                     </Marker>
                   </MapGL>

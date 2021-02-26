@@ -57,7 +57,7 @@ const Restaurants = () => {
     // * TITLE SECTION
     */}
 
-    <section className="hero is-warning is-small">
+    <section className="hero is-warning">
       <div className="hero-body">
         <p className="title">
           Food & Drink
@@ -111,7 +111,7 @@ const Restaurants = () => {
               <span className="icon is-small">
                 🧭
               </span>
-              <span className="subtitle"><Link to='/activities/create-restaurant'>See on a map</Link></span>
+              <span className="subtitle"><Link to='/map/fd'>See on a map</Link></span>
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@ const Restaurants = () => {
                           <div className="horizontal-card-title">{restaurant.name}</div>
                           <div className="horizontal-card-buttons">
                             {restaurant.category.map((cat, index) => {
-                              return <div className="button is-warning is-light mr-2" key={index}>{cat}</div>
+                              return <div className="button is-success is-light mr-2" key={index}>{cat}</div>
                             })}
                           </div>
                           <div className="horizontal-card-text">{restaurant.price} </div>

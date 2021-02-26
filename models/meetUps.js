@@ -9,7 +9,7 @@ const MeetUpSchema = new mongoose.Schema({
   description: { type: String, required: true },
   tags: { type: [String]},
   comments: [CommentSchema],
-  image: {type: String, required: true},
+  image: {type: String, required: true },
   poiSuggestions: [{ type: mongoose.Schema.ObjectId, ref: 'Poi' }],
   restaurantSuggestions: [{ type: mongoose.Schema.ObjectId, ref: 'Restaurant' }],
   attendees: { type: [mongoose.Schema.ObjectId], ref: 'User' },

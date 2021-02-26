@@ -84,7 +84,7 @@ export default function SinglePoiMap({ match, history }) {
 
   // DISPLAY
   return <div>
-    <section className="hero is-medium is-warning">
+    <section className="hero is-warning">
       <div className="hero-body">
         <p className="title is-1">
           {poi.name}
@@ -112,14 +112,32 @@ export default function SinglePoiMap({ match, history }) {
 
 
             <div className="card-content">
-              <p className="subtitle">{poi.description}</p>
 
-              <img className="card-image is-centered" src={poi.image} alt={poi.name} />
 
-              <p className="title">Fun Fact!</p>
-              <p className="subtitle">{poi.funfact}</p>
 
-              {map}
+
+              <div className="control">
+                <p className="subtitle">{poi.description}</p>
+              </div>
+
+              <div className="columns">
+                <div className="column"></div>
+                <div className="column">
+                  <div className="control">
+                    <img className="image" src={poi.image} alt={poi.name} />
+                  </div>
+                </div>
+                <div className="column"></div>
+              </div>
+
+              <div className="control">
+                <p className="title">Fun Fact!</p>
+                <p className="subtitle">{poi.funfact}</p>
+              </div>
+
+              
+                  {map}
+                
 
               <p className="subtitle">Practical Information:</p>
 
