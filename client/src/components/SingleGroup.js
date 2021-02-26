@@ -129,10 +129,10 @@ export default function SingleGroup({ match, history }) {
       <div className="level mt-2">
         <div className="level-left">
           <div className="level-item">
-            {!group.members.includes(user) && <button className="button is-warning" onClick={handleUserJoin, handleGroupJoin}>Join group</button>}
+            <button className="button is-warning" onClick={handleUserJoin, handleGroupJoin}>Join group</button>
           </div>
           <div className="level-item">
-            {group.members.includes(user) && <button className="button is-warning" onClick={handleGroupLeave, handleUserLeave}>Leave group</button>}
+            <button className="button is-warning" onClick={handleGroupLeave, handleUserLeave}>Leave group</button>
           </div>
         </div>
         <div className="level-right">
@@ -237,8 +237,8 @@ export default function SingleGroup({ match, history }) {
                           </div>
                           <div className="card-content">
                             <div className="content">
-                              <h2 className="title is-3">{member.firstName}</h2>
-                              <h2 className="subtitle">{member.lastName}</h2>
+                              <h2 className="title is-6">{member.firstName}</h2>
+                              <h2 className="subtitle is-4">{member.lastName}</h2>
                             </div>
                           </div>
                         </div>

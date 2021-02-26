@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 import RestaurantForm from './RestaurantForm'
 
@@ -59,11 +60,66 @@ export default function UpdateRestaurant({ history, match }) {
     }
   }
 
-  return <RestaurantForm
-    handleChange={handleChange}
-    handleCategoryChange={(category) => updateFormData({ ...formData, category })}
-    handlePriceChange={(price) => updateFormData({ ...formData, price })}
-    handleSubmit={handleSubmit}
-    formData={formData}
-  />
+  return <div>
+
+    {/*
+    // * TITLE SECTION
+    */}
+
+<section className="hero is-info">
+      <div className="hero-body">
+        <p className="title">
+          Have we got something wrong?
+        </p>
+        <p className="subtitle">
+          Update it!
+        </p>
+      </div>
+    </section>
+
+    {/*
+    // * LEVEL SECTION
+    */}
+
+    <div className="container mb-4">
+
+      <div className="level mt-2">
+        <div className="level-left"></div>
+        <div className="level-right">
+          <div className="level-item">
+            <div className="button is-warning is-light"><Link to={'/activities/food-and-drink'}>Back to food and drink</Link></div>
+          </div>
+        </div>
+      </div>
+
+
+
+      {/*
+    // * FORM SECTION
+    */}
+
+
+      <div className="columns">
+
+        <div className="column">
+          <div className="card">
+            <div className="card-content">
+              <div className="content">
+                <h2 className="title">Venue details</h2>
+                <RestaurantForm
+                  handleChange={handleChange}
+                  handleCategoryChange={(category) => updateFormData({ ...formData, category })}
+                  handlePriceChange={(price) => updateFormData({ ...formData, price })}
+                  handleSubmit={handleSubmit}
+                  formData={formData}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 }
